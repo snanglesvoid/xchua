@@ -1,0 +1,18 @@
+extends ../layouts/default
+
+block intro
+  .page-header.container
+    h2 Artists
+
+
+block content
+  .page.container
+    if artists.length
+      ul.artists-list
+        each artist in artists
+          li
+            a(href='/artist/' + artist.slug)= artist.name.first + ' ' + artist.name.last
+        
+
+
+block js

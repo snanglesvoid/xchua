@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+include ../mixins/slideshow
+
+block content
+	+slideshow(gallery)
+
+block js
+	script(src='/js/slideshow.js')

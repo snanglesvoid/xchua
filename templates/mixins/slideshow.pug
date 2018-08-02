@@ -1,0 +1,12 @@
+mixin slideshow(gallery)
+    .slideshow
+        if gallery.images && gallery.images.length > 0
+            img.placeholder.active(src=gallery.images[0].url)
+            each image, index in gallery.images
+                img(src=image.url class= index == 0 ? 'active' : '')
+            .slideshow-title
+                h2
+                    a(href="#")
+                h2 
+        else
+            p No images found...

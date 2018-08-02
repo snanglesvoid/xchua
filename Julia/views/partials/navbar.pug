@@ -1,0 +1,100 @@
+<!-- Static navbar -->
+
+a#logo(href="/")
+  include ./logo.svg
+
+#sidenav-toggle
+  button(
+    onclick="openNav()"
+  )
+    div(style="background: transparent;")
+    div
+    div
+    
+
+#sidenav.sidenav
+  a.closebtn(href="javascript:void(0)" onclick="closeNav()") &times;
+  a(href="/" class= section=='home' ? 'active' : '') 
+    | Home
+  a(href="/artists" class= section=='artists' ? 'active' : '')
+    | Artists
+  a(href="/exhibitions" class= section=='exhibitions' ? 'active' : '')
+    | Exhibitions
+  a(href="/fairs" class= section=='fairs' ? 'active' : '') 
+    | Fairs
+  a(href="/publications" class= section=='more' ? 'active' : '') 
+    | Publications
+  a(href="/about" class= section=='more' ? 'active' : '') 
+    | About
+  a(href="/contact" class= section=='more' ? 'active' : '') 
+    | Contact
+
+//- nav.navbar.navbar-default.navbar-static-top
+//-   .container
+//-     .navbar-header
+//-       button.navbar-toggle.collpased(
+//-         data-toggle="collapse",
+//-         data-target="#navbar",
+//-         aria-expanded="false",
+//-         aria-controls="navbar",
+//-         style="border:0; border-radius:0;"
+//-       )
+//-         span(class="sr-only") Toggle navigation
+//-         span(class="icon-bar")
+//-         span(class="icon-bar")
+//-         span(class="icon-bar")
+//-       a.navbar-brand(href="/")
+//-         img(src="/assets/img/xc-hua-logo.webp" style="height:150%;")
+//-     #navbar.navbar-collapse.collapse
+//-       ul.nav.navbar-nav.navbar-right
+//-         li(class= section == 'home' ? 'active' : '')
+//-           a(href="/") Home
+//-         li.dropdown(class= section == 'artists' ? 'active' : '')
+//-           a.dropdown-toggle(
+//-             data-toggle="dropdown",
+//-             role="button",
+//-             aria-haspopup="true",
+//-             aria-expanded="false"
+//-           ) Artists 
+//-             span.caret
+//-           ul.dropdown-menu
+//-             li
+//-               a(href="/artists") All Artists
+//-             li.divider(role="separator")
+//-             li.dropdown-header Nav Header
+//-             each link in artistLinks
+//-               li
+//-                 a(href= link.path)= link.label
+//-         li.dropdown(class= section == 'exhibitions' ? 'active' : '')
+//-           a.dropdown-toggle(
+//-             data-toggle="dropdown",
+//-             role="button",
+//-             aria-haspopup="true",
+//-             aria-expanded="false"
+//-           ) Exhibitions
+//-             span.caret
+//-           ul.dropdown-menu
+//-             li
+//-               a(href="/exhibitions/current") Current
+//-             li.divider(role="seperator")
+//-             li
+//-               a(href="/exhibitions/archive") Archive
+//-         li(class= section == 'fairs' ? 'active' : '')
+//-           a(href="/fairs") Fairs
+//-         li.dropdown(class= section == 'more' ? 'active' : '')
+//-           a.dropdown-toggle(
+//-             data-toggle="dropdown",
+//-             role="button",
+//-             aria-haspopup="true",
+//-             aria-expanded="false"
+//-           ) More
+//-             span.caret
+//-           ul.dropdown-menu
+//-             li
+//-               a(href="/publications") Publications
+//-             li.divider(role="seperator")
+//-             li
+//-               a(href="/about") About
+//-             li.divider(role="seperator")
+//-             li
+//-               a(href="/contact") Contact

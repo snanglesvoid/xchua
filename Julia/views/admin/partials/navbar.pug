@@ -1,0 +1,32 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      button.navbar-toggle.collpased(
+        data-toggle="collapse",
+        data-target="#navbar",
+        aria-expanded="false",
+        aria-controls="navbar",
+        style="border:0; border-radius:0;"
+      )
+        span(class="sr-only") Toggle navigation
+        span(class="icon-bar")
+        span(class="icon-bar")
+        span(class="icon-bar")
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li(class= section == 'home' ? 'active' : '')
+          a(href="/admin") Home
+        block nav-left
+      ul.nav.navbar-nav.navbar-right
+        block nav-right
+        li.dropdown
+          a.dropdown-toggle(
+            data-toggle="dropdown",
+            role="button",
+            aria-haspopup="true",
+            aria-expanded="false"
+          )
+            i.fa.fa-gear 
+          ul.dropdown-menu
+            li
+              a(href="/admin/logout") Log Out

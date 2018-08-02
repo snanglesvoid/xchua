@@ -1,0 +1,116 @@
+.sidenav {
+    height: 100%;
+    width: 350px;
+    position: fixed;
+    z-index: 100;
+    top:0;
+    left:-350px;
+    max-width: 100%;
+    background-color: @color-bg-dark;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
+    -moz-box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
+    box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
+
+    a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 2rem;
+        color: @color-fg-dark;
+        display: block;
+        transition: all 0.3s ease;
+        padding-left: 200px;
+    }
+    // a.active {
+
+    // }
+    // a:hover ~ a {
+    //     color: @color-fg-light;
+    // } doesnt work
+    a:hover {
+        color: @color-fg-dark-highlight;
+        // color: @color-fg-dark;
+    }
+    .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 40px;
+        padding: 5px;
+        padding-top: 0;
+    }
+}
+
+#sidenav-toggle {
+    button {
+        position: fixed;
+        left: -20px;
+        top: 40px;
+        font-size: 3rem;
+        z-index: 4;
+        border: 0;
+        background: transparent;
+        transition: transform 1s ease;
+        transform: rotate(17deg);
+        div {
+            width: 85px;
+            height: 5px;
+            background-color: #ddd;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            transition: margin-bottom 0.4s ease;
+            transition: margin-bottom 0.4s ease,
+              margin-top 0.4s ease,
+              transform .4s ease;
+        }
+    }
+    button:hover {
+        div {
+            // background-color: @color-fg-dark-highlight;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            transform: rotate(-180deg);
+        }    
+    }
+} 
+  
+#logo {
+    position: fixed;
+    z-index: 400;
+    padding-left: 56px;
+    padding-right: 20px;
+    /* background: rgba(255,255,255,0.6); */
+    text-decoration: none;
+    display: block;
+    top: -17px;
+
+    svg {
+        width: 140px;
+        height: 48px;
+    }
+}
+  
+@media screen and (max-width: 480px) {
+    .sidenav { padding-top: 15px; }
+    .sidenav a { font-size: 1.5rem; }
+
+    #sidenav-toggle {
+        button {
+            left: -30px;
+            top: -10px;
+            transform: rotate(17deg) scale(0.66);
+        }
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+    #sidenav-toggle {
+        button {
+            left: -25px;
+            top: 15px;
+            transform: rotate(17deg) scale(0.83);
+        }
+    }
+}

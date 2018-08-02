@@ -1,0 +1,46 @@
+.slideshow {
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    // position: relative;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: none;
+        object-fit: cover;
+    }
+
+    img.active {
+        display: block;
+    }
+
+    img.placeholder {
+        visibility: hidden;
+    }
+    .slideshow-title {
+        position: absolute;
+        bottom: 12.5%;
+        right: 12.5%;
+
+        h2, h2 a {
+            color: @color-fg-dark-highlight;
+            transition: all 0.4s ease;
+            background: inherit;
+        }
+        a:hover {
+            color: @color-fg-light;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery {
+        h2 {
+            font-size: 20px;
+        }
+    }
+}

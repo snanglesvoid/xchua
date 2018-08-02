@@ -1,0 +1,50 @@
+//ADMIN LAYOUT
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    meta(name="description" content="")
+    meta(name="author" content="Janik Hotz <janihotz@gmail.com>")
+    
+    link(rel="icon" href="/assets/favicon.ico")
+
+    title XC.Hua Admin
+
+
+    //fa
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    //bootstrap
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous")
+    //- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+    link(rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css")
+    //font
+    link(href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet")
+    
+    //local
+    link(rel="stylesheet" href="/styles/admin.css")
+    link(rel="stylesheet" href="/styles/editor.css")
+    
+    //wysiwig editor styles
+    link(rel="stylesheet" type="text/css" href="/content-tools/content-tools.min.css")
+
+    block css
+
+  body
+
+    include ./partials/navbar.pug
+
+    block content
+
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous")
+    script(src="https://unpkg.com/packery@2/dist/packery.pkgd.js")
+    //- script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js")
+    //- script(src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js")
+    script(src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js")
+
+
+    script(src="/content-tools/content-tools.js")
+    script(src="/js/admin/editor.js")
+
+    block js
