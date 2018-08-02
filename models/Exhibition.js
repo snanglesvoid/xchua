@@ -12,9 +12,11 @@ Exhibition.add({
     startDate: { type: Types.Date, index: true },
     endDate: { type: Types.Date, index: true },
     text: { type: Types.Html, wysiwyg: true, height: 400 },
-    artist: { type: Types.Relationship, ref: 'Artist' },
+    // artist: { type: Types.Relationship, ref: 'Artist' },
     pictures: { type: Types.CloudinaryImages },
 })
+
+Exhibition.relationship({ ref: 'Artist', path: 'artist', refPath: 'exhibitions' })
 
 Exhibition.defaultColumns = 'title, state|20%, artist|20%'
 Exhibition.register()
