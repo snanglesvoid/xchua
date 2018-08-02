@@ -11,7 +11,6 @@ Artist.add({
     biography:     { type: Types.Html, wysiwyg: true, height: 400 },
     picture:       { type: Types.CloudinaryImage },
     works:         { type: Types.CloudinaryImages },
-    publishedDate: { type: Types.Date, index: true, dependsOne: { state: 'published' } },
 })
 
 Artist.defaultColumns = 'name, state|20%, publishedDate|20%'
