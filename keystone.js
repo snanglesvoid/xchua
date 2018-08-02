@@ -47,9 +47,10 @@ keystone.set('nav', {
 	// posts: ['posts', 'post-categories'],
 	artists: 'artists',
 	exhibitions: 'exhibitions',
-	galleries: 'slideshows',
+	slideshows: 'galleries',
 	enquiries: 'enquiries',
 	users: 'users',
+	pages: []
 });
 
 // Start Keystone to connect to your database and initialise the web server
