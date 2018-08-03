@@ -4,13 +4,13 @@ exports = module.exports = (req, res) => {
     const view = new keystone.View(req, res)
     const locals = res.locals
 
-    locals.section = 'exhibitions'
+    locals.section = 'publications'
 
-    const query = keystone.list('Exhibition').model.find({
+    const query = keystone.list('Publication').model.find({
         state: 'published'
     }).sort('sortOrder')
 
-    view.query('exhibitions', query)
+    view.query('publications', query)
 
-    view.render('exhibitions')
+    view.render('publications')
 }

@@ -1,0 +1,6 @@
+mixin artwork(w)
+  .artwork.gallery-image
+    img(src=w._.image.limit(640, 640))
+    h3= w.title
+    p= w.year
+    p!= w.description

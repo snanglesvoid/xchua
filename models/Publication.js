@@ -10,9 +10,18 @@ Publication.add({
     title: { type: String, required: true },
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     publishedDate: { type: Types.Date, index: true, dependsOn: {state: 'published' } },
-    description: { type: Types.Html, wysiwyg: true, height: 300 },
-    titleImage: { typre: Types.CloudinaryImage },
+    description: { 
+        brief: { type: Types.Html, wysiwyg: true, height: 50  },
+        extended: { type: Types.Html, wysiwyg: true, height: 400 },
+    },
+    thumbnail: { type: Types.CloudinaryImage },
 })
 
 
-Publication.defaultColumns = 'title, slug|20%, state|20%'
+Publication.schema.virtual('description.full').get(function() {
+    return this.description.extended || this.description.brief
+})
+
+Publication.defaultColumns = 'title, thumbnail, state|20%'
+
+Publication.register()

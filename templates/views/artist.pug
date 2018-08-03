@@ -1,5 +1,8 @@
 extends ../layouts/default
 
+include ../mixins/exhibition
+include ../mixins/masonry
+
 block intro
   .page-header.container
     h2= artist.name.first + ' ' + artist.name.last
@@ -12,36 +15,25 @@ block content
   if artist
     .page.container
       #works.tab.active
-        .grid
-          each image in artist.works 
+        +works-masonry(artist.works)
+        //- .grid
+          each work in artist.works
             .grid-item
               .gallery-image
-                img(src=image.limit(640,640))
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")
-          //- .grid-item
-          //-   .gallery-image
-          //-     img(src="/images/title-1.jpg")    
+                img(src=work._.image.limit(640,640))
       #biography.tab!= artist.biography
       #exhibitions.tab
-        div exhibitions
+        if artist.exhibitions.length
+          ul.exhibitions-list
+            each exhibition in artist.exhibitions
+              +exhibition(exhibition)
+        else
+          h5 No exhibitions found
+  //- else
+  //-   p= JSON.stringify(artist)
+
 
 
 block js
   script(src='/js/artist.js')
+  script(src='/js/masonry.js')

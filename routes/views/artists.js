@@ -6,7 +6,9 @@ exports = module.exports = (req, res) => {
 
     locals.section = 'artists'
 
-    view.query('artists', keystone.list('Artist').model.find().sort('sortOrder'))
+    view.query('artists', keystone.list('Artist').model.find({
+        state: 'published'
+    }).sort('sortOrder'))
 
     view.render('artists')
 }

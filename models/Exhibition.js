@@ -7,16 +7,21 @@ const Exhibition = new keystone.List('Exhibition', {
 })
 
 Exhibition.add({
-    title: { type: String, required: true },
-    state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-    startDate: { type: Types.Date, index: true },
-    endDate: { type: Types.Date, index: true },
-    text: { type: Types.Html, wysiwyg: true, height: 400 },
-    // artist: { type: Types.Relationship, ref: 'Artist' },
-    pictures: { type: Types.CloudinaryImages },
+    title:     { type: String, required: true },
+    state:     { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+    date:      {
+                    start: { type: Types.Date, index: true },
+                    end:   { type: Types.Date, index: true },
+               },
+    text:      { type: Types.Html, wysiwyg: true, height: 400 },
+    location:  { type: Types.Select, options: 'Beijing, Berlin' },
+    artists:   { type: Types.Relationship, ref: 'Artist', many: true },
+    thumbnail: { type: Types.CloudinaryImage },
+    pictures:  { type: Types.CloudinaryImages },
+    artworks:  { type: Types.Relationship, ref: 'Artwork', many: true }
 })
 
-Exhibition.relationship({ ref: 'Artist', path: 'artist', refPath: 'exhibitions' })
+// Exhibition.relationship({ ref: 'Artist', path: 'artists', refPath: 'exhibitions' })
 
-Exhibition.defaultColumns = 'title, state|20%, artist|20%'
+Exhibition.defaultColumns = 'title, thumbnail|20%, state|20%'
 Exhibition.register()

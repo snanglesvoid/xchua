@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+include ../mixins/publication.pug
+
+block intro
+  .page-header.container
+    h2 Publications
+
+block content
+  .page.container
+    if publications.length
+      ul.publications-list
+        each publication in publications
+          +publication(publication)
+    else
+      h5 No publications found...

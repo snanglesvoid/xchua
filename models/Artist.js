@@ -10,10 +10,15 @@ Artist.add({
     state:         { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     biography:     { type: Types.Html, wysiwyg: true, height: 400 },
     picture:       { type: Types.CloudinaryImage },
-    works:         { type: Types.CloudinaryImages },
+    thumbnail:     { type: Types.CloudinaryImage },
+    // artworks:      { type: Types.Relationship, ref: 'Artwork', many: true },
+    // exhibitions:   { type: Types.Relationship, ref: 'Exhibition', many: true }
 })
 
-Artist.defaultColumns = 'name, state|20%, publishedDate|20%'
+Artist.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'artist' })
+Artist.relationship({ ref: 'Exhibition', path: 'exhibitions', refPath: 'artists'})
+Artist.relationship({ ref: 'Fair', path: 'fairs', refPath: 'artists'})
 
+Artist.defaultColumns = 'name, thumbnail|20%, state|20%'
 
 Artist.register()

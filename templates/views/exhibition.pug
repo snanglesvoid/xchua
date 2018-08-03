@@ -1,0 +1,12 @@
+extends ../layouts/default
+
+include ../mixins/masonry
+
+block intro
+  .page-header.container
+    h2= exhibition.title
+
+block content
+  if exhibition
+    .page.container
+      div!= exhibition.text

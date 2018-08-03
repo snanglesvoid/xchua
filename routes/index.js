@@ -39,9 +39,13 @@ exports = module.exports = function (app) {
 	app.get('/artists', routes.views.artists);
 	app.get('/artist/:slug', routes.views.artist);
 	app.get('/exhibitions', routes.views.exhibitions);
-	app.get('/exhibition/:sluge', routes.views.exhibitions);
+	app.get('/exhibition/:slug', routes.views.exhibition);
+	app.get('/publications', routes.views.publications);
+	app.get('/publication/:slug', routes.views.publication);
+	app.get('/fairs', routes.views.fairs);
+	app.get('/fair/:slug', routes.views.fair);
 	app.get('/about', routes.views.about);
-
+	
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);

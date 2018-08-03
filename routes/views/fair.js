@@ -4,13 +4,13 @@ exports = module.exports = (req, res) => {
     const view = new keystone.View(req, res)
     const locals = res.locals
 
-    locals.section = 'exhibitions'
+    locals.section = 'fairs'
 
-    const query = keystone.list('Exhibition').model.findOne({
+    const query = keystone.list('Fair').model.findOne({
         slug: req.params.slug
     })
 
-    view.query('exhibition', query)
+    view.query('fair', query)
 
-    view.render('exhibition')
+    view.render('fair')
 }

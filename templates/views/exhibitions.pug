@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+include ../mixins/exhibition.pug
+
+block intro
+  .page-header.container
+    h2 Exhibitions
+
+block content
+  .page.container
+    if exhibitions.length
+      ul.exhibitions-list
+        each exhibition in exhibitions
+          +exhibition(exhibition)
+    else
+      h5 No exhibitions found...

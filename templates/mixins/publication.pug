@@ -1,0 +1,8 @@
+mixin publication(publication)
+    if publication
+        .publication-card
+            if publication.thumbnail
+                img(src= publication._.thumbnail.limit(320,320) style="width:160px;")
+            h3= publication.title
+            p!= publication.description
+

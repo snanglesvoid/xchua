@@ -1,0 +1,9 @@
+extends ../layouts/default
+
+block intro
+  .page-header.container
+    h2= fair.title
+
+block content
+  .page.container
+    img(src= fair._.thumbnail.limit(320, 320))

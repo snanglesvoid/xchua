@@ -1,0 +1,23 @@
+include ./artwork
+
+mixin masonry(images)
+  if images
+    .grid
+      each image in images
+        .grid-item
+          .gallery-image
+            img(src=image.limit(640, 640))
+  else
+    p cannot display masonry - images not defined
+
+
+mixin works-masonry(works)
+  if works
+    .grid
+      each work in works
+        .grid-item
+          +artwork(work)
+  else
+    p cannot display masonry - works not defined
+
+
