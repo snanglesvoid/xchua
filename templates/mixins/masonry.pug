@@ -2,20 +2,19 @@ include ./artwork
 
 mixin masonry(images)
   if images
-    .grid
+    .grid.masonry
       each image in images
         .grid-item
-          .gallery-image
-            img(src=image.limit(640, 640))
+          img.masonry-image(src=image.limit(640, 640))
   else
     p cannot display masonry - images not defined
 
 
 mixin works-masonry(works)
   if works
-    .grid
+    .grid.masonry.masonry-works
       each work in works
-        .grid-item
+        .grid-item(class= work.masonrySize)
           +artwork(work)
   else
     p cannot display masonry - works not defined

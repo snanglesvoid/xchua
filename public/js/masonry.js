@@ -3,7 +3,7 @@ $(() => {
     function pack() {
         $('.grid').packery({
             itemSelector: '.grid-item',
-            gutter: 10,
+            gutter: 5,
         });
     }
     $('.grid').imagesLoaded(pack)

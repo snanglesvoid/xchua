@@ -11,9 +11,11 @@ Artwork.add({
     image:       { type: Types.CloudinaryImage },
     year:        { type: Number },
     description: { type: String },
-    artist:      { type: Types.Relationship, ref: 'Artist' }
+    dimensions:  { type: String },
+    artist:      { type: Types.Relationship, ref: 'Artist' },
+    masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
 })
 
-Artwork.defaultColumns = 'title, image|20%, year|20%, description|20%'
+Artwork.defaultColumns = 'title, artist, image|20%, year|20%, description|20%'
 
 Artwork.register()

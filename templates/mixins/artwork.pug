@@ -1,6 +1,8 @@
 mixin artwork(w)
-  .artwork.gallery-image
+  .artwork
     img(src=w._.image.limit(640, 640))
-    h3= w.title
-    p= w.year
-    p!= w.description
+    .middle 
+      h3= w.title
+      p= w.year
+      p= w.description
+      p= w.dimensions

@@ -14,7 +14,7 @@ block intro
 block content
   if artist
     .page.container
-      #works.tab.active
+      #works.tab.active.wide
         +works-masonry(artist.works)
         //- .grid
           each work in artist.works
