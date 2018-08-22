@@ -13,7 +13,18 @@ Artwork.add({
     description: { type: String },
     dimensions:  { type: String },
     artist:      { type: Types.Relationship, ref: 'Artist' },
-    masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
+    // masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
+})
+
+Artwork.schema.virtual('caption').get(function() {
+    return `
+        <h2>${this.title}</h2>
+        <p>
+        ${this.year ? this.year + '<br/>' : ''}
+        ${this.description ? this.description + '<br/>' : ''}
+        ${this.dimensions}
+        </p>
+    `
 })
 
 Artwork.defaultColumns = 'title, artist, image|20%, year|20%, description|20%'

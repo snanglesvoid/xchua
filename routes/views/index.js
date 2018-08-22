@@ -9,8 +9,8 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'home';
 
-	view.query('gallery', keystone.list('Gallery').model.findOne({
-		name: 'HomePageSlideshow'
+	view.query('images', keystone.list('FrontPageImage').model.find({
+		active: true
 	}))
 
 	// Render the view

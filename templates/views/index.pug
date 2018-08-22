@@ -1,9 +1,26 @@
 extends ../layouts/default
 
-include ../mixins/slideshow
-
 block content
-	+slideshow(gallery)
+  .front-slideshow
+    if images && images.length > 0
+      img.placeholder(src=images[0].image.url)
+      each image, index in images
+        img(
+          src= image.image.url,
+          class= index == 0 ? 'active' : '',
+          title= image.title,
+          caption= image.caption,
+          url= image.linkUrl,
+          placement= image.textPlacement,
+          color= image.textColor
+        )
+      .slideshow-title(
+        class=images[0].textPlacement,
+        class=images[0].textColor
+      )
+        h2.title
+          a(href=images[0].linkUrl)=images[0].title
+        h2.caption=images[0].caption
 
 block js
-	script(src='/js/slideshow.js')
+  script(src='/js/slideshow.js')

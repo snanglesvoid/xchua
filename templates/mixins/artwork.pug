@@ -1,6 +1,9 @@
 mixin artwork(w)
   .artwork
-    img(src=w._.image.limit(640, 640))
+    img.modal-image(
+      src=w._.image.limit(640, 640),
+      caption= w.caption
+    )
     .middle 
       h3= w.title
       p= w.year
