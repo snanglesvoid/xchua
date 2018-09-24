@@ -2,12 +2,15 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const Fair = new keystone.List('Fair', {
-    map: { name: 'title' },
-    autokey: { path: 'slug', from: 'title', unique: true }
+    map: { name: 'title.english' },
+    autokey: { path: 'slug', from: 'title.english', unique: true }
 })
 
 Fair.add({
-    title: { type: String, required: true },
+    title: { 
+        english: { type: String, required: true },
+        chinese: { type: String }
+    },
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     thumbnail: { type: Types.CloudinaryImage },
     date: {
@@ -18,4 +21,8 @@ Fair.add({
 })
 
 Fair.defaultColumns = 'title, thumbnail|20%, state|20%'
+
+Fair.schema.methods.translate = function(lang) {
+    this.title = this.title[lang] || this.title.english
+}
 Fair.register()

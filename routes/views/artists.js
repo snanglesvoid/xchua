@@ -8,7 +8,8 @@ exports = module.exports = (req, res) => {
 
     view.query('artists', keystone.list('Artist').model.find({
         state: 'published'
-    }).sort('sortOrder'))
+    })
+    .sort('sortOrder'))
 
     view.render('artists')
 }

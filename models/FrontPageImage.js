@@ -2,12 +2,18 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const FrontPageImage = new keystone.List('FrontPageImage', {
-    map: { name: 'title' },
+    map: { name: 'title.english' },
 })
 
 FrontPageImage.add({
-    title:         { type: String, required: true },
-    caption:       { type: String },
+    title:         { 
+        english: { type: String, required: true },
+        chinese: { type: String}
+    },
+    caption:       { 
+        english: { type: String },
+        chinese: { type: String } 
+    },
     linkUrl:       { type: String, default: '#'},
     textColor:     { type: Types.Select, options: ['bright', 'dark'], default: 'bright'},
     textPlacement: { type: Types.Select, options: ['left', 'right', 'center', 'top'], default: 'right'},
@@ -15,6 +21,11 @@ FrontPageImage.add({
     active:        { type: Boolean, default: true },
 })
 
-FrontPageImage.defaultColumns = 'title, caption, textPlacement, image|20%'
+FrontPageImage.defaultColumns = 'title.english, caption, textPlacement, image|20%'
 
-FrontPageImage.register()
+FrontPageImage.schema.methods.translate = function(lang) {
+    this.title = this.title[lang] || this.title.english
+    this.caption = this.caption[lang] || this.caption.english
+}
+
+FrontPageImage.register() 

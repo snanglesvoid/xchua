@@ -4,9 +4,9 @@ include ../mixins/masonry
 
 block intro
   .page-header.container
-    h2= exhibition.title
+    h2= exhibition.title[lang] || exhibition.title.english
 
 block content
   if exhibition
     .page.container
-      div!= exhibition.text
+      div!= exhibition.text[lang] || exhibition.text.english

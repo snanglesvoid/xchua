@@ -5,11 +5,11 @@ include ../mixins/masonry
 
 block intro
   .page-header.container
-    h2= artist.name.first + ' ' + artist.name.last
+    h2= artist.name[lang].first + ' ' + artist.name[lang].last
     ul.tabs
-      li.active: a(href='javascrip:void(0)' onclick='openTab(this)') Works
-      li: a(href='javascrip:void(0)' onclick='openTab(this)') Biography
-      li: a(href='javascrip:void(0)' onclick='openTab(this)') Exhibitions
+      li.active: a(href='javascrip:void(0)' onclick='openTab(this)')= lang=='chinese' ? '中文' : 'Works'
+      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? '中文' : 'Biography'
+      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? '中文' : 'Exhibitions'
 
 block content
   if artist
@@ -21,7 +21,7 @@ block content
             .grid-item
               .gallery-image
                 img(src=work._.image.limit(640,640))
-      #biography.tab!= artist.biography
+      #biography.tab!= artist.biography[lang] || artist.biography.english
       #exhibitions.tab
         if artist.exhibitions.length
           ul.exhibitions-list

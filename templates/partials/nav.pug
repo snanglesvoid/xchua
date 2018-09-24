@@ -14,19 +14,23 @@ a#logo(href="/")
   a.closebtn(href="javascript:void(0)" onclick="closeNav()") &times;
   //- each link in navLinks
     li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
-  a(href="/" class= section=='home' ? 'active' : '') 
+  a(keep-lang href="/" class= section=='home' ? 'active' : '') 
     | Home
-  a(href="/artists" class= section=='artists' ? 'active' : '')
+  a(keep-lang href="/artists" class= section=='artists' ? 'active' : '')
     | Artists
-  a(href="/exhibitions" class= section=='exhibitions' ? 'active' : '')
+  a(keep-lang href="/exhibitions" class= section=='exhibitions' ? 'active' : '')
     | Exhibitions
-  a(href="/fairs" class= section=='fairs' ? 'active' : '') 
+  a(keep-lang href="/fairs" class= section=='fairs' ? 'active' : '') 
     | Fairs
-  a(href="/publications" class= section=='more' ? 'active' : '') 
+  a(keep-lang href="/publications" class= section=='more' ? 'active' : '') 
     | Publications
-  a(href="/blog" class= section=='about' ? 'active' : '')
+  a(keep-lang href="/blog" class= section=='about' ? 'active' : '')
     | News
-  a(href="/about" class= section=='more' ? 'active' : '') 
+  a(keep-lang href="/about" class= section=='more' ? 'active' : '') 
     | About
-  a(href="/contact" class= section=='more' ? 'active' : '') 
+  a(keep-lang href="/contact" class= section=='more' ? 'active' : '') 
     | Contact
+  a(switch-lang="english")
+    | English
+  a(switch-lang="chinese")
+    | Chinese

@@ -11,7 +11,9 @@ block content
       ul.artists-list
         each artist in artists
           li
-            a(href='/artist/' + artist.slug)= artist.name.first + ' ' + artist.name.last
+            a(keep-lang href='/artist/' + artist.slug)
+              - var name= artist.name[lang].first ? artist.name[lang] : artist.name.english
+              | #{name.first + ' ' + name.last}
         
 
 

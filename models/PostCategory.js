@@ -6,13 +6,20 @@ var keystone = require('keystone');
  */
 
 var PostCategory = new keystone.List('PostCategory', {
-	autokey: { from: 'name', path: 'key', unique: true },
+	autokey: { from: 'name.english', path: 'key', unique: true },
 });
 
 PostCategory.add({
-	name: { type: String, required: true },
+	name: { 
+		english: { type: String, required: true, initial: true },
+		chinese: { type: String} 
+	}
 });
 
 PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'categories' });
+
+PostCategory.schema.methods.translate = function(lang) {
+	this.title = this.title[lang] || this.title.english
+}
 
 PostCategory.register();

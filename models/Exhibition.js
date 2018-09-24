@@ -2,18 +2,24 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const Exhibition = new keystone.List('Exhibition', {
-    map: { name: 'title' },
+    map: { name: 'title.english' },
     autokey: { path: 'slug', from: 'title', unique: true }
 })
 
 Exhibition.add({
-    title:     { type: String, required: true },
+    title:     {
+        english: { type: String, required: true },
+        chinese: { type: String }
+    },
     state:     { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     date:      {
                     start: { type: Types.Date, index: true },
                     end:   { type: Types.Date, index: true },
                },
-    text:      { type: Types.Html, wysiwyg: true, height: 400 },
+    text:      { 
+        english: { type: Types.Html, wysiwyg: true, height: 400 },
+        chinese: { type: Types.Html, wysiwyg: true, height: 400 }
+    },
     location:  { type: Types.Select, options: 'Beijing, Berlin' },
     artists:   { type: Types.Relationship, ref: 'Artist', many: true },
     thumbnail: { type: Types.CloudinaryImage },
@@ -23,5 +29,17 @@ Exhibition.add({
 
 // Exhibition.relationship({ ref: 'Artist', path: 'artists', refPath: 'exhibitions' })
 
-Exhibition.defaultColumns = 'title, thumbnail|20%, state|20%'
+Exhibition.schema.methods.locationName = function(lang) {
+    if (lang == 'english' || !lang) {
+        return this.location
+    }
+    else if (lang == 'chinese') {
+        return this.location == 'Berlin' ? '柏林' : '北京'
+    }
+    else {
+        return this.location
+    }
+}
+
+Exhibition.defaultColumns = 'title.english, thumbnail|20%, state|20%'
 Exhibition.register()

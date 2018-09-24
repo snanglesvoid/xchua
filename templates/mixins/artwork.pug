@@ -2,10 +2,10 @@ mixin artwork(w)
   .artwork
     img.modal-image(
       src=w._.image.limit(640, 640),
-      caption= w.caption
+      caption= w.caption(lang)
     )
     .middle 
       h3= w.title
       p= w.year
-      p= w.description
+      p= w.description[lang] || w.description.english
       p= w.dimensions
