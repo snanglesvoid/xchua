@@ -13,12 +13,12 @@ mongoose.connect(uri, options, async err => {
     let pcs = await conn.db.collection('postcategories').find().toArray()
     async.each(pcs, async (pc, next) => {
         
-        let title = pc.title
+        let name = pc.name
     
-        if (title.english) return next()
+        if (name.english) return next()
         let res = await conn.db.collection('postcategories').update({_id : pc._id}, {
             $set: {
-                title:   { english: title   },
+                name:   { english: name  },
             }
         })
         next()

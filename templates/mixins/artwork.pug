@@ -5,7 +5,7 @@ mixin artwork(w)
       caption= w.caption(lang)
     )
     .middle 
-      h3= w.title
+      h3= w.title[lang] || w.title.english
       p= w.year
       p= w.description[lang] || w.description.english
       p= w.dimensions

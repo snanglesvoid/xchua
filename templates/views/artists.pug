@@ -12,7 +12,7 @@ block content
         each artist in artists
           li
             a(keep-lang href='/artist/' + artist.slug)
-              - var name= artist.name[lang].first ? artist.name[lang] : artist.name.english
+              - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
               | #{name.first + ' ' + name.last}
         
 

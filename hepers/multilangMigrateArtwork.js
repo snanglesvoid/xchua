@@ -14,10 +14,12 @@ mongoose.connect(uri, options, async err => {
     async.each(artworks, async (artwork, next) => {
         
         let description = artwork.description
-        if (description && description.english) return next()
+        let title = artwork.title
+        if (title && title.english) return next()
         let res = await conn.db.collection('artworks').update({_id : artwork._id}, {
             $set: {
-                description: { english: description }
+                description: { english: description },
+                title: { english: title }
             }
         })
         next()

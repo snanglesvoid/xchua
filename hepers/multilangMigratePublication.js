@@ -17,7 +17,7 @@ mongoose.connect(uri, options, async err => {
         let description = p.description
     
         if (title.english) return next()
-        let res = await conn.db.collection('publications').update({_id : pc._id}, {
+        let res = await conn.db.collection('publications').update({_id : p._id}, {
             $set: {
                 title:   { english: title   },
                 description: { english: description }

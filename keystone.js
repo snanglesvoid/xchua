@@ -23,6 +23,12 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	// 'wysiwyg cloudinary images': true,
+	// 'wysiwyg additional options': { 
+	// 	'external_plugins': { 
+	// 		'uploadimage': '/js/uploadimage/plugin.min.js' 
+	// 	}
+	// }
 });
 
 // Load your project's Models

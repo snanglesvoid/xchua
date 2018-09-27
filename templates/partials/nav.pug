@@ -15,22 +15,23 @@ a#logo(href="/")
   //- each link in navLinks
     li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
   a(keep-lang href="/" class= section=='home' ? 'active' : '') 
-    | Home
+    | #{lang == 'chinese' ? '主页' : 'Home'}
   a(keep-lang href="/artists" class= section=='artists' ? 'active' : '')
-    | Artists
+    | #{lang == 'chinese' ? '艺术家' : 'Artists'}
   a(keep-lang href="/exhibitions" class= section=='exhibitions' ? 'active' : '')
-    | Exhibitions
+    | #{lang == 'chinese' ? '展览' : 'Exhibitions'}
   a(keep-lang href="/fairs" class= section=='fairs' ? 'active' : '') 
-    | Fairs
+    | #{lang == 'chinese' ? '艺博会' : 'Fairs'}
   a(keep-lang href="/publications" class= section=='more' ? 'active' : '') 
-    | Publications
+    | #{lang == 'chinese' ? '出版物' : 'Publications'}
   a(keep-lang href="/blog" class= section=='about' ? 'active' : '')
-    | News
+    | #{lang == 'chinese' ? '新闻' : 'News'}
   a(keep-lang href="/about" class= section=='more' ? 'active' : '') 
-    | About
+    | #{lang == 'chinese' ? '关于' : 'About'}
   a(keep-lang href="/contact" class= section=='more' ? 'active' : '') 
-    | Contact
-  a(switch-lang="english")
-    | English
-  a(switch-lang="chinese")
-    | Chinese
+    | #{lang == 'chinese' ? '联系' : 'Contact'}
+  .language-select
+    a(switch-lang="english" href="#")
+      | English
+    a(switch-lang="chinese" href="#")
+      | 中文

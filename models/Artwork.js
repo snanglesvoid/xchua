@@ -2,12 +2,15 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const Artwork = new keystone.List('Artwork', {
-    map: { name: 'title' },
-    autokey: { path: 'slug', from: 'title', unique: true }
+    map: { name: 'title.english' },
+    autokey: { path: 'slug', from: 'title.english', unique: true }
 })
 
 Artwork.add({
-    title:       { type: String, required: true },
+    title:       { 
+        english : { type: String, required: true },
+        chinese : { type: String }
+    },
     image:       { type: Types.CloudinaryImage },
     year:        { type: Number },
     description: { 
@@ -21,7 +24,7 @@ Artwork.add({
 
 Artwork.schema.methods.caption = function(lang) {
     return `
-        <h2>${this.title}</h2>
+        <h2>${this.title[lang] || this.title.english}</h2>
         <p>
         ${this.year ? this.year + '<br/>' : ''}
         ${this.description && this.description.english ? (this.description[lang] || this.description.english) + '<br/>' : ''}
@@ -30,6 +33,6 @@ Artwork.schema.methods.caption = function(lang) {
     `
 }
 
-Artwork.defaultColumns = 'title, artist, image|20%, year|20%, description|20%'
+Artwork.defaultColumns = 'title.english, artist, image|20%, year|20%, description|20%'
 
 Artwork.register()

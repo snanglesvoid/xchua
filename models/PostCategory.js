@@ -12,14 +12,10 @@ var PostCategory = new keystone.List('PostCategory', {
 PostCategory.add({
 	name: { 
 		english: { type: String, required: true, initial: true },
-		chinese: { type: String} 
+		chinese: { type: String } 
 	}
 });
 
 PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'categories' });
-
-PostCategory.schema.methods.translate = function(lang) {
-	this.title = this.title[lang] || this.title.english
-}
 
 PostCategory.register();
