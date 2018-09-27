@@ -8,9 +8,9 @@ block intro
     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
     h2= name.first + ' ' + name.last
     ul.tabs
-      li.active: a(href='javascrip:void(0)' onclick='openTab(this)')= lang=='chinese' ? '中文' : 'Works'
-      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? '中文' : 'Biography'
-      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? '中文' : 'Exhibitions'
+      li.active: a(href='javascrip:void(0)' onclick='openTab(this)')= lang=='chinese' ? 'Works' : 'Works'
+      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? 'Biography' : 'Biography'
+      li: a(href='javascrip:void(0)' onclick='openTab(this)')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
 
 block content
   if artist
