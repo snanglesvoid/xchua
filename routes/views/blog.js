@@ -69,7 +69,7 @@ exports = module.exports = function (req, res) {
 			.populate('author categories');
 
 		if (locals.data.category) {
-			q.where({category : locals.date.category});
+			q.where({category : locals.data.category});
 		}
 
 		q.exec(function (err, results) {
