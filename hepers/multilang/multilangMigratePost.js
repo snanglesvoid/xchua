@@ -15,6 +15,11 @@ mongoose.connect(uri, options, async err => {
         
         let title = post.title
         let content = post.content
+
+        console.log('post title: ',  title)
+        console.log('post content ex: ', content != null)
+        console.log('post content en: ', content.english != null)
+
         if (content.english) return next()
         let res = await conn.db.collection('posts').update({_id : post._id}, {
             $set: {
