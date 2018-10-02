@@ -63,7 +63,7 @@ block content
 				else
 					if data.category
 						h3.text-muted 
-							| #{lang == 'chinese' ? : 'There are no posts in the category' : 'There are no posts in the category'} 
+							| #{lang == 'chinese' ? 'There are no posts in the category' : 'There are no posts in the category'} 
 							| #{data.category.name[lang] || data.category.name.english}.
 					else
 						h3.text-muted #{lang == 'chinese' ? 'There are no posts yet.' : 'There are no posts yet.'}
