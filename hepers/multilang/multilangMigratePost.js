@@ -15,10 +15,10 @@ mongoose.connect(uri, options, async err => {
         
         let title = post.title
         let content = post.content
-        if (title.english) return next()
+        if (content.english) return next()
         let res = await conn.db.collection('frontpageimages').update({_id : post._id}, {
             $set: {
-                title:   { english: title   },
+                // title:   { english: title   },
                 content: { english: content }
             }
         })
