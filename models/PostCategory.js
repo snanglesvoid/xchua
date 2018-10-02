@@ -17,6 +17,6 @@ PostCategory.add({
 	}
 });
 
-PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'categories' });
+PostCategory.relationship({ ref: 'Post', path: 'posts', refPath: 'category' });
 
 PostCategory.register();
