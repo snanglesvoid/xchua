@@ -50,7 +50,13 @@ keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
-	content: ['artists', 'exhibitions', 'publications', 'fairs', 'artworks', 'front-page-images'],
+	content: [
+		'artists',
+		'exhibitions',
+		'publications',
+		'fairs',
+		'artworks'
+	],
 	// artists: 'artists',
 	// exhibitions: 'exhibitions',
 	// publications: 'publications',
@@ -58,9 +64,14 @@ keystone.set('nav', {
 	// artworks: 'artworks',
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
+	frontPage: [
+		'front-page-images',
+	],
+	aboutPage: [
+		'gallery-spaces',
+	],
 	posts: ['posts', 'post-categories'],
 	more: ['textblocks', 'galleries', 'enquiries'],
-	pages: [],
 	users: 'users',
 });
 

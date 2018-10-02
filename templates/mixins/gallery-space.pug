@@ -1,0 +1,15 @@
+mixin gallery-space(space)
+  if space
+    .gallery-space
+      h2= space.location[lang] || space.location.english
+      if space.image
+        img(src= space._.image.limit(640, 640))
+      br
+      .address!= space.address[lang] || space.address.english
+      br
+      p.phone= space.phone
+      br
+      p.hours
+        | #{lang == chinese ? '' : 'Opening Hours:'} <br/>
+        | #{space.openingHours[lang] || space.address.english}
+  else

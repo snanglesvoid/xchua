@@ -1,9 +1,27 @@
 extends ../layouts/default
 
+include ../mixins/gallery-space
+
 block intro
   .page-header.container
     h2 About
+    ul.tabs
+      li.active: a(select='#about' href='javascript:void(0)' onclick='openTab(this)')
+        | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
+      li: a(select='#spaces' href='javascript:void(0)' onclick='openTab(this)')
+        | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
 
 block content
   .page.container
-    h3 TODO
+    #about.tab.active
+      if aboutText
+        div!= aboutText.content[lang] || aboutText.content.english
+      else
+        div About Text not found!
+    #spaces.tab
+      .spaces
+        each space in spaces
+          +gallery-space(space)
+
+block js
+  script(src='/js/tabs.js')

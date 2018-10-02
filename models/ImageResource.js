@@ -15,5 +15,12 @@ ImageResource.add({
         english: { type: Types.Text },
         chinese: { type: Types.Text }
     },
+    page: {
+        type: String
+    },
     image: { type: Types.CloudinaryImage },
 })
+
+ImageResource.defaultColumns = 'title, page, image'
+
+ImageResource.register()

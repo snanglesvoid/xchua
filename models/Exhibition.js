@@ -20,7 +20,8 @@ Exhibition.add({
         english: { type: Types.Html, wysiwyg: true, height: 400 },
         chinese: { type: Types.Html, wysiwyg: true, height: 400 }
     },
-    location:  { type: Types.Select, options: 'Beijing, Berlin' },
+    //location:  { type: Types.Select, options: 'Beijing, Berlin' },
+    location:  { type: Types.Relationship, ref: 'GallerySpace' },
     artists:   { type: Types.Relationship, ref: 'Artist', many: true },
     thumbnail: { type: Types.CloudinaryImage },
     pictures:  { type: Types.CloudinaryImages },

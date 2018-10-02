@@ -6,5 +6,13 @@ exports = module.exports = (req, res) => {
 
     locals.section = 'about'
 
+    view.query('aboutText', keystone.list('Textblock').model.findOne({
+        slug: 'abouttext'
+    }))
+
+    view.query('spaces', keystone.list('GallerySpace').model.find({
+        published: true
+    }))
+
     view.render('about')
 }
