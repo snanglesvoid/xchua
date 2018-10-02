@@ -70,8 +70,15 @@ keystone.set('nav', {
 	aboutPage: [
 		'gallery-spaces',
 	],
-	posts: ['posts', 'post-categories'],
-	more: ['textblocks', 'galleries', 'enquiries'],
+	posts: [
+		'posts',
+		'post-categories'
+	],
+	more: [
+		'textblocks',
+		'galleries',
+		'enquiries'
+	],
 	users: 'users',
 });
 
