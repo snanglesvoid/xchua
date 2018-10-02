@@ -19,7 +19,7 @@ mixin post(post)
 		if post.image.exists
 			img(src=post._.image.fit(160,160)).img.pull-right
 		p!= (post.content[lang] || post.content.english).brief
-		if post.content.extended
+		if (post.content[lang] || post.content.english).extended
 			p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
 
 block intro

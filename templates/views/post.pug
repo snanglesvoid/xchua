@@ -13,9 +13,9 @@ block content
 			if !data.post
 				h2 Invalid Post.
 			else
-				header
-					//- h1= data.post.title[lang] || data.post.english
-					//- h5 Posted 
+				//- header
+					h1= data.post.title[lang] || data.post.english
+					h5 Posted 
 						if data.post.publishedDate
 							| on #{data.post._.publishedDate.format('MMMM Do, YYYY')} 
 						if data.post.categories && data.post.categories.length
