@@ -18,7 +18,7 @@ Post.add({
 	},
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
-	publishedDate: { type: Types.Date, index: true, default: date.now },
+	publishedDate: { type: Types.Date, index: true, default: Date.now },
 	image: { type: Types.CloudinaryImage },
 	content: { 
 		english: {
