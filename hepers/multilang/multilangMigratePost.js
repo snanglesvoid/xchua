@@ -20,11 +20,14 @@ mongoose.connect(uri, options, async err => {
         console.log('post content ex: ', content != null)
         console.log('post content en: ', content.english != null)
 
-        if (content.english) return next()
+        if (false) return next()
         let res = await conn.db.collection('posts').update({_id : post._id}, {
             $set: {
                 // title:   { english: title   },
-                content: { english: content }
+                content: { english: {
+                    brief: content.brief,
+                    extended: content.extended
+                } }
             }
         })
         next()
