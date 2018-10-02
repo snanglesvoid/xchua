@@ -23,7 +23,7 @@ mixin post(post)
 			p.read-more: a(keep-lang href='/blog/post/' + post.slug) Read more...
 
 block intro
-	.container
+	.page-header.container
 		h1= data.category ? data.category.name : 'Blog'
 
 block content

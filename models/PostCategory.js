@@ -7,6 +7,7 @@ var keystone = require('keystone');
 
 var PostCategory = new keystone.List('PostCategory', {
 	autokey: { from: 'name.english', path: 'key', unique: true },
+	map: { name: 'name.english' }
 });
 
 PostCategory.add({
