@@ -30,7 +30,7 @@ exports = module.exports = function (req, res) {
 			// Load the counts for each category
 			async.each(locals.data.categories, function (category, next) {
 
-				keystone.list('Post').model.count().where('categories').in([category.id]).exec(function (err, count) {
+				keystone.list('Post').model.count().where({category : category.id}).exec(function (err, count) {
 					category.postCount = count;
 					next(err);
 				});
@@ -69,7 +69,7 @@ exports = module.exports = function (req, res) {
 			.populate('author categories');
 
 		if (locals.data.category) {
-			q.where('categories').in([locals.data.category]);
+			q.where({category : locals.date.category});
 		}
 
 		q.exec(function (err, results) {
