@@ -4,7 +4,7 @@ mixin post(post)
 	.post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
 		h2: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
 		p.lead.text-muted 
-			if post.publishedDate
+			//- if post.publishedDate
 				| Posted on #{post._.publishedDate.format('MMMM Do, YYYY')} 
 			if post.categories && post.categories.length
 				| in 
@@ -30,7 +30,7 @@ block content
 	.container: .row
 		.col-sm-8.col-md-9
 			if filters.category && !data.category
-				h3.text-muted Invalid Category.
+				h3.text-muted= lang == 'chinese' ? 'Invalid Category.' : 'Invalid Category.'
 			else
 				if data.posts.results.length
 					if data.posts.totalPages > 1
@@ -62,14 +62,17 @@ block content
 								li.disabled: a(href='?page=' + data.posts.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
 				else
 					if data.category
-						h3.text-muted There are no posts in the category #{data.category.name}.
+						h3.text-muted 
+							| #{lang == 'chinese' ? : 'There are no posts in the category' : 'There are no posts in the category'} 
+							| #{data.category.name[lang] || data.category.name.english}.
 					else
-						h3.text-muted There are no posts yet.
+						h3.text-muted #{lang == 'chinese' ? 'There are no posts yet.' : 'There are no posts yet.'}
 		
 		if data.categories.length
 			.col-sm-4.col-md-3
-				h2 Categories
+				h2 #{lang == 'chinese' ? 'Categories' : 'Categories'}
 				.list-group(style='margin-top: 70px;')
-					a(keep-lang href='/blog', class=!data.category ? 'active' : false).list-group-item All Categories
+					a(keep-lang href='/blog', class=!data.category ? 'active' : false).list-group-item 
+						| #{lang == 'chinese' ? 'All Categories' : 'All Categories'}
 					each cat in data.categories
-						a(keep-lang href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+						a(keep-lang href='/blog/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name[lang] || cat.name.english
