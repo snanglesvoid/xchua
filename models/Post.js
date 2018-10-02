@@ -33,9 +33,15 @@ Post.add({
 	category: { type: Types.Relationship, ref: 'PostCategory' },
 });
 
-Post.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
+Post.schema.virtual('content.english.full').get(function () {
+	if (!this.content.english) return ''
+	return this.content.english.extended || this.content.english.brief;
 });
+
+Post.schema.virtual('content.chinese.gull').get(function () {
+	if (!this.content.chinese) return ''
+	return this.content.chinese.extended || this.content.chinese.brief;
+})
 
 Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|20%';
 Post.register();
