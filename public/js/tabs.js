@@ -9,7 +9,7 @@ function openTab(event) {
     $tab.addClass('active')
 
     if(history.pushState) {
-        history.pushState(null, null, $tab.attr('id'));
+        history.pushState(null, null, '#' + $tab.attr('id'));
     }
     else {
         location.hash = $tab.attr('id');
