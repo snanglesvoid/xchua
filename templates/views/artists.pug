@@ -10,7 +10,7 @@ block content
     if artists.length
       ul.artists-list
         each artist in artists
-          li
+          li(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}), style="width: 100%;")
             a(keep-lang href='/artist/' + artist.slug)
               - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
               | #{name.first + ' ' + name.last}

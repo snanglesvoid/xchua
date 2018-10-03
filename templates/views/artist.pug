@@ -4,7 +4,7 @@ include ../mixins/exhibition
 include ../mixins/masonry
 
 block intro
-  .page-header.container
+  .page-header.container(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
     h2= name.first + ' ' + name.last
     ul.tabs

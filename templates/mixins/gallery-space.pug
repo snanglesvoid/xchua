@@ -1,6 +1,6 @@
 mixin gallery-space(space)
   if space
-    .gallery-space
+    .gallery-space(data-ks-editable=editable(user, {list: 'GallerySpace', id: space.id}))
       h2= space.location[lang] || space.location.english
       if space.image
         img(src= space._.image.limit(640, 640))

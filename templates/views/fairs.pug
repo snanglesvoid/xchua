@@ -9,6 +9,6 @@ block content
     if fairs.length
       ul.fairs-list
         each fair in fairs
-          a(href= "/fair/" + fair.slug)= fair.title
+          a(href= "/fair/" + fair.slug)= fair.title[lang] || fair.title.english
     else
       h5 No Fairs found

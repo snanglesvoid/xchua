@@ -1,6 +1,9 @@
 mixin exhibition(exhibition)
   if exhibition
-    .exhibition-card(onclick= "window.location='/exhibition/" + exhibition.slug + "'")
+    .exhibition-card(
+      onclick= "window.location='/exhibition/" + exhibition.slug + "'"
+      data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id})
+    )
       if exhibition.thumbnail
         img(src= exhibition._.thumbnail.limit(320, 320) style="width: 160px;")
       h3= exhibition.title[lang] || exhibition.title.english
