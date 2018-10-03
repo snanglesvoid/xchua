@@ -5,5 +5,22 @@ function openTab(event) {
     $a.parent().addClass('active')
 
     $('.tab.active').removeClass('active')
-    $(select).addClass('active')
+    let $tab = $(select)
+    $tab.addClass('active')
+
+    if(history.pushState) {
+        history.pushState(null, null, $tab.attr('id'));
+    }
+    else {
+        location.hash = $tab.attr('id');
+    }
 }
+
+
+$(function() {
+    let hash = window.location.hash
+    if (hash) {
+        let $a = $('a[select="' + hash + '"]')
+        openTab($a)
+    }
+})
