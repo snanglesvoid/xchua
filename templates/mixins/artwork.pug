@@ -1,5 +1,5 @@
 mixin artwork(w)
-  .artwork(data-ks-editable=editable(user, {list: 'Artwork', id: artwork.id}))
+  .artwork(data-ks-editable=editable(user, {list: 'Artwork', id: w.id}))
     img.modal-image(
       src=w._.image.limit(640, 640),
       caption= w.caption(lang)
