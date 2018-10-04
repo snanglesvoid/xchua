@@ -14,7 +14,7 @@ block intro
     h1= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
 
 block content
-  .container: .row
+  .page.container: .row
     if filters.category && !data.category
       h3.text-muted= lang == 'chinese' ? 'Invalid Category.' : 'Invalid Category.'
     else

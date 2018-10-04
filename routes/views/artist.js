@@ -5,7 +5,7 @@ exports = module.exports = (req, res) => {
     const view = new keystone.View(req, res)
     const locals = res.locals
 
-    locals.section = 'artists'
+    locals.section = 'artist'
 
     view.on('init', function(next) {
         keystone.list('Artist').model.findOne({
