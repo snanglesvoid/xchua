@@ -2,19 +2,30 @@ extends ../layouts/default
 
 block intro
   .page-header.container
-    h2 Artists
+    //- h2 Artists
 
 
 block content
   .page.container
-    if artists.length
-      ul.artists-list
-        each artist in artists
-          li(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}), style="width: 100%;")
-            a(keep-lang href='/artist/' + artist.slug)
-              - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-              | #{name.first + ' ' + name.last}
-        
-
+    .flexbox
+      if artists.length
+        .list-container
+          ul.artists-list
+            each artist in artists
+              li.artist-link(
+                data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
+                style="width: 100%;",
+                onmouseenter="artistLinkMouseover(this)",
+                onmouseleave="artistLinkMouseout(this)",
+                thumbnail-src= artist._.thumbnail.fit(300, 300)
+              )
+                a(keep-lang,
+                  href='/artist/' + artist.slug,
+                )
+                  - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+                  | #{name.first + ' ' + name.last}
+        .picture-container
+          img.artist-preview
 
 block js
+  script(src='/js/artists.js')

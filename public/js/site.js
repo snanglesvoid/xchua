@@ -2,6 +2,7 @@ function openNav() {
     $('#sidenav').css({
         left:0
     })
+    .addClass('open')
     $('#main').css({
         filter: 'brightness(90%) blur(1px)'
     })
@@ -17,6 +18,7 @@ function closeNav() {
     $('#sidenav').css({
         left: '-350px'
     })
+    .removeClass('open')
     $('#main').css({
         filter: 'none'
     })
@@ -54,4 +56,23 @@ $(() => {
             window.location.href = dest
         }, 50)
     })
+})
+
+function setLogoColor(color) {
+    $('#logo svg .letterPath').css('fill', color)
+}
+
+$(function() {
+    setLogoColor('grey')
+
+
+    $('.scrollpane').append(`
+        <div class="scrollpane-box-shadow"></div>
+        `)
+    $('.scrollpane.top').append(`
+        <div class="scrollpane-box-shadow-top"></div>    
+    `)
+    $('.scrollpane-horizontal').append(`
+        <div class="scrollpane-box-shadow-side"></div>
+    `)
 })

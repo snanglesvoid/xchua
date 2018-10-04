@@ -8,18 +8,23 @@
 
 }
 
+.grid-h {
+    height: 100%;
+    img {
+        height: 100%;
+        width: auto;
+    }
+    .grid-item {
+        height: 100%;
+    }
+}
+
 // PHONES
 @media screen and (max-width: 480px) {
     .grid {
         .grid-item {
-            width: 48%;
+            width: 100%;
         }
-        // .grid-item.big {
-        //     width: 100%;
-        // }
-        // .grid-item.small {
-        //     width: 48%;
-        // }
     }
 }
 
@@ -64,6 +69,14 @@
         }
         .grid-item.big {
            width: 48%;
+        }
+    }
+}
+
+.narrow {
+    .grid {
+        .grid-item {
+            width: 100%;
         }
     }
 }

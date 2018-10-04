@@ -1,19 +1,25 @@
+@sn-width: 280px;
+@sn-width-sm: 200px; 
+
 .sidenav {
     height: 100%;
-    width: 350px;
+    width: @sn-width;
     position: fixed;
     z-index: 100;
     top:0;
-    left:-350px;
+    left:-@sn-width;
     max-width: 100%;
     background-color: @color-bg-dark;
-    overflow-x: hidden;
-    padding-top: 60px;
+    background: rgba(0,0,0,0.0);
+    overflow-x: visible;
+    padding-top: 100px;
     transition: all 0.5s ease;
     -webkit-box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
     -moz-box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
     box-shadow: -7px -1px 5px -2px rgba(0,0,0,0.2);
-
+    // -webkit-box-shadow: 75px 0px 300px 100px rgba(0,0,0,0.75);
+    // -moz-box-shadow: 75px 0px 300px 100px rgba(0,0,0,0.75);
+    // box-shadow: 75px 0px 300px 100px rgba(0,0,0,0.75);
     a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
@@ -21,7 +27,7 @@
         color: @color-fg-dark;
         display: block;
         transition: all 0.3s ease;
-        padding-left: 200px;
+        padding-left: 100px;
     }
     // a.active {
 
@@ -58,11 +64,34 @@
     }
 }
 
+.sidenav::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    transition: all .5s ease;
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+10,000000+100&1+0,1+0,0.9+10,0+100 */
+background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 10%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(0,0,0,0.9) 10%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+    content: ''
+}
+.sidenav.open::before {
+    width: 100vw;
+}
+
 #sidenav-toggle {
     button {
         position: fixed;
         left: -20px;
-        top: 40px;
+        top: 0px;
         font-size: 3rem;
         z-index: 4;
         border: 0;
@@ -70,22 +99,25 @@
         transition: transform 1s ease;
         transform: rotate(17deg);
         div {
-            width: 85px;
-            height: 5px;
-            background-color: #ddd;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            width: 100px;
+            height: 2.5px;
+            background-color: grey;
+            margin-top: 26px;
+            margin-bottom: 26px;
             transition: margin-bottom 0.4s ease;
             transition: margin-bottom 0.4s ease,
               margin-top 0.4s ease,
               transform .4s ease;
         }
+        div:first-child {
+            background-color: #ddd;
+        }
     }
     button:hover {
         div {
             // background-color: @color-fg-dark-highlight;
-            margin-bottom: 40px;
-            margin-top: 40px;
+            margin-bottom: 32px;
+            margin-top: 32px;
             transform: rotate(-180deg);
         }    
     }
@@ -94,38 +126,76 @@
 #logo {
     position: fixed;
     z-index: 400;
-    padding-left: 56px;
-    padding-right: 20px;
+    // padding-left: 56px;
+    // padding-right: 20px;
     /* background: rgba(255,255,255,0.6); */
     text-decoration: none;
     display: block;
-    top: -17px;
+    // top: -17px;
+
+    bottom: 12px;
+    right: 18px;
 
     svg {
-        width: 140px;
-        height: 48px;
+        width: 100px;
+        height: 32px;
     }
 }
+
+
+#sidenav-section {
+    position: fixed;
+    left: 56px;
+    text-transform: uppercase;
+    top: 32px;
+    z-index: 4;
+    border: 0;
+    background: transparent;
+    color: black;
+    font-size: 1.5rem;
+}
+
+
   
-@media screen and (max-width: 480px) {
-    .sidenav { padding-top: 15px; }
+@media screen and (max-width: 720px) {
+    // .sidenav { padding-top: 15px; }
     .sidenav a { font-size: 1.5rem; }
+
+
+    .sidenav {
+        width: @sn-width-sm;
+        left: -@sn-width-sm;
+        background: rgba(0,0,0,0.9);
+    }
+
+    .sidenav::before {
+        left: 100%;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+10,000000+100&1+0,1+0,0.9+10,0+100 */
+background: -moz-linear-gradient(left, rgba(0,0,0,.9) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    }
+    .sidenav.open::before {
+        width: ~"calc(100vw - 200px)";
+    }
 
     #sidenav-toggle {
         button {
             left: -30px;
-            top: -10px;
+            top: -20px;
             transform: rotate(17deg) scale(0.66);
+
+
         }
     }
+
+    
+    #sidenav-section {
+        left: 80px;
+        font-size: 1.5rem;
+    }
+
+
 }
 
-@media screen and (min-width: 480px) and (max-width: 1024px) {
-    #sidenav-toggle {
-        button {
-            left: -25px;
-            top: 15px;
-            transform: rotate(17deg) scale(0.83);
-        }
-    }
-}

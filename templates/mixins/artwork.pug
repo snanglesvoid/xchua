@@ -1,7 +1,7 @@
-mixin artwork(w)
+mixin artwork(w, size=640)
   .artwork(data-ks-editable=editable(user, {list: 'Artwork', id: w.id, path: '/'}))
     img.modal-image(
-      src=w._.image.limit(640, 640),
+      src=w._.image.limit(size, size),
       caption= w.caption(lang)
     )
     .middle 

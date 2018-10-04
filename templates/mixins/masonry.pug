@@ -10,13 +10,22 @@ mixin masonry(images)
     p cannot display masonry - images not defined
 
 
-mixin works-masonry(works)
-  if works
-    .grid.masonry.masonry-works.modal-images
-      each work in works
-        .grid-item(class= work.masonrySize)
-          +artwork(work)
+mixin works-masonry(works, horizontal)
+  if horizontal
+    if works
+      .grid-h.masonry.masonry-works.modal-images
+        each work in works
+          .grid-item(class= work.masonrySize)
+            +artwork(work)
+    else
+      p cannot display masonry - works not defined
   else
-    p cannot display masonry - works not defined
-
+    if works
+      .grid.masonry.masonry-works.modal-images
+        each work in works
+          .grid-item(class= work.masonrySize)
+            +artwork(work)
+    else
+      p cannot display masonry - works not defined
+    
 

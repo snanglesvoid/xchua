@@ -14,6 +14,10 @@ function openTab(event) {
     else {
         location.hash = $tab.attr('id');
     }
+
+    if (pack) {
+        setTimeout(pack, 50)
+    }
 }
 
 

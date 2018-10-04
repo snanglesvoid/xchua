@@ -4,7 +4,7 @@ include ../mixins/exhibition
 include ../mixins/masonry
 
 block intro
-  .page-header.container(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
+  .page-header(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
     h2= name.first + ' ' + name.last
     ul.tabs
@@ -14,15 +14,25 @@ block intro
 
 block content
   if artist
-    .page.container
-      #works.tab.active.wide
+    .page
+      #works.tab.active.wide: .scrollpane: .scrollpane-content
         +works-masonry(artist.works)
         //- .grid
           each work in artist.works
             .grid-item
               .gallery-image
                 img(src=work._.image.limit(640,640))
-      #biography.tab!= artist.biography[lang] || artist.biography.english
+      #biography.tab
+        .flexbox.responsive
+          .golden-ratio-2
+            .scrollpane.top: .scrollpane-content!= artist.biography[lang] || artist.biography.english
+          .golden-ratio-1.narrow
+            .scrollpane-horizontal.small-only: .scrollpane-content
+              +works-masonry(artist.works, true)
+            .scrollpane.large-only: .scrollpane-content
+              +works-masonry(artist.works)
+            //- .flexbox(style="width: auto;")
+              +slideshow
       #exhibitions.tab
         if artist.exhibitions.length
           ul.exhibitions-list
