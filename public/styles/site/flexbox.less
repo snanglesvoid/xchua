@@ -9,7 +9,7 @@
 
 
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: @size-md) {
     
     .golden-ratio-2 {
         width: 62%;
@@ -21,9 +21,9 @@
     }
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: @size-md) {
     .flexbox.responsive {
-        flex-direction: column-reverse;
+        // flex-direction: column-reverse;
     }
 
     .flexbox {
@@ -31,14 +31,16 @@
 
     .golden-ratio-2 {
         width: 100%;
-        padding-right: 16px;
-        padding: 16px;
-        height: 62%;
+        padding: @padding-sm;
+        // height: 62%;
+        height: 100%;
+
     }
     
     .golden-ratio-1 {
-        width: 100%;
-        padding: 16px;
-        height: 38%;
+        // width: 100%;
+        width: 0;
+        padding: @padding-sm;
+        // height: 38%;
     }    
 }

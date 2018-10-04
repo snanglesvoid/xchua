@@ -1,16 +1,18 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 include ../mixins/exhibition
 include ../mixins/masonry
 
 block intro
-  .page-header(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
+  div(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
     h2= name.first + ' ' + name.last
-    ul.tabs
-      li.active: a(href='javascrip:void(0)' onclick='openTab(this)' select='#works')= lang=='chinese' ? 'Works' : 'Works'
-      li: a(href='javascrip:void(0)' onclick='openTab(this)' select='#biography')= lang == 'chinese' ? 'Biography' : 'Biography'
-      li: a(href='javascrip:void(0)' onclick='openTab(this)' select='#exhibitions')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
+    
+block tabbar
+  ul.tabs
+    li.active: a(href='#' onclick='openTab(this)' select='#works')= lang=='chinese' ? 'Works' : 'Works'
+    li: a(href='#' onclick='openTab(this)' select='#biography')= lang == 'chinese' ? 'Biography' : 'Biography'
+    li: a(href='#' onclick='openTab(this)' select='#exhibitions')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
 
 block content
   if artist
@@ -27,7 +29,7 @@ block content
           .golden-ratio-2
             .scrollpane.top: .scrollpane-content!= artist.biography[lang] || artist.biography.english
           .golden-ratio-1.narrow
-            .scrollpane-horizontal.small-only: .scrollpane-content
+            //- .scrollpane-horizontal.small-only: .scrollpane-content
               +works-masonry(artist.works, true)
             .scrollpane.large-only: .scrollpane-content
               +works-masonry(artist.works)

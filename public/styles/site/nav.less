@@ -157,7 +157,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 
 
   
-@media screen and (max-width: 720px) {
+@media screen and (max-width: @size-md) {
     // .sidenav { padding-top: 15px; }
     .sidenav a { font-size: 1.5rem; }
 
@@ -172,9 +172,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
         left: 100%;
 
         /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+10,000000+100&1+0,1+0,0.9+10,0+100 */
-background: -moz-linear-gradient(left, rgba(0,0,0,.9) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        background: -moz-linear-gradient(left, rgba(0,0,0,.9) 0%, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     }
     .sidenav.open::before {
         width: ~"calc(100vw - 200px)";
@@ -185,17 +185,32 @@ background: linear-gradient(to right, rgba(0,0,0,.9) 0%,rgba(0,0,0,0.8) 10%,rgba
             left: -30px;
             top: -20px;
             transform: rotate(17deg) scale(0.66);
-
-
         }
     }
-
-    
     #sidenav-section {
         left: 80px;
         font-size: 1.5rem;
+        top: @padding-md;
     }
-
-
 }
+
+@media screen and (max-width: @size-sm) {
+    #sidenav-toggle {
+        button {
+            // left: -37px;
+            // top: -36px;
+            // transform: rotate(17deg) scale(.5);
+        }
+    }
+    #sidenav-section {
+        left: @mg-left-sm;
+        font-size: 1.5rem;
+        top: @padding-sm * 1.5;
+        padding-left: @padding-sm;
+        margin: 0;
+    }
+}
+
+
+
 

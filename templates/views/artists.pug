@@ -1,15 +1,15 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 block intro
-  .page-header.container
+  div
     //- h2 Artists
 
 
 block content
-  .page.container
+  .page
     .flexbox
       if artists.length
-        .list-container
+        .list-container: .scrollpane: .scrollpane-content
           ul.artists-list
             each artist in artists
               li.artist-link(

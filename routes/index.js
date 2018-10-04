@@ -45,6 +45,7 @@ exports = module.exports = function (app) {
 	app.get('/fairs', routes.views.fairs);
 	app.get('/fair/:slug', routes.views.fair);
 	app.get('/about', routes.views.about);
+	app.get('/layout', routes.views.layout);
 	
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
