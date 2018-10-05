@@ -7,9 +7,9 @@ block intro
 
 block tabbar
   ul.tabs
-    li.active: a(select='#about' href='#' onclick='openTab(this)')
+    li.active: a(select='#about' onclick='openTab(this)')
       | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
-    li: a(select='#spaces' href='#' onclick='openTab(this)')
+    li: a(select='#spaces' onclick='openTab(this)')
       | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
 
 block content

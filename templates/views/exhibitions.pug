@@ -1,16 +1,24 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 include ../mixins/exhibition.pug
 
 block intro
-  .page-header.container
-    h2 Exhibitions
+  h2#page-title Exhibtions
+
+block tabbar
+  ul.tabs
+    li: a(onclick= "openTab(this)" select="#upcoming") Upcoming Exhibitions
+    li: a(onclick= "openTab(this)" select="#current") Current Exhibitions
+    li: a(onclick= "openTab(this)" select="#past") Past Exhibtions
 
 block content
-  .page.container
+  .page: .scrollpane: .scrollpane-content
     if exhibitions.length
       ul.exhibitions-list
         each exhibition in exhibitions
           +exhibition(exhibition)
     else
       h5 No exhibitions found...
+
+block js
+  script(src="/js/tabs.js")
