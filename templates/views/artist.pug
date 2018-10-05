@@ -38,7 +38,13 @@ block content
               +works-masonry(artist.works)
             //- .flexbox(style="width: auto;")
               +slideshow
-      #exhibihref='#' onclick='openTab(this)' select='#exhibitions')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
+      #exhibitions.tab
+        if exhibitions && exhibitions.length
+          ul.exhibitions-list
+            each exhibition in exhibitions
+              +exhibition(exhibition)
+        else
+          h5 No exhibitions found
 
 block content
   .page
