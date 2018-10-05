@@ -3,7 +3,8 @@ const Types = keystone.Field.Types
 
 const Exhibition = new keystone.List('Exhibition', {
     map: { name: 'title.english' },
-    autokey: { path: 'slug', from: 'title', unique: true }
+    autokey: { path: 'slug', from: 'title', unique: true },
+    sortOrder: '-date.start'
 })
 
 Exhibition.add({

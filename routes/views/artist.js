@@ -10,7 +10,8 @@ exports = module.exports = (req, res) => {
     view.on('init', function(next) {
         keystone.list('Artist').model.findOne({
             slug: req.params.slug
-        }).exec((err, artist) => {
+        })
+        .exec((err, artist) => {
             if (err || !artist) {
                 return next(err || 'artist not found')
             }
@@ -26,19 +27,22 @@ exports = module.exports = (req, res) => {
                 }
                 ,
                 {   
-                    q: keystone.list('Exhibition').model.find({
-                        artist: artist._id
-                    }).sort('sortOrder'),
+                    q: keystone.list('Exhibition').model.find()
+                        .where('artists').in([artist._id])    
+                        .sort('sortOrder'),
                     n: 'exhibitions'
                 }
             ]
 
             async.each(queries, (query, cb) => {
+                // console.log(query.n)
                 query.q.exec((err, results) => {
+                    // console.log(query.n, results.length)
                     locals.artist[query.n] = results
                     cb(err)
                 })
             }, err => {
+                // console.log(artist.exhibitions)
                 next(err)
             })
         })

@@ -39,9 +39,9 @@ block content
             //- .flexbox(style="width: auto;")
               +slideshow
       #exhibitions.tab
-        if exhibitions && exhibitions.length
+        if artist.exhibitions && artist.exhibitions.length
           ul.exhibitions-list
-            each exhibition in exhibitions
+            each exhibition in artist.exhibitions
               +exhibition(exhibition)
         else
           h5 No exhibitions found
@@ -68,9 +68,9 @@ block content
             //- .flexbox(style="width: auto;")
               +slideshow
       #exhibitions.tab
-        if exhibitions && exhibitions.length
+        if artist.exhibitions && artist.exhibitions.length
           ul.exhibitions-list
-            each exhibition in exhibitions
+            each exhibition in artist.exhibitions
               +exhibition(exhibition)
         else
           h5 No exhibitions found
