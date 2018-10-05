@@ -1,18 +1,19 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 include ../mixins/gallery-space
 
 block intro
-  .page-header.container
-    h2 About
-    ul.tabs
-      li.active: a(select='#about' href='javascript:void(0)' onclick='openTab(this)')
-        | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
-      li: a(select='#spaces' href='javascript:void(0)' onclick='openTab(this)')
-        | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
+  div
+
+block tabbar
+  ul.tabs
+    li.active: a(select='#about' href='#' onclick='openTab(this)')
+      | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
+    li: a(select='#spaces' href='#' onclick='openTab(this)')
+      | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
 
 block content
-  .page.container
+  .page: .scrollpane: .scrollpane-content
     #about.tab.active
       if aboutText
         div!= aboutText.content[lang] || aboutText.content.english

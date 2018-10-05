@@ -1,0 +1,36 @@
+extends ../layouts/layout
+
+include ../mixins/masonry
+
+block intro
+  div(
+    data-ks-editable=editable(user, {list: 'Publication', id: publication.id}),
+    style= "width: 100%; height: 100%;"
+  )
+    h2
+      | #{publication.title[lang] || publication.title.english}
+      | &nbsp;|&nbsp;
+      | #{publication.author[lang] || publication.author.english}
+
+block content
+  if publication
+    .page
+      .scrollpane(style="max-width: 980px"): .scrollpane-content
+        if publication.cover
+          #cover(style="text-align: center;")
+            img(
+              src= publication._.cover.limit(640, 640),
+              caption= publication.caption(lang)
+            )
+          br
+          br
+        #description!= publication.description[lang] || publication.description.english
+        br
+        br
+        #images.publication
+          +masonry(publication.pictures)
+
+
+
+block js
+  script(src='/js/masonry.js')

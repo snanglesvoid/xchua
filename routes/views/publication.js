@@ -6,7 +6,7 @@ exports = module.exports = (req, res) => {
 
     locals.section = 'publication'
 
-    const query = keystone.list('Publication').mode.findOne({
+    const query = keystone.list('Publication').model.findOne({
         slug: req.params.slug
     })
 

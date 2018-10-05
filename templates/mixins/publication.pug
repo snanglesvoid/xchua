@@ -1,8 +1,18 @@
 mixin publication(publication)
   if publication
-    .publication-card(data-ks-editable=editable(user, {list: 'Publication', id: publication.id}))
-      if publication.thumbnail
-          img(src= publication._.thumbnail.limit(320,320) style="width:160px;")
-      h3= publication.title[lang] || publication.title.english
-      p!= publication.description[lang] || publication.description.english
+    .publication-card-wrapper: .publication-card(
+      data-ks-editable=editable(user, {list: 'Publication', id: publication.id})
+    )
+      if publication.cover
+        img(
+          src= publication._.cover.limit(320,320),
+          style="width:100%",
+          caption= publication.caption(lang)
+        )
+        .middle(onclick= "window.location.href='/publication/" + publication.slug + "'")
+          h3= publication.title[lang] || publication.title.english
+          p
+          | #{publication.author[lang] || publication.author.english}
+          br
+          | #{publication.year}
 

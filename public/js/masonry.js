@@ -1,11 +1,11 @@
 function pack() {
     $('.grid').packery({
         itemSelector: '.grid-item',
-        gutter: 8,
+        gutter: 12,
     });
     $('.grid-h').packery({
         itemSelector: '.grid-item',
-        gutter: 8,
+        gutter: 12,
         isHorizontal: true
     })
 }

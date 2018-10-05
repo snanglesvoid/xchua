@@ -1,13 +1,16 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 include ../mixins/publication.pug
 
 block intro
-  .page-header.container
-    h2 Publications
+  //- .page-header.container
+    //- h2 Publications
 
 block content
-  .page.container
+  .page: .scrollpane: .scrollpane-content
+    br
+    br
+    br
     if publications.length
       ul.publications-list
         each publication in publications

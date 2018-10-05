@@ -4,7 +4,10 @@ include ../mixins/exhibition
 include ../mixins/masonry
 
 block intro
-  div(data-ks-editable=editable(user, {list: 'Artist', id: artist.id}))
+  div(
+    data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
+    style= "width: 100%; height: 100%;"
+  )
     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
     h2= name.first + ' ' + name.last
     
@@ -15,8 +18,8 @@ block tabbar
     li: a(href='#' onclick='openTab(this)' select='#exhibitions')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
 
 block content
-  if artist
-    .page
+  .page
+    if artist
       #works.tab.active.wide: .scrollpane: .scrollpane-content
         +works-masonry(artist.works)
         //- .grid
@@ -27,18 +30,18 @@ block content
       #biography.tab
         .flexbox.responsive
           .golden-ratio-2
-            .scrollpane.top: .scrollpane-content!= artist.biography[lang] || artist.biography.english
+            .scrollpane.top(style="max-width: 600px;"): .scrollpane-content!= artist.biography[lang] || artist.biography.english
+              //- .scrollpane-horizontal.small-only: .scrollpane-content
+                +works-masonry(artist.works, true)
           .golden-ratio-1.narrow
-            //- .scrollpane-horizontal.small-only: .scrollpane-content
-              +works-masonry(artist.works, true)
-            .scrollpane.large-only: .scrollpane-content
+            .scrollpane.large-only(style="max-width: 400px; float: right;"): .scrollpane-content
               +works-masonry(artist.works)
             //- .flexbox(style="width: auto;")
               +slideshow
       #exhibitions.tab
-        if artist.exhibitions.length
+        if exhibitions && exhibitions.length
           ul.exhibitions-list
-            each exhibition in artist.exhibitions
+            each exhibition in exhibitions
               +exhibition(exhibition)
         else
           h5 No exhibitions found
