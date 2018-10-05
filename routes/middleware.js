@@ -17,6 +17,12 @@ var _ = require('lodash');
 	the navigation in the header, you may wish to change this array
 	or replace it with your own templates / logic.
 */
+
+function inlineEditable(user, data) {
+	if (!user) return ''
+	else return JSON.stringify(data)
+}
+
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'Home', key: 'home', href: '/' },
@@ -26,6 +32,7 @@ exports.initLocals = function (req, res, next) {
 	];
 	res.locals.user = req.user;
 	res.locals.lang = req.query['lang'] || 'english'
+	res.locals.inlineEditable = inlineEditable
 	next();
 };
 

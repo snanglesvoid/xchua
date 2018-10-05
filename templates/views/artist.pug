@@ -4,12 +4,13 @@ include ../mixins/exhibition
 include ../mixins/masonry
 
 block intro
-  div(
-    data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
-    style= "width: 100%; height: 100%;"
-  )
-    - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-    h2= name.first + ' ' + name.last
+  if artist
+    div(
+      data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
+      style= "width: 100%; height: 100%;"
+    )
+      - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+      h2= name.first + ' ' + name.last
     
 block tabbar
   ul.tabs
@@ -30,36 +31,14 @@ block content
       #biography.tab
         .flexbox.responsive
           .golden-ratio-2
-            .scrollpane.top(style="max-width: 600px;"): .scrollpane-content!= artist.biography[lang] || artist.biography.english
-              //- .scrollpane-horizontal.small-only: .scrollpane-content
-                +works-masonry(artist.works, true)
-          .golden-ratio-1.narrow
-            .scrollpane.large-only(style="max-width: 400px; float: right;"): .scrollpane-content
-              +works-masonry(artist.works)
-            //- .flexbox(style="width: auto;")
-              +slideshow
-      #exhibitions.tab
-        if artist.exhibitions && artist.exhibitions.length
-          ul.exhibitions-list
-            each exhibition in artist.exhibitions
-              +exhibition(exhibition)
-        else
-          h5 No exhibitions found
-
-block content
-  .page
-    if artist
-      #works.tab.active.wide: .scrollpane: .scrollpane-content
-        +works-masonry(artist.works)
-        //- .grid
-          each work in artist.works
-            .grid-item
-              .gallery-image
-                img(src=work._.image.limit(640,640))
-      #biography.tab
-        .flexbox.responsive
-          .golden-ratio-2
-            .scrollpane.top(style="max-width: 600px;"): .scrollpane-content!= artist.biography[lang] || artist.biography.english
+            .scrollpane.top(style="max-width: 600px;"): .scrollpane-content
+              div(
+                data-editable= inlineEditable(user, {
+                  list: 'artists',
+                  path: 'biography.' + (lang || 'english'),
+                  data: JSON.stringify(artist)  
+                })
+              )!= artist.biography[lang] || artist.biography.english
               //- .scrollpane-horizontal.small-only: .scrollpane-content
                 +works-masonry(artist.works, true)
           .golden-ratio-1.narrow

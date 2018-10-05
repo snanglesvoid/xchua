@@ -16,7 +16,13 @@ block content
   .page: .scrollpane: .scrollpane-content
     #about.tab.active
       if aboutText
-        div!= aboutText.content[lang] || aboutText.content.english
+        div(
+          data-editable= inlineEditable(user, {
+            list: 'textblocks',
+            path: 'content.' + (lang || 'english'),
+            data: JSON.stringify(aboutText)
+          })
+        )!= aboutText.content[lang] || aboutText.content.english
       else
         div About Text not found!
     #spaces.tab
