@@ -1,5 +1,7 @@
 extends ../layouts/layout
 
+include ../mixins/artwork
+
 block intro
   div
     //- h2 Artists
@@ -17,7 +19,7 @@ block content
                 style="width: 100%;",
                 onmouseenter="artistLinkMouseover(this)",
                 onmouseleave="artistLinkMouseout(this)",
-                thumbnail-src= artist._.picture.fit(300, 300)
+                artist= artist.slug
               )
                 a(keep-lang,
                   href='/artist/' + artist.slug,
@@ -25,7 +27,11 @@ block content
                   - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
                   | #{name.first + ' ' + name.last}
         .picture-container
-          img.artist-preview
+          //- img.artist-preview
+          each artist in artists
+            .preview(style='display: none;' artist= artist.slug)
+              +artwork(artist.selectedWork)
+          
 
 block js
   script(src='/js/artists.js')
