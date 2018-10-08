@@ -56,6 +56,7 @@ $(() => {
             window.location.href = dest
         }, 50)
     })
+    
 })
 
 function setLogoColor(color) {
@@ -64,15 +65,36 @@ function setLogoColor(color) {
 
 $(function() {
     setLogoColor('grey')
+})
 
-
-    $('.scrollpane').append(`
+let pss = []
+function initScrollbar() {
+    pss.forEach(x => x.destroy())
+    
+    $('.scrollpane').after(`
         <div class="scrollpane-box-shadow"></div>
         `)
-    $('.scrollpane.top').append(`
+    $('.scrollpane.top').after(`
         <div class="scrollpane-box-shadow-top"></div>    
     `)
-    $('.scrollpane-horizontal').append(`
+    $('.scrollpane-horizontal').after(`
         <div class="scrollpane-box-shadow-side"></div>
     `)
-})
+
+    $('.scrollpane').each(function() {
+
+    })
+    
+    $('.scrollpane').each(function() {
+        let ps = new PerfectScrollbar($(this).get(0), {
+
+        })
+        pss.push(ps)
+    })
+
+    $(window).resize(() => {
+        pss.forEach(x => x.update())
+    })
+}
+
+$(initScrollbar)

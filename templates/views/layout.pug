@@ -1,50 +1,28 @@
-doctype html
+extends ../layouts/layout
 
-html
-  head
-    meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+block intro
 
-    title= title || 'XC.HuA'
+block tabbar
 
-    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-    link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet")
-    link(href="/styles/site.min.css", rel="stylesheet")
-
-    if user && user.canAccessKeystone
-      link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
-
-    block css
-
-    block head
-
-  body
-    #header
-      include ../partials/nav.pug
-      #tabbar
-        ul.tabs
-          li: a() tab 1
-          li: a() tab 2
-          li: a() tab 3
-        block tabbar
-      #titlebar
-        h2 Page Title
-        block intro
-    #body
-      #content
-        p content inside
-        block content
-      a#logo(href="/")
-        include ./logo.svg
-      include ../partials/image-modal
-    script(src='/js/jquery/jquery-1.11.3.min.js')
-    script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
-    script(src="https://unpkg.com/packery@2/dist/packery.pkgd.js")
-    script(src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js")
-    if user && user.canAccessKeystone
-      script(src='/keystone/js/content/editor.js')
-    script(src='/js/site.js')
-    script(src='/js/image-modal.js')
-    block js
-    
+block content
+  style.
+    .sc {
+      position: relative;
+      width: 480px;
+      height: 320px;
+      overflow: auto;
+    }
+    .sc .cnt {
+      background-image: url('https://i.imgur.com/nAUUNzH.jpg');
+      width: 1280px;
+      height: 720px;
+    }
+  .sc
+    .cnt
+  .sc
+    .cnt
+block js
+  script.
+    $('.sc').each(function() {
+      var ps = new PerfectScrollbar($(this).get(0));
+    })

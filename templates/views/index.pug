@@ -6,7 +6,7 @@ block content
       img.placeholder(src=images[0].image.url)
       each image, index in images
         img(
-          src= image.image.url,
+          src= image._.image.limit(2048, 2048),
           class= index == 0 ? 'active' : '',
           title= image.title[lang] || image.title.english,
           caption= image.caption[lang] || image.caption.english,

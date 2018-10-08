@@ -10,7 +10,8 @@ html
 
     link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
     link(href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet")
-    link(href="/styles/site.min.css", rel="stylesheet")
+    link(href='/styles/site.min.css', rel='stylesheet')
+    link(href='/js/perfect-scrollbar/css/perfect-scrollbar.css', rel='stylesheet')
 
     if user && user.canAccessKeystone
       link(href="/keystone/styles/content/editor.min.css", rel="stylesheet")
@@ -43,7 +44,8 @@ html
     script(src='/js/bootstrap/bootstrap-3.3.5.min.js')
     script(src="https://unpkg.com/packery@2/dist/packery.pkgd.js")
     script(src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js")
-    
+    script(src='/js/perfect-scrollbar/dist/perfect-scrollbar.js')
+
     if user && user.canAccessKeystone
       script(src='/keystone/js/content/editor.js')
       script(src='https://cdn.ckeditor.com/ckeditor5/11.0.1/inline/ckeditor.js')
@@ -51,5 +53,6 @@ html
     
     script(src='/js/site.js')
     script(src='/js/image-modal.js')
+
     block js
     
