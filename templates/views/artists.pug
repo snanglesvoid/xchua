@@ -29,7 +29,7 @@ block content
         .picture-container
           //- img.artist-preview
           each artist in artists
-            .preview(style='display: none;' artist= artist.slug)
+            .preview(artist= artist.slug)
               +artwork(artist.selectedWork)
           
 
