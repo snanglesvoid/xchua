@@ -1,5 +1,7 @@
+@list-width: 480px;
+
 .picture-container {
-    // width: 75%;
+    width: ~"calc(100% - @{list-width})";
     // .artist-preview {
     //     // transition: all .4s ease;
     //     width: 100%;
@@ -23,7 +25,7 @@
 }
 
 .list-container {
-    width: 480px;
+    width: @list-width;
     .artists-list {
         
         font-size: 2rem;
