@@ -9,7 +9,7 @@ block content
   .page
     .flexbox
       if artists.length
-        .list-container: .scrollpane: .scrollpane-content
+        .list-container: .scrollpane.top: .scrollpane-content
           ul.artists-list
             each artist in artists
               li.artist-link(
