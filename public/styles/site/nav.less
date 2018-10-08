@@ -107,8 +107,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
             margin-top: 24px;
             margin-bottom: 24px;
             transition: all .7s ease;
-            transition: margin-bottom 0.7s ease;
-            transition: margin-bottom 0.7s ease,
+            transition: 
+                margin-bottom 0.7s ease,
                 margin-top 0.7s ease,
                 transform .7s ease;
         }
@@ -244,10 +244,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 
     #sidenav-toggle {
         button {
-            left: -30px;
-            top: -20px;
+            left: -40px;
+            top: -18px;
             transform: rotate(17deg) scale(0.66);
         }
+    }
+    #sidenav-toggle.open button {
+        transform: rotate(0) scale(.8);
+    }
+    #sidenav-toggle.open button:hover {
+        transform: rotate(0) scale(1);
     }
     #sidenav-section {
         left: 80px;
@@ -264,6 +270,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
             // transform: rotate(17deg) scale(.5);
         }
     }
+
+  
     #sidenav-section {
         left: @mg-left-sm;
         font-size: 1.5rem;
