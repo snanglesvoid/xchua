@@ -99,6 +99,7 @@ function initScrollbar() {
     $('.scrollpane-horizontal').after(`
         <div class="scrollpane-box-shadow-side"></div>
     `)
+    $('.scrollpane-box-shadow-top').css('opacity', 0)
 
     $('.scrollpane').each(function() {
 
@@ -107,6 +108,23 @@ function initScrollbar() {
     $('.scrollpane').each(function() {
         let ps = new PerfectScrollbar($(this).get(0), {
 
+        })
+        let $sp = $(this)
+        $sp.on('ps-y-reach-start', (event) => {
+            console.log('ps start')
+            $sp.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
+        })
+        $sp.on('ps-scroll-down', event => {
+            console.log('ps down')
+            $sp.siblings('.scrollpane-box-shadow-top').css('opacity', 1)
+        })
+        $sp.on('ps-scroll-up', event => {
+            console.log('ps up')
+            $sp.siblings('.scrollpane-box-shadow').css('opacity', 1)
+        })
+        $sp.on('ps-y-reach-end', event => {
+            console.log('ps end')
+            $sp.siblings('.scrollpane-box-shadow').css('opacity', 0)
         })
         pss.push(ps)
     })

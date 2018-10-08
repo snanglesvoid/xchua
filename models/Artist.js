@@ -18,6 +18,7 @@ Artist.add({
     },
     picture:       { type: Types.CloudinaryImage },
     thumbnail:     { type: Types.CloudinaryImage },
+    selectedWork:  { type: Types.Relationship, ref: 'Artwork' }
     // artworks:      { type: Types.Relationship, ref: 'Artwork', many: true },
     // exhibitions:   { type: Types.Relationship, ref: 'Exhibition', many: true }
 })
