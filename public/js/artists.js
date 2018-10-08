@@ -20,7 +20,7 @@ function artistLinkMouseover(event) {
     // }
 }
 function artistLinkMouseout(event){
-    let $img = $('.picture-container img')
-    $img.css('opacity', 0)
-    $img.attr('src')
+    // let $img = $('.picture-container img')
+    // $img.css('opacity', 0)
+    // $img.attr('src')
 }
