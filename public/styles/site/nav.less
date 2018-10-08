@@ -96,7 +96,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
         z-index: 1000;
         border: 0;
         background: transparent;
-        transition: all 1s ease;
+        transition: all .7s ease;
         transform: rotate(17deg);
         outline: 0;
         div {
@@ -105,11 +105,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
             background-color: #bbb;
             margin-top: 24px;
             margin-bottom: 24px;
-            transition: all .5s ease;
-            transition: margin-bottom 0.4s ease;
-            transition: margin-bottom 0.4s ease,
-                margin-top 0.4s ease,
-                transform .4s ease;
+            transition: all .7s ease;
+            transition: margin-bottom 0.7s ease;
+            transition: margin-bottom 0.7s ease,
+                margin-top 0.7s ease,
+                transform .7s ease;
         }
         div:first-child {
             background-color: #f1f1f1;
@@ -156,11 +156,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
         }
     }
     button:hover {
+        transform: scale(1.2,1.2);
         div {
             transform: rotate(0);
-        }
-        div {
-            width: 50px;
+            margin-bottom: 24px;
+            margin-top: 24px;
+            // width: 4px;
         }
         div:first-child {
             // background: green;
