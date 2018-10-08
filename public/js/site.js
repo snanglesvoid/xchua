@@ -6,12 +6,13 @@ function openNav() {
     $('#main').css({
         filter: 'brightness(90%) blur(1px)'
     })
-    $('#sidenav-toggle div').animate({
-        opacity: 0
-    }, 300)
+    // $('#sidenav-toggle div').animate({
+    //     opacity: 0
+    // }, 300)
     // $('.letterPath').css({
     //     fill: '#827f80'
     // })
+    toggleAnimation()
 }
 
 function closeNav() {
@@ -22,12 +23,30 @@ function closeNav() {
     $('#main').css({
         filter: 'none'
     })
-    $('#sidenav-toggle div').animate({
-        opacity:1
-    }, 2000)
+    // $('#sidenav-toggle div').animate({
+    //     opacity:1
+    // }, 2000)
     // $('.letterPath').css({
     //     fill: '#aaaaaa'
     // })
+    toggleAnimation()
+}
+
+
+let open = false
+function toggleNav() {
+    if (open) {
+        closeNav()
+        open = false
+    }
+    else {
+        openNav()
+        open = true
+    }
+}
+
+function toggleAnimation() {
+    $('#sidenav-toggle').toggleClass('open')
 }
 
 $(() => {
