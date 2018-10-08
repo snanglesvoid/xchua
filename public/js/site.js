@@ -93,7 +93,7 @@ function initScrollbar() {
     $('.scrollpane').after(`
         <div class="scrollpane-box-shadow"></div>
         `)
-    $('.scrollpane.top').after(`
+    $('.scrollpane').after(`
         <div class="scrollpane-box-shadow-top"></div>    
     `)
     $('.scrollpane-horizontal').after(`
