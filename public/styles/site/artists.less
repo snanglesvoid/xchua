@@ -36,11 +36,21 @@
             a {   
                 text-decoration: none;
                 color: #bbb;
+                transition: all .25s ease;
             }
         }
         li:hover a {
-            color: 0;
+            color: #000;
         }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .picture-container {
+        width: 50%;
+    }
+    .list-container {
+        width: 50%;
     }
 }
 
@@ -54,6 +64,7 @@
         padding-left: 32px;
     }
 }
+
 
 // @media screen and (max-width: @size-sm) {
 
