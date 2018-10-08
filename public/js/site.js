@@ -115,16 +115,16 @@ function initScrollbar() {
             $sp.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
         })
         $sp.on('ps-scroll-down', event => {
-            console.log('ps down')
+            // console.log('ps down')
             $sp.siblings('.scrollpane-box-shadow-top').css('opacity', 1)
         })
         $sp.on('ps-scroll-up', event => {
-            console.log('ps up')
-            $sp.siblings('.scrollpane-box-shadow').css('opacity', 1)
+            // console.log('ps up')
+            // $sp.siblings('.scrollpane-box-shadow').css('opacity', 1)
         })
         $sp.on('ps-y-reach-end', event => {
             console.log('ps end')
-            $sp.siblings('.scrollpane-box-shadow').css('opacity', 0)
+            // $sp.siblings('.scrollpane-box-shadow').css('opacity', 0)
         })
         pss.push(ps)
     })
