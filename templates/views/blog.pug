@@ -3,7 +3,7 @@ extends ../layouts/layout
 mixin post(post)
   .post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
     .row
-      .col-sm-4.col-md-6.col-lg-8
+      .col-sm-4.col-md-6.col-lg-6
         if post.image.exists
           img(src=post._.image.limit(1024,640)).post-img
       .col-sm-8.col-md-6.col-lg-4
