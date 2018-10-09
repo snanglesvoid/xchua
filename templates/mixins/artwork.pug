@@ -21,7 +21,7 @@ mixin artwork(w, artist)
         p= w.year
         p= w.description[lang] || w.description.english
         p= w.dimensions
-      if artist
+      if artist && artist.name
         a.artistLink(href="/artist/" + artist.slug)
           - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-          | #{name.first + ' ' + name.last}
+          | More about #{name.first + ' ' + name.last}

@@ -1,4 +1,5 @@
 const keystone = require('keystone')
+const async = require('async')
 
 exports = module.exports = (req, res) => {
     const view = new keystone.View(req, res)
@@ -13,7 +14,16 @@ exports = module.exports = (req, res) => {
     .populate('artworks')
     .populate('location')
 
-    view.query('exhibition', query)
+    view.on('init', next => {
+        query.exec((err, doc) => {
+            async.each(doc.artworks, (w, cb) => {
+                w.populate('artist', cb)
+            }, err => {
+                locals.exhibition = doc
+                next(err)
+            })
+        })
+    })
 
     view.render('exhibition')
 }
