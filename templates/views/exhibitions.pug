@@ -20,7 +20,7 @@ block intro
     
   h2#page-title 
     a(onclick="filter('Berlin')") Berlin
-    span(style='font-weight: 100;') &nbsp;&nbsp;|&nbsp;&nbsp;
+    span &nbsp;&nbsp;
     a(onclick="filter('Beijing')") Beijing
 
 block tabbar
@@ -58,7 +58,7 @@ block content
                 +exhibition(exhibitions.current.beijing[i])
       br
     #past
-      h2 Past (#{exhibitions.past.berlin.length + exhibitions.past.beijing.length}
+      h2 Past (#{exhibitions.past.berlin.length + exhibitions.past.beijing.length})
       hr
       ul.exhibitions-list
         each i in exhibitions.past.indices
