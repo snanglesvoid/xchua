@@ -7,18 +7,29 @@ block intro
 
 block tabbar
   ul.tabs
-    li: a(onclick= "openTab(this)" select="#upcoming") Upcoming Exhibitions
-    li: a(onclick= "openTab(this)" select="#current") Current Exhibitions
-    li: a(onclick= "openTab(this)" select="#past") Past Exhibtions
+    li: a(onclick= "scrollToSection(this)" select="#upcoming") Upcoming Exhibitions
+    li: a(onclick= "scrollToSection(this)" select="#current") Current Exhibitions
+    li: a(onclick= "scrollToSection(this)" select="#past") Past Exhibtions
 
 block content
-  .page: .scrollpane: .scrollpane-content
-    if exhibitions.length
+  .page: .scrollpane#mainScrollpane: .scrollpane-content
+    #upcoming
+      h2 Future (#{exhibitions.upcoming.length}) 
       ul.exhibitions-list
-        each exhibition in exhibitions
-          +exhibition(exhibition)
-    else
-      h5 No exhibitions found...
+        each ex in exhibitions.upcoming
+          +exhibition(ex)
+    #current
+      h2 Current (#{exhibitions.current.length}) 
+      ul.exhibitions-list
+        each ex in exhibitions.current
+          +exhibition(ex)
+    #past
+      h2 Past (#{exhibitions.past.length}) 
+      ul.exhibitions-list
+        each ex in exhibitions.past
+          +exhibition(ex)
 
+    
 block js
   script(src="/js/tabs.js")
+  script(src="/js/exhibitions.js")

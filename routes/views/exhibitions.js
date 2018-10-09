@@ -8,9 +8,38 @@ exports = module.exports = (req, res) => {
 
     const query = keystone.list('Exhibition').model.find({
         state: 'published'
-    }).sort('sortOrder')
+    })
+    .populate('artists')
+    .populate('artworks')
+    .populate('location')
+    .sort('-date.start')
 
-    view.query('exhibitions', query)
+    // view.query('exhibitions', query)
+
+    view.on('init', next => {
+        query.exec((err, exs) => {
+            if (err) return next(err)
+            let exhibitions = {
+                upcoming: [],
+                current: [],
+                past: []
+            }
+            let today = new Date()
+            exs.forEach(ex => {
+                if (ex.date.start > today) {
+                    exhibitions.upcoming.push(ex)
+                }
+                else if (ex.date.end < today) {
+                    exhibitions.past.push(ex)
+                }
+                else {
+                    exhibitions.current.push(ex)
+                }
+            })
+            locals.exhibitions = exhibitions
+            next()
+        })
+    })
 
     view.render('exhibitions')
 }

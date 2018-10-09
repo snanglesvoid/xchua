@@ -5,7 +5,7 @@ mixin publication(publication)
     )
       if publication.cover
         img(
-          src= publication.cover.limit(640, 640),
+          src= publication._.cover.limit(640, 640),
           style="width:100%",
           caption= publication.caption(lang)
         )

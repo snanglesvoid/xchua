@@ -4,11 +4,12 @@ mixin exhibition(exhibition)
       onclick= "window.location='/exhibition/" + exhibition.slug + "'"
       data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id})
     )
-      if exhibition.thumbnail
-        img(src= exhibition._.thumbnail.limit(320, 320) style="width: 160px;")
       h3= exhibition.title[lang] || exhibition.title.english
+      if exhibition.thumbnail
+        img(src= exhibition._.thumbnail.limit(1024, 1024))
       if exhibition.date
         p
         | #{exhibition._.date.start.format('MM DD YYYY')} #{lang == 'chinese' ? '' : 'to'} &nbsp;
         | #{exhibition._.date.end.format('MM DD YYYY')}
-      p= exhibition.location
+      p= exhibition.location.location[lang] || exhibition.location.location.english
+      hr
