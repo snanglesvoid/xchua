@@ -20,22 +20,44 @@ exports = module.exports = (req, res) => {
         query.exec((err, exs) => {
             if (err) return next(err)
             let exhibitions = {
-                upcoming: [],
-                current: [],
-                past: []
+                upcoming: {
+                    berlin: [],
+                    beijing: [],
+                    indices: []
+                },
+                current: {
+                    berlin: [],
+                    beijing: [],
+                    indices: []
+                },
+                past: {
+                    berlin: [],
+                    beijing: [],
+                    indices: []
+                }
             }
             let today = new Date()
             exs.forEach(ex => {
                 if (ex.date.start > today) {
-                    exhibitions.upcoming.push(ex)
+                    exhibitions.upcoming[ex.location.location.english.toLowerCase()].push(ex)
                 }
                 else if (ex.date.end < today) {
-                    exhibitions.past.push(ex)
+                    exhibitions.past[ex.location.location.english.toLowerCase()].push(ex)
                 }
                 else {
-                    exhibitions.current.push(ex)
+                    exhibitions.current[ex.location.location.english.toLowerCase()].push(ex)
                 }
             })
+            exhibitions.upcoming.indices = Array.apply(null, {
+                length: Math.max(exhibitions.upcoming.berlin.length, exhibitions.upcoming.beijing.length)
+            }).map(Number.call, Number)
+            exhibitions.current.indices = Array.apply(null, {
+                length: Math.max(exhibitions.current.berlin.length, exhibitions.current.beijing.length)
+            }).map(Number.call, Number)
+            exhibitions.past.indices = Array.apply(null, {
+                length: Math.max(exhibitions.past.berlin.length, exhibitions.past.beijing.length)
+            }).map(Number.call, Number)
+
             locals.exhibitions = exhibitions
             next()
         })

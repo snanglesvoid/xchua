@@ -10,7 +10,7 @@ mixin exhibition(exhibition)
       h3= exhibition.title[lang] || exhibition.title.english
       ul.artist-links
         each artist in exhibition.artists
-          li: a(keep-lang href= '/artist' + artist.slug)
+          li: a(keep-lang href= '/artist/' + artist.slug)
             - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
             | #{name.first + ' ' + name.last}
       if exhibition.date

@@ -27,7 +27,7 @@ function scrollToSection(event) {
 }
 
 function filter(location) {
-    
+
 }
 
 
@@ -45,6 +45,10 @@ $(function() {
     $scrollpane.on('ps-scroll-y', function(event) {
         let top = $scrollpane.scrollTop()
         // console.log(top)
+        console.log(top)
+        if (top == 0) {
+            $scrollpane.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
+        }
         if (top < $upcoming.height() - 20) {
             $('a[select="#upcoming"]').parent().addClass('active')
             $('a[select!="#upcoming"]').parent().removeClass('active')
