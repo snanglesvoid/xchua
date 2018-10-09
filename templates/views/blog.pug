@@ -32,7 +32,7 @@ block content
             strong #{data.posts.total}
             |  posts.
         else
-          h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
+          //- h4.text-weight-normal Showing #{utils.plural(data.posts.results.length, '* post')}.
           .blog
             each post in data.posts.results
               +post(post)
