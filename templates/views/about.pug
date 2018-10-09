@@ -17,7 +17,7 @@ block intro
       text-decoration: none;
       color: #bbb;
     }
-  h2#page-title 
+  //- h2#page-title 
     a(onclick="filter('Berlin')") Berlin
     span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     a(onclick="filter('Beijing')") Beijing
@@ -30,27 +30,35 @@ block tabbar
       | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
 
 block content
-  .page: .scrollpane: .scrollpane-content
+  .page#aboutPage: .scrollpane#mainScrollpane: .scrollpane-content
     #about
-      if aboutText
-        div(
-          data-editable= inlineEditable(user, {
-            list: 'textblocks',
-            path: 'content.' + (lang || 'english'),
-            data: JSON.stringify(aboutText)
-          })
-        )!= aboutText.content[lang] || aboutText.content.english
-      else
-        div About Text not found!
+      .row: .col-sm-12.col-md-12.col-lg-10
+        if aboutText
+          div(
+            class="about-text"
+            data-editable= inlineEditable(user, {
+              list: 'textblocks',
+              path: 'content.' + (lang || 'english'),
+              data: JSON.stringify(aboutText)
+            })
+          )!= aboutText.content[lang] || aboutText.content.english
+        else
+          div About Text not found!
+        br
+        hr
+        br
+        br
+        br
     #spaces
       .spaces
         each space, index in spaces
           if index % 2 == 0
             .row
-              .col-sm-12.col-md-6.col-lg-6
+              .col-sm-12.col-md-6.col-lg-5.left
                 +gallery-space(space)
-              .col-sm-12.col-md-6.col-lg-6
+              .col-sm-12.col-md-6.col-lg-5.right
                 +gallery-space(spaces[index+1])
 
 block js
   script(src='/js/tabs.js')
+  script(src='/js/about.js')

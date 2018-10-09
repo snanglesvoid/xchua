@@ -23,7 +23,7 @@ function scrollToSection(event) {
     }, 500)
     $a.parent().siblings().removeClass('active')
     $a.parent().addClass('active')
-    location.hash = $section.attr('id')
+    // location.hash = $section.attr('id')
 }
 
 function filter(location) {
@@ -36,15 +36,17 @@ $(function() {
     $current = $('#current')
     $past = $('#past')
     $scrollpane = $('#mainScrollpane')
-    let hash = window.location.hash
-    if (hash) {
-        let $a = $('a[select="' + hash + '"]')
-        scrollToSection($a)
-    }
+    // let hash = window.location.hash
+    // if (hash) {
+    //     let $a = $('a[select="' + hash + '"]')
+    //     scrollToSection($a)
+    // }
 
-    $scrollpane.on('ps-scroll-y', function(event) {
+    // $scrollpane.on('ps-scroll-y')
+
+    setInterval(function() {
         let top = $scrollpane.scrollTop()
-        // console.log(top)
+        console.log(top)
         console.log(top)
         if (top == 0) {
             $scrollpane.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
@@ -52,17 +54,17 @@ $(function() {
         if (top < $upcoming.height() - 20) {
             $('a[select="#upcoming"]').parent().addClass('active')
             $('a[select!="#upcoming"]').parent().removeClass('active')
-            window.location.hash = '#upcoming'
+            // window.location.hash = '#upcoming'
         }
         else if (top < $upcoming.height() + $current.height() - 20) {
             $('a[select="#current"]').parent().addClass('active')
             $('a[select!="#current"]').parent().removeClass('active')
-            window.location.hash = '#current'
+            // window.location.hash = '#current'
         }
         else {
             $('a[select="#past"]').parent().addClass('active')
             $('a[select!="#past"]').parent().removeClass('active')
-            window.location.hash = '#past'
+            // window.location.hash = '#past'
         }
-    })
+    }, 100)
 })
