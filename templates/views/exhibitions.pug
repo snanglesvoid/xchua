@@ -37,10 +37,10 @@ block content
       ul.exhibitions-list
         each i in exhibitions.upcoming.indices
           .row
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.left
               if i < exhibitions.upcoming.berlin.length
                 +exhibition(exhibitions.upcoming.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.right
               if i < exhibitions.upcoming.beijing.length
                 +exhibition(exhibitions.upcoming.beijing[i])
       br
@@ -50,10 +50,10 @@ block content
       ul.exhibitions-list
         each i in exhibitions.current.indices
           .row
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.left
               if i < exhibitions.current.berlin.length
                 +exhibition(exhibitions.current.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.right
               if i < exhibitions.current.beijing.length
                 +exhibition(exhibitions.current.beijing[i])
       br
@@ -63,10 +63,10 @@ block content
       ul.exhibitions-list
         each i in exhibitions.past.indices
           .row
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.left
               if i < exhibitions.past.berlin.length
                 +exhibition(exhibitions.past.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6
+            .col-sm-12.col-md-6.col-lg-6.right
               if i < exhibitions.past.beijing.length
                 +exhibition(exhibitions.past.beijing[i])
       br
