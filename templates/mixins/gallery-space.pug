@@ -5,7 +5,13 @@ mixin gallery-space(space)
       if space.image
         img(src= space._.image.limit(640, 640))
       br
-      .address!= space.address[lang] || space.address.english
+      .address(
+        data-editable= inlineEditable(user, {
+          list: 'galleryspaces',
+          path: 'address.' + (lang || 'english'),
+          data: JSON.stringify(space)
+        })
+      )!= space.address[lang] || space.address.english
       br
       p.phone= space.phone
       br

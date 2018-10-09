@@ -3,18 +3,35 @@ extends ../layouts/layout
 include ../mixins/gallery-space
 
 block intro
-  div
+  style.
+    #page-title {
+      text-align: center;
+      left: 50% !important;
+      transform: translateX(-50%);
+      text-transform: capitalize;
+    }
+    #page-title a {
+      cursor: pointer;
+    }
+    #page-title a:hover {
+      text-decoration: none;
+      color: #bbb;
+    }
+  h2#page-title 
+    a(onclick="filter('Berlin')") Berlin
+    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    a(onclick="filter('Beijing')") Beijing
 
 block tabbar
   ul.tabs
-    li.active: a(select='#about' onclick='openTab(this)')
+    li.active: a(select='#about' onclick='scrollToSection(this)')
       | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
-    li: a(select='#spaces' onclick='openTab(this)')
+    li: a(select='#spaces' onclick='scrollToSection(this)')
       | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
 
 block content
   .page: .scrollpane: .scrollpane-content
-    #about.tab.active
+    #about
       if aboutText
         div(
           data-editable= inlineEditable(user, {
@@ -25,10 +42,15 @@ block content
         )!= aboutText.content[lang] || aboutText.content.english
       else
         div About Text not found!
-    #spaces.tab
+    #spaces
       .spaces
-        each space in spaces
-          +gallery-space(space)
+        each space, index in spaces
+          if index % 2 == 0
+            .row
+              .col-sm-12.col-md-6.col-lg-6
+                +gallery-space(space)
+              .col-sm-12.col-md-6.col-lg-6
+                +gallery-space(spaces[index+1])
 
 block js
   script(src='/js/tabs.js')
