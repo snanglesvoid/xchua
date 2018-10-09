@@ -9,11 +9,51 @@ block intro
   )
     h2= exhibition.title[lang] || exhibition.title.english
 
+block tabbar
+  ul.tabs
+   li.active
+     a(onclick='scrollToSection(this)' select='#text')
+   li
+     a(onclick='scrollToSection(this)' select='#')
+   li
+     a(onclick='scrollToSection(this)' select='#')
+
 block content
   if exhibition
-    .page
-      div!= exhibition.text[lang] || exhibition.text.english
+    .page: .scrollpane#mainScrollpane: .scrollpane-content
+      #cover-picture
+        .row: .col-sm-12.col-md-12.col-lg-10
+          img(
+            src= exhibition._.coverPicture.limit(2048, 2048),
+            style="width: 100%;",
+          )
+          br
+          hr
+      #text
+        .row: .col-sm-12.col-md-12.col-lg-10
+          div(
+            data-editable= inlineEditable(user, {
+              list: 'exhibitions',
+              path: 'text.' + (lang || 'english'),
+              data: JSON.stringify(exhibition)
+            })
+          )!= exhibition.text[lang] || exhibition.text.english
+          br
+          hr
+      #gallery
+        .row: .col-sm-12.col-md-12.col-lg-10
+          +masonry(exhibition.pictures)
+          br
+          hr
+      #artworks
+        .row: .col-sm-12.col-md-12.col-lg-10
+          +works-masonry(exhibition.artworks, false, true)
+          br
+          hr
+
+
 
 
 block js
   script(src='/js/masonry.js')
+  script(src='/js/exhibition.js')

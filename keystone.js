@@ -6,7 +6,7 @@ require('dotenv').config();
 var keystone = require('keystone');
 
 // Initialise Keystone with your project's configuration.
-// See http://keystonejs.com/guide/config for available options
+// See http://keystonejs.com/guide/confipg for available options
 // and documentation.
 
 keystone.init({
@@ -14,7 +14,7 @@ keystone.init({
 	'brand': 'XC.HuA',
 
 	'less': 'public',
-	'static': 'public',
+	'static': ['public'],
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'pug',

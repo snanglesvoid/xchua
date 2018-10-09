@@ -1,13 +1,27 @@
-mixin artwork(w, size=640)
+mixin artwork(w, artist)
   if w
-    .artwork(data-ks-editable=editable(user, {list: 'Artwork', id: w.id, path: '/'}))
-      //- src=w._.image.limit(size, size),
-      img.modal-image(
-        src= w._.image.limit(2048, 2048)
-        caption= w.caption(lang)
-      )
+    .artwork(
+      data-ks-editable=editable(user, {list: 'Artwork', id: w.id, path: '/'})
+      data-image-upload= inlineImageUpload(user, {
+        list: 'artworks',
+        path: 'image',
+        data: JSON.stringify(w)
+      })
+    )
+      if w.image
+        img.modal-image(
+          src= w._.image.limit(2048, 2048)
+          caption= w.caption(lang)
+        )
+      else 
+        if user
+          h3(style="color:red;") Image missing!
       .middle 
         h3= w.title[lang] || w.title.english
         p= w.year
         p= w.description[lang] || w.description.english
         p= w.dimensions
+      if artist
+        a.artistLink(href="/artist/" + artist.slug)
+          - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+          | #{name.first + ' ' + name.last}

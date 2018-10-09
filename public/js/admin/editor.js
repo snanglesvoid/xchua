@@ -49,4 +49,58 @@ $(function() {
         
         $div.after($button)
     })
+
+  
 })
+
+// $(function() {
+//     $('[data-image-upload]').each(function() {
+//         let $div = $(this)
+//         $div.addClass('upload-container')
+
+//         let attrData = JSON.parse($div.attr('data-image-upload'))
+//         let list = attrData.list
+//         let path = attrData.path
+//         let data = JSON.parse(attrData.data)
+//         console.log(data)
+
+//         let $button = $('<a class="ks-editable-btn">Upload Image</a>')
+//         $button.css({
+//             'position': 'absolute',
+//             'bottom' : 0,
+//             'right' : 0,
+//             'background': 'white',
+//             'z-index': 3
+//         })
+
+
+
+//         $button.click(function() {
+//             $div.after(`
+//             <input type="file" name="file" id="file">
+            
+//             <!-- Drag and Drop container-->
+//             <div class="upload-area"  id="uploadfile">
+//                 <h1 id="drag-h1">Drag and Drop file here<br/>Or<br/>Click to select file</h1>
+//             </div>
+//             `)
+
+//             $('html').on('dragover', function(e) {
+//                 e.preventDefault()
+//                 e.stopPropagation()
+//                 $('#drag-h1').text('drag here')
+//             })
+//             $('html').on('drop', function(e) {
+//                 e.preventDefault()
+//                 e.stopPropagation()
+//             })
+//             $('.upload-area').on('dragover', function(e) {
+//                 e.stopPropagation()
+//                 e.preventDefault()
+//                 $('#drag-h1').text('drop')
+//             })
+//         })
+
+//         $div.after($button)
+//     })
+// })
