@@ -13,7 +13,7 @@ mixin artwork(w, artist)
           src= w._.image.limit(2048, 2048)
           caption= w.caption(lang)
         )
-      else 
+      unless w.image && w.image.url 
         if user
           h3(style="color:red;") Image missing!
       .middle 
