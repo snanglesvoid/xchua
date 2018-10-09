@@ -2,12 +2,15 @@ extends ../layouts/layout
 
 mixin post(post)
   .post(data-ks-editable=editable(user, { list: 'Post', id: post.id }))
-    h2.post-title: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
-    if post.image.exists
-      img(src=post._.image.fit(160,160)).post-img.img.pull-right
-    p.post-content!= (post.content[lang] || post.content.english).brief
-    if (post.content[lang] || post.content.english).extended
-      p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
+    .row
+      .col-sm-4.col-md-6.col-lg-8
+        if post.image.exists
+          img(src=post._.image.limit(1024,640)).post-img
+      .col-sm-8.col-md-6.col-lg-8
+        h2.post-title: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
+        p.post-content!= (post.content[lang] || post.content.english).brief
+        if (post.content[lang] || post.content.english).extended
+          p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
 
 block intro
   h2= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
