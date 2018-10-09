@@ -1,12 +1,11 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 block intro
-	.page-header.container
-		if data.post
-			h2= data.post.title[lang] || data.post.title.english
+	if data.post
+		h2= data.post.title[lang] || data.post.title.english
 
 block content
-	.container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+	.page: .scrollpane: .scrollpane-content: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
 		article
 			p: a(href='/blog') &larr; back to the blog
 			hr
