@@ -1,5 +1,66 @@
+.exhibitions-list {
+    padding-left: 0;
+    list-style-type: none;
+    // display: flex;
+}
+
 .exhibition-card {
+    width: 50%;
+    height: 480px;
+    padding: 16px;
     img {
-        width: 50%;
+        width: 100%;
     }
+
+    h3 {
+        font-style: italic;
+        text-transform: capitalize;
+        font-size: 3rem;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+
+
+    ul.artist-links {
+        list-style-type: none;
+        display: block;
+        padding-left: 0;
+        // margin-bottom: 12px;
+        li {
+            list-style-type: none;
+            text-transform: capitalize;
+            display: inline;
+            a {
+                text-decoration: none;
+                color: #bbb;
+                transition: all .25s ease;
+                font-size: 1.5rem;
+            }
+        }
+
+        li:hover {
+            a {
+                color: #000;
+            }
+        }
+
+        li::after {
+            content: ' | ';
+            color: #bbb;
+            white-space: pre;
+        }
+
+        li:last-child::after {
+            content: '';
+        }
+    }
+}
+.exhibition-card.beijing {
+    float: right;
+    text-align: right;
+}
+.exhibition-card.berlin {
+    float: left;
 }

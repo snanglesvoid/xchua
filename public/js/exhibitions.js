@@ -26,6 +26,10 @@ function scrollToSection(event) {
     location.hash = $section.attr('id')
 }
 
+function filter(location) {
+    
+}
+
 
 $(function() {
     $upcoming = $('#upcoming')
@@ -44,14 +48,17 @@ $(function() {
         if (top < $upcoming.height() - 20) {
             $('a[select="#upcoming"]').parent().addClass('active')
             $('a[select!="#upcoming"]').parent().removeClass('active')
+            window.location.hash = '#upcoming'
         }
         else if (top < $upcoming.height() + $current.height() - 20) {
             $('a[select="#current"]').parent().addClass('active')
             $('a[select!="#current"]').parent().removeClass('active')
+            window.location.hash = '#current'
         }
         else {
             $('a[select="#past"]').parent().addClass('active')
             $('a[select!="#past"]').parent().removeClass('active')
+            window.location.hash = '#past'
         }
     })
 })

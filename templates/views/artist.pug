@@ -47,12 +47,13 @@ block content
             //- .flexbox(style="width: auto;")
               +slideshow
       #exhibitions.tab
-        if artist.exhibitions && artist.exhibitions.length
-          ul.exhibitions-list
-            each exhibition in artist.exhibitions
-              +exhibition(exhibition)
-        else
-          h5 No exhibitions found
+        .scrollpane: .scrollpane-content
+          if artist.exhibitions && artist.exhibitions.length
+            ul.exhibitions-list
+              each exhibition in artist.exhibitions
+                +exhibition(exhibition)
+          else
+            h5 No exhibitions found
   //- else
   //-   p= JSON.stringify(artist)
 

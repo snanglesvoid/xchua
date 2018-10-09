@@ -28,8 +28,10 @@ exports = module.exports = (req, res) => {
                 ,
                 {   
                     q: keystone.list('Exhibition').model.find()
-                        .where('artists').in([artist._id])    
-                        .sort('sortOrder'),
+                        .where('artists').in([artist._id])   
+                        .populate('artists') 
+                        .populate('location')
+                        .sort('-date.start'),
                     n: 'exhibitions'
                 }
             ]

@@ -3,28 +3,49 @@ extends ../layouts/layout
 include ../mixins/exhibition.pug
 
 block intro
-  h2#page-title Exhibtions
+  style.
+    #page-title {
+      text-align: center;
+      left: 50% !important;
+      transform: translateX(-50%);
+      text-transform: capitalize;
+    }
+    #page-title a {
+      cursor: pointer;
+    }
+    #page-title a:hover {
+      text-decoration: none;
+      color: #bbb;
+    }
+    
+  h2#page-title 
+    a(onclick="filter('Berlin')") Berlin
+    span(style='font-weight: 100;') &nbsp;&nbsp;|&nbsp;&nbsp;
+    a(onclick="filter('Beijing')") Beijing
 
 block tabbar
   ul.tabs
-    li: a(onclick= "scrollToSection(this)" select="#upcoming") Upcoming Exhibitions
-    li: a(onclick= "scrollToSection(this)" select="#current") Current Exhibitions
-    li: a(onclick= "scrollToSection(this)" select="#past") Past Exhibtions
+    li.active: a(onclick= "scrollToSection(this)" select="#upcoming") Upcoming
+    li: a(onclick= "scrollToSection(this)" select="#current") Current
+    li: a(onclick= "scrollToSection(this)" select="#past") Past
 
 block content
   .page: .scrollpane#mainScrollpane: .scrollpane-content
     #upcoming
-      h2 Future (#{exhibitions.upcoming.length}) 
+      h2 Future (#{exhibitions.upcoming.length})
+      hr
       ul.exhibitions-list
         each ex in exhibitions.upcoming
           +exhibition(ex)
     #current
-      h2 Current (#{exhibitions.current.length}) 
+      h2 Current (#{exhibitions.current.length})
+      hr
       ul.exhibitions-list
         each ex in exhibitions.current
           +exhibition(ex)
     #past
-      h2 Past (#{exhibitions.past.length}) 
+      h2 Past (#{exhibitions.past.length})
+      hr
       ul.exhibitions-list
         each ex in exhibitions.past
           +exhibition(ex)
