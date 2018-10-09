@@ -6,7 +6,7 @@ mixin post(post)
       .col-sm-4.col-md-6.col-lg-8
         if post.image.exists
           img(src=post._.image.limit(1024,640)).post-img
-      .col-sm-8.col-md-6.col-lg-8
+      .col-sm-8.col-md-6.col-lg-4
         h2.post-title: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
         p.post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
