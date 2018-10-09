@@ -9,6 +9,9 @@ exports = module.exports = (req, res) => {
     const query = keystone.list('Exhibition').model.findOne({
         slug: req.params.slug
     })
+    .populate('artists')
+    .populate('artworks')
+    .populate('location')
 
     view.query('exhibition', query)
 

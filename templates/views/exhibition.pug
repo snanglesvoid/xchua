@@ -21,6 +21,18 @@ block tabbar
 block content
   if exhibition
     .page: .scrollpane#mainScrollpane: .scrollpane-content
+      #heading
+        ul.artist-links
+          each artist in exhibition.artists
+            li: a(keep-lang href= '/artist/' + artist.slug)
+              - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+              | #{name.first + ' ' + name.last}
+        if exhibition.date
+          p
+            | #{exhibition._.date.start.format('MM DD YYYY')} #{lang == 'chinese' ? '' : 'to'} &nbsp;
+            | #{exhibition._.date.end.format('MM DD YYYY')}
+            br
+            | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
         .row: .col-sm-12.col-md-12.col-lg-10
           img(
