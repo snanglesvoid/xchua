@@ -14,15 +14,15 @@ Exhibition.add({
     },
     state:     { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     date:      {
-                    start: { type: Types.Date, index: true },
-                    end:   { type: Types.Date, index: true },
+                    start: { type: Types.Date, required: true, initial: true, index: true },
+                    end:   { type: Types.Date, required: true, initial: true, index: true },
                },
     text:      { 
         english: { type: Types.Html, wysiwyg: true, height: 400 },
         chinese: { type: Types.Html, wysiwyg: true, height: 400 }
     },
     //location:  { type: Types.Select, options: 'Beijing, Berlin' },
-    location:  { type: Types.Relationship, ref: 'GallerySpace' },
+    location:  { type: Types.Relationship, ref: 'GallerySpace', required: true, initial: true },
     artists:   { type: Types.Relationship, ref: 'Artist', many: true },
     thumbnail: { type: Types.CloudinaryImage },
     pictures:  { type: Types.CloudinaryImages },
