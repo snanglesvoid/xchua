@@ -11,8 +11,6 @@ mixin post(post)
         p.post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
           p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
-    hr
-    br
 
 block intro
   h2= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
