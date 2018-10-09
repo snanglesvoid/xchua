@@ -10,11 +10,10 @@ mixin post(post)
       p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
 
 block intro
-  .page-header.container
-    h1= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
+  h2= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
 
 block content
-  .page.container: .row
+  .page: .scrollpane: .scrollpane-content: .row
     if filters.category && !data.category
       h3.text-muted= lang == 'chinese' ? 'Invalid Category.' : 'Invalid Category.'
     else
