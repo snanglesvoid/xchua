@@ -30,7 +30,12 @@ block content
           //- img.artist-preview
           each artist in artists
             .preview(artist= artist.slug)
-              +artwork(artist.selectedWork)
+              if (artist.selectedWork)
+                +artwork(artist.selectedWork)
+              unless artist.selectedWork
+                if (artist.thumbnail)
+                  .artwork
+                    img.modal-image(src= artist._.thumbnail.limit(2048, 2048))
           
 
 block js
