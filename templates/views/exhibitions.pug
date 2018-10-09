@@ -32,22 +32,22 @@ block tabbar
 block content
   .page: .scrollpane#mainScrollpane: .scrollpane-content
     #upcoming
-      h2 Future (#{exhibitions.upcoming.length})
-      hr
+      //- h2 Future (#{exhibitions.upcoming.length})
+      //- hr
       ul.exhibitions-list
         each ex in exhibitions.upcoming
           +exhibition(ex)
       br
     #current
-      h2 Current (#{exhibitions.current.length})
-      hr
+      //- h2 Current (#{exhibitions.current.length})
+      //- hr
       ul.exhibitions-list
         each ex in exhibitions.current
           +exhibition(ex)
       br
     #past
-      h2 Past (#{exhibitions.past.length})
-      hr
+      //- h2 Past (#{exhibitions.past.length})
+      //- hr
       ul.exhibitions-list
         each ex in exhibitions.past
           +exhibition(ex)

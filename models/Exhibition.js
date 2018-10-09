@@ -24,7 +24,7 @@ Exhibition.add({
     //location:  { type: Types.Select, options: 'Beijing, Berlin' },
     location:  { type: Types.Relationship, ref: 'GallerySpace', required: true, initial: true },
     artists:   { type: Types.Relationship, ref: 'Artist', many: true },
-    thumbnail: { type: Types.CloudinaryImage },
+    coverPicture: { type: Types.CloudinaryImage },
     pictures:  { type: Types.CloudinaryImages },
     artworks:  { type: Types.Relationship, ref: 'Artwork', many: true }
 })
@@ -43,5 +43,5 @@ Exhibition.schema.methods.locationName = function(lang) {
     }
 }
 
-Exhibition.defaultColumns = 'title.english, thumbnail|20%, state|20%'
+Exhibition.defaultColumns = 'title.english, coverPicture|20%, state|20%'
 Exhibition.register()

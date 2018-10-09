@@ -5,19 +5,18 @@ mixin exhibition(exhibition)
       data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id}),
       class= exhibition.location.location.english.toLowerCase()
     )
-      if exhibition.thumbnail
-        img(src= exhibition._.thumbnail.limit(1024, 1024))
+      if exhibition.coverPicture
+        img(src= exhibition._.coverPicture.limit(1024, 1024))
       h3= exhibition.title[lang] || exhibition.title.english
       ul.artist-links
         each artist in exhibition.artists
           li: a(keep-lang href= '/artist' + artist.slug)
             - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
             | #{name.first + ' ' + name.last}
-      br
       if exhibition.date
         p
           | #{exhibition._.date.start.format('MM DD YYYY')} #{lang == 'chinese' ? '' : 'to'} &nbsp;
           | #{exhibition._.date.end.format('MM DD YYYY')}
           br
           | #{exhibition.location.location[lang] || exhibition.location.location.english}
-      hr(style="color: #bbb;")
+      //- hr(style="color: #bbb;")
