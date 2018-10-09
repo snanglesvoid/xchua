@@ -21,7 +21,7 @@ block tabbar
 block content
   if exhibition
     .page: .scrollpane#mainScrollpane: .scrollpane-content
-      #heading
+      #heading: .row: .col-sm-12.col-md-12.col-lg-10
         ul.artist-links
           each artist in exhibition.artists
             li: a(keep-lang href= '/artist/' + artist.slug)

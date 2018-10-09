@@ -8,6 +8,40 @@
     }
 }
 
+ul.artist-links {
+    list-style-type: none;
+    display: block;
+    padding-left: 0;
+    // margin-bottom: 12px;
+    li {
+        list-style-type: none;
+        text-transform: capitalize;
+        display: inline;
+        a {
+            text-decoration: none;
+            color: #bbb;
+            transition: all .25s ease;
+            font-size: 1.5rem;
+        }
+    }
+
+    li:hover {
+        a {
+            color: #000;
+        }
+    }
+
+    li::after {
+        content: ', ';
+        color: #bbb;
+        white-space: pre;
+    }
+
+    li:last-child::after {
+        content: '';
+    }
+}
+
 .exhibition-card {
     width: 100%;
     height: 480px;
@@ -31,39 +65,7 @@
     }
 
 
-    ul.artist-links {
-        list-style-type: none;
-        display: block;
-        padding-left: 0;
-        // margin-bottom: 12px;
-        li {
-            list-style-type: none;
-            text-transform: capitalize;
-            display: inline;
-            a {
-                text-decoration: none;
-                color: #bbb;
-                transition: all .25s ease;
-                font-size: 1.5rem;
-            }
-        }
 
-        li:hover {
-            a {
-                color: #000;
-            }
-        }
-
-        li::after {
-            content: ', ';
-            color: #bbb;
-            white-space: pre;
-        }
-
-        li:last-child::after {
-            content: '';
-        }
-    }
 }
 
 @media screen and (min-width: @size-md) {
