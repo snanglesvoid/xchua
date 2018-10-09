@@ -49,7 +49,14 @@ block content
       #exhibitions.tab
         .scrollpane: .scrollpane-content
           if artist.exhibitions && artist.exhibitions.length
-            ul.exhibitions-list
+            each exhibition, index in artist.exhibitions
+              if index % 2 == 0
+                .row
+                  .col-sm-12.col-md-6.col-lg-6
+                    +exhibition(exhibition)
+                  .col-sm-12.col-md-6.col-lg-6
+                    +exhibition(artist.exhibitions[index+1])
+            //- ul.exhibitions-list
               each exhibition in artist.exhibitions
                 +exhibition(exhibition)
           else
