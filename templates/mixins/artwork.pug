@@ -8,7 +8,7 @@ mixin artwork(w, artist)
         data: JSON.stringify(w)
       })
     )
-      if w.image
+      if w.image && w.image.url
         img.modal-image(
           src= w._.image.limit(2048, 2048)
           caption= w.caption(lang)
