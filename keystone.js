@@ -77,7 +77,8 @@ keystone.set('nav', {
 	more: [
 		'textblocks',
 		'galleries',
-		'enquiries'
+		'enquiries',
+		'social-links'
 	],
 	users: 'users',
 });
