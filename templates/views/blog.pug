@@ -12,7 +12,7 @@ mixin post(post)
           data-editable= inlineEditable(user, {
             list: 'posts',
             path: 'content.' + (lang || 'english') + '.brief',
-            data: post
+            data: JSON.stringify(post)
           })
         ).post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
