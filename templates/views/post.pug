@@ -2,7 +2,8 @@ extends ../layouts/layout
 
 block intro
   if data.post
-    h2= data.post.title[lang] || data.post.title.english
+    div(data-ks-editable=editable(user, { list: 'Post', id: data.post.id }))
+      h2= data.post.title[lang] || data.post.title.english
 
 block content
   .page: .scrollpane: .scrollpane-content: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
