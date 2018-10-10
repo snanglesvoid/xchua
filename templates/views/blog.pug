@@ -8,7 +8,12 @@ mixin post(post)
           img(src=post._.image.limit(1024,640)).post-img
       .col-sm-8.col-md-6.col-lg-4
         h2.post-title: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
-        p.post-content!= (post.content[lang] || post.content.english).brief
+        div(
+          data-editable= inlineEditable(user, {
+            list: 'posts',
+            path: `content.${lang || 'english'}.brief`
+          })
+        ).post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
           p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
     .row: .col-sm-12.col-md-12.col-lg-10(style="border-bottom: 1px solid #bbb; padding-top: 48px;")
