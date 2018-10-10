@@ -15,7 +15,8 @@ mixin post(post)
             path: 'content.' + (lang || 'english') + '.brief',
             data: JSON.stringify(post)
           })
-        ).post-content!= (post.content[lang] || post.content.english).brief
+        )
+          .post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
           p.read-more: a(keep-lang href='/blog/post/' + post.slug)= lang == 'chinese' ? '' : 'Read more...'
     .row: .col-sm-12.col-md-12.col-lg-10(style="border-bottom: 1px solid #bbb; padding-top: 48px;")

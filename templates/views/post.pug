@@ -22,7 +22,8 @@ block content
               path: 'content.' + (lang || 'english') + '.extended',
               data: JSON.stringify(data.post)
             })
-          )!= (data.post.content[lang] || data.post.content.english).full
+          )
+            div!= (data.post.content[lang] || data.post.content.english).full
 				//- header
 					h1= data.post.title[lang] || data.post.english
 					h5 Posted 
