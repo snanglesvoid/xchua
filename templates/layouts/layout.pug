@@ -38,6 +38,10 @@ html
         block content
       a#logo(href="/")
         include ./logo.svg
+      ul#social-links
+        each link in socialLinks
+          li: a(href= link.url, target="_blank")!= link.iconHtml
+
       include ../partials/image-modal
 
     script(src='/js/jquery/jquery-1.11.3.min.js')

@@ -39,7 +39,7 @@ Publication.schema.methods.caption = function(lang) {
     `
 }
 
-Publication.defaultColumns = 'title.english, thumbnail, state|20%'
+Publication.defaultColumns = 'title.english, cover, state|20%'
 
 
 Publication.register()

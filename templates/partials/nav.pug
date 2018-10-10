@@ -26,8 +26,12 @@ h5#sidenav-section!= section
     | #{lang == 'chinese' ? '艺博会' : 'Fairs'}
   a(keep-lang href="/publications" class= section=='more' ? 'active' : '') 
     | #{lang == 'chinese' ? '出版物' : 'Publications'}
-  a(keep-lang href="/blog" class= section=='about' ? 'active' : '')
-    | #{lang == 'chinese' ? '新闻' : 'News'}
+  each pc in postCategories
+    a(keep-lang
+      href="/blog/"+(pc.name[lang] || pc.name.english).toLowerCase(),
+      class= section=='about' ? 'active' : '',
+    )= pc.name[lang] || pc.name.english
+      //- | #{lang == 'chinese' ? '新闻' : 'News'}
   a(keep-lang href="/about" class= section=='more' ? 'active' : '') 
     | #{lang == 'chinese' ? '关于' : 'About'}
   a(keep-lang href="/contact" class= section=='more' ? 'active' : '') 

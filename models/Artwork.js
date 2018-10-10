@@ -33,6 +33,6 @@ Artwork.schema.methods.caption = function(lang) {
     `
 }
 
-Artwork.defaultColumns = 'title.english, artist, image|20%, year|20%, description|20%'
+Artwork.defaultColumns = 'title.english, artist, image|20%, year|20%, description.english|20%'
 
 Artwork.register()

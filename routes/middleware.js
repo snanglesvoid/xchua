@@ -7,9 +7,8 @@
  * you have more middleware you may want to group it as separate
  * modules in your project's /lib directory.
  */
-var _ = require('lodash');
-
-
+const _ = require('lodash');
+const keystone = require('keystone')
 /**
 	Initialises the standard view locals
 
@@ -28,6 +27,11 @@ function inlineImageUpload(user, data) {
 	else return JSON.stringify(data)
 }
 
+let pcs = []
+keystone.list('PostCategory').model.find().exec((err, ps) => {
+	pcs = ps
+})
+
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'Home', key: 'home', href: '/' },
@@ -39,7 +43,12 @@ exports.initLocals = function (req, res, next) {
 	res.locals.lang = req.query['lang'] || 'english'
 	res.locals.inlineEditable = inlineEditable
 	res.locals.inlineImageUpload = inlineImageUpload
-	next();
+	res.locals.postCategories = pcs
+	keystone.list('SocialLink').model.find()
+		.exec((err, links) => {
+			res.locals.socialLinks = links
+			next(err)
+		})
 };
 
 
