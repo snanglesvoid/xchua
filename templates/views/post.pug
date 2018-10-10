@@ -18,7 +18,7 @@ block content
 					div(
             data-editable= inline-editable(user, {
               list: 'posts',
-              path: `content.${lang || 'english'}.extended`
+              path: 'content.' + (lang || 'english') + '.extended'
             })
           )!= (data.post.content[lang] || data.post.content.english).full
 				//- header

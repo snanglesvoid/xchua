@@ -11,7 +11,7 @@ mixin post(post)
         div(
           data-editable= inlineEditable(user, {
             list: 'posts',
-            path: `content.${lang || 'english'}.brief`
+            path: 'content.' + (lang || 'english') + '.brief'
           })
         ).post-content!= (post.content[lang] || post.content.english).brief
         if (post.content[lang] || post.content.english).extended
