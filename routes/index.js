@@ -47,6 +47,7 @@ exports = module.exports = function (app) {
 	app.get('/fair/:slug', routes.views.fair);
 	app.get('/about', routes.views.about);
 	app.get('/layout', routes.views.layout);
+	app.get('/texts/:slug', routes.views.text);
 	app.get('/pages/wechat', routes.views.wechat);
 	
 	app.get('/admin/updateExhibitionSlugs', middleware.requireUser, routes.admin.updateExhibitionSlugs);

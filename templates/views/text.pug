@@ -1,0 +1,10 @@
+extends ../layouts/layout
+
+block intro
+  if data
+    h2= data.title
+
+block content
+  .page: .scrollpane: .scrollpane-content
+    if data
+      div!= data.content[lang] || data.content.english
