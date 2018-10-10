@@ -16,6 +16,7 @@ block content
 					if data.post.image.exists
 						.image-wrap: img(src=data.post._.image.fit(750,450)).img-responsive
 					div(
+            style="position: relative;",
             data-editable= inlineEditable(user, {
               list: 'posts',
               path: 'content.' + (lang || 'english') + '.extended',

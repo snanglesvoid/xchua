@@ -9,6 +9,7 @@ mixin post(post)
       .col-sm-8.col-md-6.col-lg-4
         h2.post-title: a(keep-lang href='/blog/post/' + post.slug)= post.title[lang] || post.title.english
         div(
+          style="position: relative;",
           data-editable= inlineEditable(user, {
             list: 'posts',
             path: 'content.' + (lang || 'english') + '.brief',
