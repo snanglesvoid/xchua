@@ -51,11 +51,12 @@ exports = module.exports = function (app) {
 	app.get('/pages/wechat', routes.views.wechat);
 	
 	app.get('/admin/updateExhibitionSlugs', middleware.requireUser, routes.admin.updateExhibitionSlugs);
-
+	
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
+	app.all('/subscribe', routes.views.subscribe);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

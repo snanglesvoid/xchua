@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block intro
+  h2 Subscribe to our newsletter
+
+block content
+  .page: .scrollpane: .scrollpane-content
+    .row: .col-sm-8.col-md-8
+      if subscribed
+        h3 Thank you for subscribing!
+        //- p= response
+      else
+        form(method='post')
+          input(type='hidden', name='action', value='subscribe')
+          .form-group(class=validationErrors.firstname ? 'has-error' : null)
+            label First Name
+            input.form-control(type='text', name='firstname', value=formData['firstname'])
+          .form-group(class=validationErrors.lastname ? 'has-error' : null)
+            label Last Name
+            input.form-control(type='text', name='lastname', value=formData['lastname'])
+          .form-group(class=validationErrors.email ? 'has-error' : null)
+            label Email
+            input.form-control(type='email', name='email', value=formData.email)
+          .form-actions
+            button(type='submit').btn.btn-primary Subscribe
+
+block js
+  script(src="/js/mailchimp.js")
