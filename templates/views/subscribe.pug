@@ -23,6 +23,10 @@ block content
             input.form-control(type='email', name='email', value=formData.email)
           .form-actions
             button(type='submit').btn.btn-primary Subscribe
+        p(style="text-align: center; font-size: 1rem;")
+          | By clicking subscribe you confirm that you have read and agree to our
+          a(href="/texts/data-protection-agreement") Data Protection Policy
+          |.
 
 block js
   script(src="/js/mailchimp.js")
