@@ -16,6 +16,6 @@ mixin exhibition(exhibition)
       if exhibition.date
         p
           | #{exhibition._.date.start.format('MM DD YYYY')} #{lang == 'chinese' ? '' : 'to'} &nbsp;
-          | #{exhibition._.date.end.format('MM DD YYYY')},
+          | #{exhibition._.date.end.format('MM DD YYYY')},&nbsp;
           | #{exhibition.location.location[lang] || exhibition.location.location.english}
       //- hr(style="color: #bbb;")
