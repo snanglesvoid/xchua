@@ -12,7 +12,7 @@ Artwork.add({
         chinese : { type: String }
     },
     image:       { type: Types.CloudinaryImage },
-    year:        { type: Number },
+    year:        { type: String },
     description: { 
         english: { type: String },
         chinese: { type: String }, 

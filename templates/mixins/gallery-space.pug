@@ -14,9 +14,7 @@ mixin gallery-space(space)
             data: JSON.stringify(space)
           })
         )!= space.address[lang] || space.address.english
-      br
       p.phone= space.phone
-      br
       p.hours
         | #{lang == chinese ? '' : 'Opening Hours:'} <br/>
         | #{space.openingHours[lang] || space.address.english}
