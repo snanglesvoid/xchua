@@ -21,9 +21,9 @@
         img {
             width: 100%;
         }
-        // h2 {
-
-        // }
+        h2 {
+            font-weight: bold;
+        }
 
         // .phone {
 
@@ -34,16 +34,26 @@
             
     }
 
-    // .right {
-    //     .gallery-space {
-    //         text-align: right;
-    //         h2 {
-    //             text-align: left;
-    //         }
-    //     }
-    // }
+    @media screen and (min-width: @size-md) {
 
-    @media screen and (max-width: 720px) {
+        .left {
+            .gallery-space {
+                h2 {
+                    text-align: right;
+                }
+            }
+        }
+        .right {
+            .gallery-space {
+                text-align: right;
+                h2 {
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: @size-md) {
         .gallery-space {
             width: 100%;
         }
