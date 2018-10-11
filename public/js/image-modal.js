@@ -2,7 +2,7 @@ $(() => {
 
     let $selection
     let $imageModal = $('#image-modal')
-    let $description = $imageModal.find('.description')
+    let $description = $imageModal.find('.caption')
     let $active
     let $imgContainer = $imageModal.find('image-container')
     let $img = $imageModal.find('img')
