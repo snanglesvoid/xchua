@@ -156,11 +156,16 @@ h2 {
         height: @header-height-sm;
         #tabbar {
             position: fixed;
-            top: 0;
-            bottom: 0;
-            left: @mg-left-sm;
-            height: @header-height-sm;
+            top: 120px;
+            left: unset;
+            height: auto;
             width: auto;
+            bottom: unset;
+            margin-top: -36px;
+            right: 12px;
+            ul.tabs {
+                flex-direction: row;
+            }
         }
     
         #titlebar {
