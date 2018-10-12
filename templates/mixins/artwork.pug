@@ -23,7 +23,7 @@ mixin artwork(w, artist)
             - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
             span(style="font-weight: bold;")  #{name.first + ' ' + name.last}
             br
-          | #{w.title[lang] || w.title.english},&nbsp;#{w.year}
+          | #{w.title[lang] || w.title.english}#{w.year ? ", " : ''}#{w.year}
           br
           | #{w.description[lang] || w.description.english}
           br
