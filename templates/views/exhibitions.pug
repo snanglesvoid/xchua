@@ -17,12 +17,14 @@ block intro
       text-decoration: none;
       color: #bbb;
     }
-    
-  h2#page-title.large-only
-    a(onclick="filter('Berlin')") Berlin
-    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    a(onclick="filter('Beijing')") Beijing
-
+  .row
+    .col-sm-12.col-md-6.col-lg-6.left
+      h2#page-title.large-only
+        a(onclick="filter('Berlin')") Berlin
+    .col-sm-12.col-md-6.col-lg-6.right
+      h2#page-title.large-only
+        a(onclick="filter('Beijing')") Beijing
+        
 block tabbar
   ul.tabs
     li.active: a(onclick= "scrollToSection(this)" select="#upcoming") Upcoming
