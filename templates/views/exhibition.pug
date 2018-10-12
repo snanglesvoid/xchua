@@ -34,7 +34,7 @@ block content
             br
             | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
-        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
+        .row: .col-sm-12.col-md-12.col-lg-10
           img(
             src= exhibition._.coverPicture.limit(2048, 2048),
             style="width: 100%;",
