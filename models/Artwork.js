@@ -12,6 +12,7 @@ Artwork.add({
         chinese : { type: String }
     },
     image:       { type: Types.CloudinaryImage },
+    pictures:    { type: Types.CloudinaryImage },
     year:        { type: String },
     description: { 
         english: { type: String },
