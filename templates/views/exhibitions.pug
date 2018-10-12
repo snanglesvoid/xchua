@@ -45,8 +45,8 @@ block content
                 +exhibition(exhibitions.upcoming.beijing[i])
       br
     #current
-      h2 Current (#{exhibitions.current.berlin.length + exhibitions.current.beijing.length})
-      hr
+      //- h2 Current (#{exhibitions.current.berlin.length + exhibitions.current.beijing.length})
+      //- hr
       ul.exhibitions-list
         each i in exhibitions.current.indices
           .row
@@ -58,8 +58,8 @@ block content
                 +exhibition(exhibitions.current.beijing[i])
       br
     #past
-      h2 Past (#{exhibitions.past.berlin.length + exhibitions.past.beijing.length})
-      hr
+      //- h2 Past (#{exhibitions.past.berlin.length + exhibitions.past.beijing.length})
+      //- hr
       ul.exhibitions-list
         each i in exhibitions.past.indices
           .row
