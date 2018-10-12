@@ -34,7 +34,7 @@ block content
             br
             | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
-        .row: .col-sm-12.col-md-12.col-lg-10
+        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
           img(
             src= exhibition._.coverPicture.limit(2048, 2048),
             style="width: 100%;",
@@ -53,12 +53,12 @@ block content
           br
           hr
       #gallery
-        .row: .col-sm-12.col-md-12.col-lg-10
+        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
           +masonry(exhibition.pictures)
           br
           hr
       #artworks
-        .row: .col-sm-12.col-md-12.col-lg-10
+        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
           +works-masonry(exhibition.artworks, false, true)
           br
           hr
