@@ -10,7 +10,7 @@ mixin masonry(images)
     p cannot display masonry - images not defined
 
 
-mixin works-masonry(works, horizontal, showArtistLinks)
+mixin works-masonry(works, horizontal, artist)
   if horizontal
     if works
       .grid-h.masonry.masonry-works.modal-images
@@ -24,7 +24,7 @@ mixin works-masonry(works, horizontal, showArtistLinks)
       .grid.masonry.masonry-works.modal-images
         each work in works
           .grid-item(class= work.masonrySize)
-            +artwork(work, work.artist)
+            +artwork(work, artist || work.artist)
     else
       p cannot display masonry - works not defined
     

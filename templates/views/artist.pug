@@ -22,7 +22,7 @@ block content
   .page
     if artist
       #works.tab.active.wide: .scrollpane: .scrollpane-content
-        +works-masonry(artist.works)
+        +works-masonry(artist.works, null, artist)
         //- .grid
           each work in artist.works
             .grid-item
@@ -43,7 +43,7 @@ block content
                 +works-masonry(artist.works, true)
           .golden-ratio-1.narrow
             .scrollpane.large-only(style="max-width: 400px; float: right;"): .scrollpane-content
-              +works-masonry(artist.works)
+              +works-masonry(artist.works, null, artist)
             //- .flexbox(style="width: auto;")
               +slideshow
       #exhibitions.tab
