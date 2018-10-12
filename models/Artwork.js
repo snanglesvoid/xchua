@@ -11,10 +11,10 @@ Artwork.add({
         english : { type: String, required: true },
         chinese : { type: String },
     },
-    series:      {
-        english : { type: String },
-        chinese : { type: String },
-    },
+    // series:      {
+    //     english : { type: String },
+    //     chinese : { type: String },
+    // },
     image:       { type: Types.CloudinaryImage },
     pictures:    { type: Types.CloudinaryImage },
     year:        { type: String },
