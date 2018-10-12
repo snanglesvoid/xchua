@@ -42,7 +42,7 @@ Artwork.schema.methods.caption = function(lang, artist) {
         let name = artist.name[lang] && artist.name[lang].first
             ? artist.name[lang] : artist.name.english
         res += `
-        <a href="/artist/${artist.slug}">${name.first}&nbsp;${name.last}</a></br>
+        <a href="/artist/${artist.slug}" style='font-weight: bold;'>${name.first}&nbsp;${name.last}</a></br>
         `
     }
     res += this.title[lang] || this.title.english
