@@ -29,8 +29,8 @@ block content
               | #{name.first + ' ' + name.last}
         if exhibition.date
           p
-            | #{exhibition._.date.start.format('MM DD YYYY')} #{lang == 'chinese' ? '' : 'to'} &nbsp;
-            | #{exhibition._.date.end.format('MM DD YYYY')}
+            | #{exhibition._.date.start.format('MMM, Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
+            | #{exhibition._.date.end.format('MMM, Do YYYY')}
             br
             | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
@@ -50,7 +50,6 @@ block content
               data: JSON.stringify(exhibition)
             })
           )!= exhibition.text[lang] || exhibition.text.english
-          br
           hr
       #gallery
         .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
