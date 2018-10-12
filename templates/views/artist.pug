@@ -39,8 +39,6 @@ block content
                   data: JSON.stringify(artist)  
                 })
               )!= artist.biography[lang] || artist.biography.english
-              //- .scrollpane-horizontal.small-only: .scrollpane-content
-                +works-masonry(artist.works, true)
           .golden-ratio-1.narrow
             .scrollpane.large-only(style="max-width: 400px; float: right;"): .scrollpane-content
               +works-masonry(artist.works, null, artist)
