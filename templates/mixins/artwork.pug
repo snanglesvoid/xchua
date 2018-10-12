@@ -18,9 +18,12 @@ mixin artwork(w, artist)
           h3(style="color:red; padding-top: 32px; padding-bottom: 32px;") Image missing!
       .middle 
         h3= w.title[lang] || w.title.english
-        p= w.year
-        p= w.description[lang] || w.description.english
-        p= w.dimensions
+        p
+          | #{w.year}
+          br
+          | #{w.description[lang] || w.description.english}
+          br
+          | #{w.dimensions}
       if artist && artist.name && false
         a.artistLink(href="/artist/" + artist.slug)
           - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
