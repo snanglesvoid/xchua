@@ -17,7 +17,7 @@ mixin artwork(w, artist)
         if user
           h3(style="color:red; padding-top: 32px; padding-bottom: 32px;") Image missing!
       .middle 
-        h3= w.title[lang] || w.title.english
+        p(style="font-weight:bold")= w.title[lang] || w.title.english
         p
           | #{w.year}
           br
