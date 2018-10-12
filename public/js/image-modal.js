@@ -1,8 +1,10 @@
+
 $(() => {
 
     let $selection
     let $imageModal = $('#image-modal')
-    let $description = $imageModal.find('.caption')
+    let $description = $imageModal.find('.description')
+    let $caption= $imageModal.find('.caption')
     let $active
     let $imgContainer = $imageModal.find('image-container')
     let $img = $imageModal.find('img')
@@ -22,8 +24,8 @@ $(() => {
         }
         $selection = $parent.find('.modal-image')
         if ($selection.find('[caption]').length == 0) {
-            $description.css('height', 0)
-            $imgContainer.css('height', '100%')
+            // $description.css('height', 0)
+            // $imgContainer.css('height', '100%')
         }
         else {
             $description.css('height', '150px')
@@ -44,9 +46,10 @@ $(() => {
 
     function openModal() {
         if ($selection) {
-            $description.html($active.attr('caption'))
+            $caption.html($active.attr('caption'))
             $img.attr('src', $active.attr('src'))
             $imageModal.fadeIn(1000)
+            setTimeout(fitCaption,10)
         }
     }
 
@@ -67,10 +70,20 @@ $(() => {
             $img.attr('src', $next.attr('src'))
             $img.fadeIn(500)
         })
-        $description.fadeOut(500, () => {
-            $description.html($next.attr('caption'))
-            $description.fadeIn(500)
+        $caption.fadeOut(500, () => {
+            $caption.html($next.attr('caption'))
+            $caption.fadeIn(500)
+            setTimeout(fitCaption, 10)
         })
         $active = $next
-    }   
+    }
+
+    function fitCaption() {
+        let right = ($caption.width() - $('.img-container img').width())/2
+        right = right < 0 ? 0 : right
+        console.log('fit', right)
+        $caption.find('p').css('margin-right', right) 
+    }
+
+    $(window).resize(fitCaption)
 })

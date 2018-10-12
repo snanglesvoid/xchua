@@ -1,3 +1,21 @@
+mixin artwork-description(w, artist) 
+  if w
+    p
+      if artist 
+        - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+        a(href='/artist/' + artist.slug)  #{name.first + ' ' + name.last}
+        br
+      | #{w.title[lang] || w.title.english}#{w.year ? ", " : ''}#{w.year}
+      br
+      if w.series && (w.series[lang] || w.series.engish)
+        | #{w.series[lang] || w.series.english}
+        br
+      if w.description && (w.description[lang] || w.description.english)
+        | #{w.description[lang] || w.description.english}
+        br
+      if w.dimensions
+        | #{w.dimensions}
+
 mixin artwork(w, artist)
   if w
     .artwork(
@@ -11,23 +29,29 @@ mixin artwork(w, artist)
       if w.image && w.image.url
         img.modal-image(
           src= w._.image.limit(2048, 2048)
-          caption= w.caption(lang)
+          caption= w.caption(lang, artist)
         )
       unless w.image && w.image.url 
         if user
           h3(style="color:red; padding-top: 32px; padding-bottom: 32px;") Image missing!
       .middle 
+        +artwork-description(w, artist)
         //- p(style="font-weight:bold")= w.title[lang] || w.title.english
-        p
-          if artist 
-            - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-            a(href='/artist/' + artist.slug)  #{name.first + ' ' + name.last}
-            br
-          | #{w.title[lang] || w.title.english}#{w.year ? ", " : ''}#{w.year}
-          br
-          | #{w.description[lang] || w.description.english}
-          br
-          | #{w.dimensions}
+        //- p
+        //-   if artist 
+        //-     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+        //-     a(href='/artist/' + artist.slug)  #{name.first + ' ' + name.last}
+        //-     br
+        //-   | #{w.title[lang] || w.title.english}#{w.year ? ", " : ''}#{w.year}
+        //-   br
+        //-   if w.series && (w.series[lang] || w.series.engish)
+        //-     | #{w.series[lang] || w.series.english}
+        //-     br
+        //-   if w.description && (w.description[lang] || w.description.english)
+        //-     | #{w.description[lang] || w.description.english}
+        //-     br
+        //-   if w.dimensions
+        //-     | #{w.dimensions}
       if artist && artist.name && false
         a.artistLink(href="/artist/" + artist.slug)
           - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
