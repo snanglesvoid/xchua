@@ -29,8 +29,8 @@ block content
               | #{name.first + ' ' + name.last}
         if exhibition.date
           p
-            | #{exhibition._.date.start.format('MMM, Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
-            | #{exhibition._.date.end.format('MMM, Do YYYY')}
+            | #{exhibition._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
+            | #{exhibition._.date.end.format('MMM Do YYYY')}
             br
             | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
