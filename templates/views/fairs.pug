@@ -32,9 +32,9 @@ block content
           if index % 2 == 0
             .row
               .col-sm-12.col-md-6.col-lg-6.left
-                +fair(fairs[i])
+                +fair(fairs[index])
               .col-sm-12.col-md-6.col-lg-6.left
-                +fair(fairs[i+1])
+                +fair(fairs[index+1])
     else
       //- h5 No Fairs found
 block js
