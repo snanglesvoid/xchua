@@ -14,8 +14,8 @@ Fair.add({
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     thumbnail: { type: Types.CloudinaryImage },
     date: {
-        start: { type: Date, index: true },
-        end:   { type: Date, index: true }
+        start: { type: Types.Date, index: true },
+        end:   { type: Types.Date, index: true }
     },
     artists: { type: Types.Relationship, ref: 'Artist', many: true }
 })
