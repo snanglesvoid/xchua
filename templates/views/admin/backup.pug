@@ -1,0 +1,37 @@
+extends ../../layouts/layout
+
+block content
+  .page#spinner
+    .row: .col-sm-8.col-md-8
+      p loading...
+  .page#cnt: .scrollpane: .scrollpane-content
+    .row: .col-sm-8.col-md-8
+      button.btn.btn-primary(onclick='downloadBackup(event)') Download Backup
+    if uploaded
+      p the backup has been uploaded
+    else
+      .row: .col-sm-8.col-md-8
+        form(method='post', enctype="multipart/form-data")
+          input(type='hidden', name='action', value='upload')
+          .form-group
+            input(type='file' id='backup', name='backup', accept='.json').inputfile
+            label.btn.btn-primary(for='file') Restore from backup
+          .form-actions
+            button.submit-btn.btn.btn-primary(type='submit') Restore From Backup
+            button.cancel-btn.btn.btn-primary() Cancel
+    .row
+      div#dbstate
+
+block css
+  style.
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+
+block js
+  script(src='/js/admin/backup.js')

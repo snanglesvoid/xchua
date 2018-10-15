@@ -51,7 +51,9 @@ exports = module.exports = function (app) {
 	app.get('/pages/wechat', routes.views.wechat);
 	
 	app.get('/admin/updateExhibitionSlugs', middleware.requireUser, routes.admin.updateExhibitionSlugs);
-	
+	app.all('/admin/backup', middleware.requireUser, routes.admin.backup);
+	app.get('/admin/backup-json', middleware.requireUser, routes.admin['backup-json'])
+
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);

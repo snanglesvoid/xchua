@@ -46,8 +46,8 @@ $(function() {
 
     setInterval(function() {
         let top = $scrollpane.scrollTop()
-        console.log(top)
-        console.log(top)
+        // console.log(top)
+        // console.log(top)
         if (top == 0) {
             $scrollpane.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
         }
