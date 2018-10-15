@@ -8,7 +8,9 @@ exports = module.exports = (req, res) => {
 
     const query = keystone.list('Fair').model.find({
         state: 'published'
-    }).sort('sortOrder')
+    })
+    .populate('artists')
+    .sort('-date.start')
 
     view.query('fairs', query)
 

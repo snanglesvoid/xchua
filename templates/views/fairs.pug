@@ -1,13 +1,40 @@
-extends ../layouts/default
+extends ../layouts/layout
+
+mixin fair(fair)
+  if fair
+    .fair-card(
+      data-ks-editable=editable(user, { list: 'Fair', id: fairs.id})
+    )
+      if fair.thumbnail.exists()
+        img(src= fair._.thumbnail.limit(1024, 1024))
+      .fair-description
+        h3= fair.title[lang] || fair.title.english
+        ul.artist-links
+          each artist in fair.artists
+            li: a(keep-lang href='/fair/' + fair.slug)
+              - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+              | #{name.first + ' ' + name.last}
+        if fair.date
+        p
+          | #{fair._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
+          | #{fair._.date.end.format('MMM Do YYYY')}
+
+      
 
 block intro
-  h2 Fairs
+  div
 
 block content
-  .page
+  .page: .scrollpane: .scrollpane-content
     if fairs.length
       ul.fairs-list
-        each fair in fairs
-          a(href= "/fair/" + fair.slug)= fair.title[lang] || fair.title.english
+        each fair, index in fairs
+          if index % 2 == 0
+            .row
+              .col-sm-12.col-md-6.col-lg-6.left
+                +fair(fairs[i])
+              .col-sm-12.col-md-6.col-lg-6.left
+                +fair(fairs[i+1])
     else
-      h5 No Fairs found
+      //- h5 No Fairs found
+block js

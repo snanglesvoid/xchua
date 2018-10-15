@@ -1,9 +1,33 @@
-extends ../layouts/default
+extends ../layouts/layout
 
 block intro
-  .page-header.container
-    h2= fair.title[lang] || fair.title.english
+  div(
+    data-ks-editable=editable(user, {list: 'Fair', id: fair.id}),
+    style= 'width: 100%, height: 100%;'
+  )
+    h2(style='padding-left: 15px')= fair.title[lang] || fair.title.english
 
 block content
-  .page.container
-    img(src= fair._.thumbnail.limit(320, 320))
+  .page: .scrollpane: .scrollpane-content
+    .row: .col-sm-12.col-md-12.col-lg-10
+      ul.artist-links
+        each artist in fair.artists
+          li: a(keep-lang href='/artist' + artist.slug)
+            - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+            | #{name.first + ' ' + name.last}
+      if fair.date
+        p
+          | #{fair._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
+          | #{fiar._.date.end.format('MMM Do YYYY')}
+          
+    .row: .col-sm-12.col-md-12.col-lg-10
+      img(
+        src= fair._.thumbnail.limit(1024, 1024)
+        style="width:100%;"
+      )
+      br
+      hr
+    .row: .col-sm-12.col-md-12.col-lg-10
+
+block js
+  script(src='/js/masonry.js')
