@@ -5,7 +5,7 @@ mixin exhibition(exhibition)
       data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id}),
       class= exhibition.location.location.english.toLowerCase()
     )
-      if exhibition.coverPicture.exists()
+      if exhibition.coverPicture.exists
         img(src= exhibition._.coverPicture.limit(1024, 1024))
       .ex-description
         h3= exhibition.title[lang] || exhibition.title.english

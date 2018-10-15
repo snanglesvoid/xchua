@@ -5,7 +5,7 @@ mixin fair(fair)
     .fair-card(
       data-ks-editable=editable(user, { list: 'Fair', id: fairs.id})
     )
-      if fair.thumbnail.exists()
+      if fair.thumbnail.exists
         img(src= fair._.thumbnail.limit(1024, 1024))
       .fair-description
         h3= fair.title[lang] || fair.title.english
