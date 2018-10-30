@@ -17,9 +17,9 @@ mixin exhibition(exhibition)
                 | #{name.first + ' ' + name.last}
           else
             li: a(keep-lang href= '#') Group Exhibition
-      if exhibition.date
-        p
-          | #{exhibition._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
-          | #{exhibition._.date.end.format('MMM Do YYYY')},&nbsp;
-          | #{exhibition.location.location[lang] || exhibition.location.location.english}
+        if exhibition.date
+          p
+            | #{exhibition._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;
+            | #{exhibition._.date.end.format('MMM Do YYYY')},&nbsp;
+            | #{exhibition.location.location[lang] || exhibition.location.location.english}
       //- hr(style="color: #bbb;")

@@ -39,6 +39,7 @@ exports = module.exports = (req, res) => {
                 return next(err)
             }
             async.eachSeries(Object.keys(backup), (key, cb) => {
+                if (key == 'User') return cb()
                 let objs = backup[key]
                 let list
                 try {
