@@ -4,6 +4,7 @@ const Artwork = keystone.list('Artwork').model
 exports = module.exports = {
     get: (req, res) => {
         Artwork.findOne({slug: req.params.slug})
+            .populate('artist')
             .exec((err, doc) => {
                 if (err) {
                     return res.status(500).send(err)
