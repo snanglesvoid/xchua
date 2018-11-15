@@ -1,14 +1,13 @@
-const Router = require('express').Router
-
-// const router = Router()
-
-// router.get('/', (req, res) => {
-//     res.json({msg: 'hello world'})
-// })
-
+const keystone = require('keystone')
 
 exports = module.exports = {
     get: (req, res) => {
-        res.json({msg: 'hello world!'})
+        keystone.list('Artwork').model.find()
+            .exec((err, docs) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.json(docs)
+            })
     }
 }
