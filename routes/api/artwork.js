@@ -3,7 +3,7 @@ const Artwork = keystone.list('Artwork').model
 
 exports = module.exports = {
     get: (req, res) => {
-        Artwork.findById(req.params.slug)
+        Artwork.findOne({slug: req.params.slug})
             .exec((err, doc) => {
                 if (err) {
                     return res.status(500).send(err)
