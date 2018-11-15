@@ -62,6 +62,9 @@ exports = module.exports = function (app) {
 	app.all('/subscribe', routes.views.subscribe);
 
 	app.get('/api/artworks', [keystone.middleware.api, keystone.middleware.cors], routes.api.artworks.get)
+	app.get('/api/artwork/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.get)
+	app.post('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.post)
+	app.delete('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.delete)
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
