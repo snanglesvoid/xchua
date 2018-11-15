@@ -48,6 +48,10 @@ keystone.set('locals', {
 keystone.set('routes', require('./routes'));
 
 
+keystone.set('cors allow origin', true);
+keystone.set('cors allow methods', true);
+keystone.set('cors allow headers', true);
+
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	content: [
