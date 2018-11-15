@@ -61,7 +61,7 @@ exports = module.exports = function (app) {
 	app.all('/contact', routes.views.contact);
 	app.all('/subscribe', routes.views.subscribe);
 
-	app.all('/api/artworks', [keystone.middleware.api, keystone.middleware.cors], routes.api.artworks)
+	app.get('/api/artworks', [keystone.middleware.api, keystone.middleware.cors], routes.api.artworks.get)
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
