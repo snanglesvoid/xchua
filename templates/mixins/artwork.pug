@@ -36,23 +36,22 @@ mixin artwork(w, artist)
           h3(style="color:red; padding-top: 32px; padding-bottom: 32px;") Image missing!
       .middle 
         +artwork-description(w, artist)
-        //- p(style="font-weight:bold")= w.title[lang] || w.title.english
-        //- p
-        //-   if artist 
-        //-     - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-        //-     a(href='/artist/' + artist.slug)  #{name.first + ' ' + name.last}
-        //-     br
-        //-   | #{w.title[lang] || w.title.english}#{w.year ? ", " : ''}#{w.year}
-        //-   br
-        //-   if w.series && (w.series[lang] || w.series.engish)
-        //-     | #{w.series[lang] || w.series.english}
-        //-     br
-        //-   if w.description && (w.description[lang] || w.description.english)
-        //-     | #{w.description[lang] || w.description.english}
-        //-     br
-        //-   if w.dimensions
-        //-     | #{w.dimensions}
-      if artist && artist.name && false
+      //- if artist && artist.name && false
         a.artistLink(href="/artist/" + artist.slug)
           - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
           | More about #{name.first + ' ' + name.last}
+
+mixin series(series, ws, artist)
+  -var x = console.log(series)
+  -var y = console.log(ws)
+  if series && ws
+    .artwork.artwork-series(
+      data-ks-editable=editable(user, {list: 'ArtworkSeries', id: series.id, path: '/'})
+    )
+      if ws[0] && ws[0].image && ws[0].image.secure_url
+        img.modal-image(
+          src= ws[0]._.image.limit(2048, 2048)
+          caption= series.title[lang] || series.title.english
+        )
+      .middle
+        p= series.title[lang] || series.title.english

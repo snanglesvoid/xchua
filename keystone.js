@@ -59,7 +59,8 @@ keystone.set('nav', {
 		'exhibitions',
 		'publications',
 		'fairs',
-		'artworks'
+		'artworks',
+		'artwork-series',
 	],
 	// artists: 'artists',
 	// exhibitions: 'exhibitions',

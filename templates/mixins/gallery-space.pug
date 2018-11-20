@@ -17,5 +17,5 @@ mixin gallery-space(space)
       p.phone= space.phone
       p.hours
         | #{lang == chinese ? '' : 'Opening Hours:'} <br/>
-        | #{space.openingHours[lang] || space.address.english}
+        | #{space.openingHours[lang] || space.openingHours.english}
   else

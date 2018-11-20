@@ -34,6 +34,13 @@ exports = module.exports = (req, res) => {
                         .sort('-date.start'),
                     n: 'exhibitions'
                 }
+                ,
+                {
+                    q: keystone.list('ArtworkSeries').model.find({
+                        artist: artist._id
+                    }),
+                    n: 'series'
+                }
             ]
 
             async.each(queries, (query, cb) => {
@@ -45,6 +52,21 @@ exports = module.exports = (req, res) => {
                 })
             }, err => {
                 // console.log(artist.exhibitions)
+                locals.series = {}
+                locals.artist.series.forEach(s => {
+                    locals.series['ser__' + s.slug] = {
+                        works: locals.artist.works.filter(x => {
+                            return s._id.equals(x.series)
+                        }),
+                        series: s
+                    }
+                })
+                locals.artist.works.forEach(x => {
+                    if (!x.series) {
+                        locals.series['wor__' + x.slug] = x
+                    }
+                })
+                console.log(locals.series)
                 next(err)
             })
         })

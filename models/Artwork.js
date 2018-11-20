@@ -11,10 +11,6 @@ Artwork.add({
         english : { type: String, required: true },
         chinese : { type: String },
     },
-    // series:      {
-    //     english : { type: String },
-    //     chinese : { type: String },
-    // },
     image:       { type: Types.CloudinaryImage },
     pictures:    { type: Types.CloudinaryImage },
     year:        { type: String },
@@ -23,7 +19,11 @@ Artwork.add({
         chinese: { type: String }, 
     },
     dimensions:  { type: String },
+    price:       { type: String },
+    availability: { type: Boolean },
+    note:        { type: Types.Html, wysiwyg: true, height: 20 },
     artist:      { type: Types.Relationship, ref: 'Artist' },
+    series:      { type: Types.Relationship, ref: 'ArtworkSeries' }
     // masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
 })
 
@@ -59,6 +59,6 @@ Artwork.schema.methods.caption = function(lang, artist) {
     return res
 }
 
-Artwork.defaultColumns = 'title.english, artist, image|20%, year|20%, description.english|20%'
+Artwork.defaultColumns = 'title.english, artist, series, image|10%, year|20%, description.english|20%'
 
 Artwork.register()

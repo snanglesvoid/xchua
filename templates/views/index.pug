@@ -10,6 +10,7 @@ block content
           class= index == 0 ? 'active' : '',
           title= image.title[lang] || image.title.english,
           caption= image.caption[lang] || image.caption.english,
+          subtitle= image.subtitle[lang] || image.subtitle.english,
           url= image.linkUrl,
           placement= image.textPlacement,
           color= image.textColor
@@ -18,9 +19,10 @@ block content
         class=images[0].textPlacement,
         class=images[0].textColor
       )
+        h3.subtitle=images[0].subtitle[lang] || images[0].subtitle.english
         h2.title
           a(href=images[0].linkUrl)=images[0].title[lang] || images[0].title.english
-        h2.caption=images[0].caption[lang] || images[0].caption.english
+        h3.caption=images[0].caption[lang] || images[0].caption.english
 
 block js
   script(src='/js/slideshow.js')

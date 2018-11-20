@@ -5,6 +5,7 @@ const fs = require('fs')
 const lists = [
     'Artist',
     'Artwork',
+    'ArtworkSeries',
     'Enquiry',
     'Exhibition',
     'Fair',
@@ -16,7 +17,7 @@ const lists = [
     'Publication',
     'SocialLink',
     'Textblock',
-    'User'
+    // 'User'
 ]
 
 exports = module.exports = (req, res) => {

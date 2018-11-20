@@ -10,6 +10,10 @@ FrontPageImage.add({
         english: { type: String, required: true },
         chinese: { type: String}
     },
+    subtitle: {
+        english: { type: String },
+        chinese: { type: String }
+    },
     caption:       { 
         english: { type: String },
         chinese: { type: String } 

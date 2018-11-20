@@ -32,6 +32,15 @@
             background: inherit;
             text-transform: uppercase;
             font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            transition: all 0.4s ease;
+            background: inherit;
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         a:hover {
@@ -42,21 +51,21 @@
     .slideshow-title.left {
         bottom: 12.5%;
         left: 12.5%;
-        h2, h2 a {
+        h2, h2 a, h3 {
             text-align: left;
         }
     }
     .slideshow-title.right {
         bottom: 25%;
         right: 20%;
-        h2, h2 a {
+        h2, h2 a, h3 {
             text-align: right;
         }
     }
     .slideshow-title.top {
         top: 12.5%;
         right: 12.5%;
-        h2, h2 a {
+        h2, h2 a, h3 {
             text-align: right;
         }
     }
@@ -64,7 +73,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        h2, h2 a {
+        h2, h2 a, h3 {
             text-align: center;
         }
     }
@@ -79,11 +88,32 @@
         }
     }
 }
+.front-slideshow {
+    h2 {
+        font-size: 40px;
+    }
+    h3 {
+        font-size: 25px;
+    }
+}
 
-@media (max-width: @size-sm) {
-    .gallery {
+@media screen and (min-width: @size-lg) {
+    .front-slideshow {
         h2 {
-            font-size: 20px;
+            font-size: 50px;
+        }
+        h3 {
+            font-size: 32px;
+        }
+    }
+}
+@media (max-width: @size-sm) {
+    .front-slideshow {
+        h2 {
+            font-size: 34px;
+        }
+        h3 {
+            font-size: 26px;
         }
     }
 
@@ -91,7 +121,7 @@
         .slideshow-title.right {
             bottom: 15%;
             right: 10%;
-            h2, h2 a {
+            h2, h2 a, h3 {
                 text-align: right;
             }
         }

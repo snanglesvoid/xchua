@@ -1,5 +1,5 @@
 $(() => {
-    let timePerSlide = 10000
+    let timePerSlide = 6000
 
     function nextSlide() {
         $('.front-slideshow').each(function() {
@@ -11,6 +11,7 @@ $(() => {
                 : $slideshow.find('img:first').next()
             let title = $next.attr('title')
             let caption = $next.attr('caption')
+            let subtitle = $next.attr('subtitle')
             let url = $next.attr('url')
             let placement = $next.attr('placement')
             let color = $next.attr('color')
@@ -29,6 +30,7 @@ $(() => {
                 $title.addClass(color)
                 $title.find('.title > a').html(title).attr('href', url)
                 $title.find('.caption').html(caption)
+                $title.find('.subtitle').html(subtitle)
                 $title.fadeIn(500)
             })
 

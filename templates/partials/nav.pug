@@ -27,8 +27,9 @@ h5#sidenav-section!= section
   a(keep-lang href="/publications" class= section=='more' ? 'active' : '') 
     | #{lang == 'chinese' ? '出版物' : 'Publications'}
   each pc in postCategories
+    -var x = console.log(pc, lang)
     a(keep-lang
-      href="/blog/"+(pc.name[lang] || pc.name.english).toLowerCase(),
+      href="/blog/"+(pc.name.english).toLowerCase(),
       class= section=='about' ? 'active' : '',
     )= pc.name[lang] || pc.name.english
       //- | #{lang == 'chinese' ? '新闻' : 'News'}

@@ -23,6 +23,7 @@ block content
     if artist
       #works.tab.active.wide: .scrollpane: .scrollpane-content
         +works-masonry(artist.works, null, artist)
+        //- +series-masonry(series, artist)
         //- .grid
           each work in artist.works
             .grid-item
