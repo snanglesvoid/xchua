@@ -15,13 +15,21 @@ $(() => {
         $active = $(this)
         let $parent = $active
         let i = 0
-        while(!$parent.hasClass('modal-images')) {
-            $parent = $parent.parent()
-            i++
-            if (i > 100) {
-                throw 'oops something went wrong'
-            } 
+        try {
+            while(!$parent.hasClass('modal-images')) {
+                $parent = $parent.parent()
+                if ($parent.hasClass('selected-work')) {
+                    throw 'oops'
+                }
+                i++
+                if (i > 100) {
+                    throw 'oops something went wrong'
+                } 
+            }
+        } catch (error) {
+            return
         }
+
         $selection = $parent.find('.modal-image')
         if ($selection.find('[caption]').length == 0) {
             // $description.css('height', 0)
@@ -32,7 +40,7 @@ $(() => {
             $imgContainer.css('height', 'calc(100% - 150px)')
         }
         openModal()
-        console.log($selection)
+        // console.log($selection)
     })
 
     $('.previous-image-button').click(function(evt) {

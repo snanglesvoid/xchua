@@ -1,6 +1,7 @@
 $(() => {
     let timePerSlide = 6000
 
+
     function nextSlide() {
         $('.front-slideshow').each(function() {
 
@@ -17,7 +18,7 @@ $(() => {
             let color = $next.attr('color')
             let $title = $slideshow.find('.slideshow-title')
 
-            console.log('color', color)
+            // console.log('color', color)
 
             $title.fadeOut(500, () => {
                 $title.removeClass('left')
@@ -28,6 +29,12 @@ $(() => {
                 $title.removeClass('bright')
                 $title.addClass(placement)
                 $title.addClass(color)
+                
+                let cColor = color == 'custom' ? $next.attr('customColor') : ''
+                $title.find('.title > a').css('color', cColor)
+                $title.find('.caption').css('color', cColor)
+                $title.find('.subtitle').css('color', cColor)
+    
                 $title.find('.title > a').html(title).attr('href', url)
                 $title.find('.caption').html(caption)
                 $title.find('.subtitle').html(subtitle)

@@ -3,7 +3,7 @@ extends ../layouts/layout
 block content
   .front-slideshow
     if images && images.length > 0
-      img.placeholder(src=images[0].image.url)
+      img.placeholder(src=images[0].image.secure_url)
       each image, index in images
         img(
           src= image._.image.limit(2048, 2048),
@@ -13,16 +13,17 @@ block content
           subtitle= image.subtitle[lang] || image.subtitle.english,
           url= image.linkUrl,
           placement= image.textPlacement,
-          color= image.textColor
+          color= image.textColor,
+          customColor= image.customColor,
         )
       .slideshow-title(
         class=images[0].textPlacement,
         class=images[0].textColor
       )
-        h3.subtitle=images[0].subtitle[lang] || images[0].subtitle.english
+        h3.subtitle(style='color:'+images[0].customColor+';')=images[0].subtitle[lang] || images[0].subtitle.english
         h2.title
-          a(href=images[0].linkUrl)=images[0].title[lang] || images[0].title.english
-        h3.caption=images[0].caption[lang] || images[0].caption.english
+          a(href=images[0].linkUrl, style='color:'+images[0].customColor+';')=images[0].title[lang] || images[0].title.english
+        h3.caption(style='color:'+images[0].customColor+';')=images[0].caption[lang] || images[0].caption.english
 
 block js
   script(src='/js/slideshow.js')

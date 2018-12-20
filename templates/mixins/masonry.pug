@@ -16,7 +16,7 @@ mixin works-masonry(works, horizontal, artist)
       .grid-h.masonry.masonry-works.modal-images
         each work in works
           .grid-item(class= work.masonrySize)
-            +artwork(work, showArtistLinks)
+            +artwork(work, artist || work.artist)
     else
       p cannot display masonry - works not defined
   else
@@ -28,19 +28,23 @@ mixin works-masonry(works, horizontal, artist)
     else
       p cannot display masonry - works not defined
 
-mixin series-masonry(series, artist)
-  if series
-    .grid.masonry.masonry-works.modal-images
-      each key in Object.keys(series)
-        .grid-item
-          if key[0] == 'w'
-            +artwork(series[key], artist || series[key].artist)
-          unless key[0] == 'w'
-            +series(series[key].series, series[key].works, artist)
-        //- -var x = console.log(key)
-        //- -var work = key[0] == 'w' ? series[key] : series[key][0]
-        //- .grid-item
-        //-   +artwork(work, artist || work.artist)
+mixin series-masonry(series, works, artist)
+  if series && works
+    if series.length > 0
+      if works && works.length > 0
+        -var x = series.push({title: {english: 'Uncategorized'},artworks: works,selectedWork: works[0], artist: artist})
+        .modal-images
+          each s in series
+            .grid.masonry.masonry-works
+              +series(s, artist)
+              .grid-item.divider(style="width: 100%; height:16px; border-top: 1px solid lightgrey;")
+          //- .grid-item(style="width: 100%; height:16px; border-top: 1px solid lightgrey;")
+    else
+      .grid.masonry.masonry-works.modal-images
+        each w in works
+          .grid-item(class= w.masonrySize)
+            +artwork(w, artist || w.artist)        
   else
-    p Error works undefined
+    h3(style='color: red;') Error: invalid arguments in mixin +series-masonry!
+
 

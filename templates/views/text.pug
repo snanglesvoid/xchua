@@ -7,4 +7,4 @@ block intro
 block content
   .page: .scrollpane: .scrollpane-content
     if data
-      div!= data.content[lang] || data.content.english
+      .container(style='text-align: justify;')!= data.content[lang] || data.content.english

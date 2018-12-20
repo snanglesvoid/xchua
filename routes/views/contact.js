@@ -19,13 +19,27 @@ exports = module.exports = function (req, res) {
 		var newEnquiry = new Enquiry.model();
 		var updater = newEnquiry.getUpdateHandler(req);
 
+		var errors = {}
+
+		if (!req.body['data-agree']) {
+			errors = {
+				agree: {
+					type: 'required',
+					error:'Please agree to out data protection policy.',
+					fieldName: 'data-agree'
+				}
+			}
+		}
+
 		updater.process(req.body, {
 			flashErrors: true,
 			fields: 'name, email, phone, enquiryType, message',
 			errorMessage: 'There was a problem submitting your enquiry:',
 		}, function (err) {
-			if (err) {
-				locals.validationErrors = err.errors;
+			console.log(err)
+			if (err || errors.agree) {
+				locals.validationErrors = err ? err.detail : {};
+				locals.validationErrors.agree = errors.agree;
 			} else {
 				locals.enquirySubmitted = true;
 			}

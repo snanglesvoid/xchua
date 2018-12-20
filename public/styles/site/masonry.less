@@ -4,8 +4,28 @@
     }
 }
 
-.masonry.masonry-works {
-
+.grid-item {
+    opacity: 0;
+}
+.grid {
+    .grid-item.hidden {
+        width: 0;
+        opacity: 0;
+    }
+    .grid-item.huge {
+        width: 63%;
+        max-height: 340px;
+        height: 340px;
+        overflow: hidden;
+        
+    }
+    .grid-item.series-title {
+        width: 27%;
+        height: 340px;
+    }
+    .grid-item.tiny {
+        width: 24%;
+    }
 }
 
 .grid-h {
@@ -19,11 +39,18 @@
     }
 }
 
-// PHONES
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 362px) {
     .grid {
         .grid-item {
             width: 100%;
+        }
+    }
+}
+// PHONES
+@media screen and (min-width: 364px) and (max-width: 480px) {
+    .grid {
+        .grid-item {
+            width: 48.5%;
         }
     }
 }
@@ -70,6 +97,16 @@
         .grid-item.big {
            width: 48%;
         }
+    }
+}
+
+@media screen and (min-width: 1360px) {
+    .grid {
+        .grid-item.huge, .grid-item.series-title {
+            height: 450px;
+            max-height: 400px;
+        }
+        
     }
 }
 

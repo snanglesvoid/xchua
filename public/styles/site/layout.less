@@ -50,6 +50,12 @@ h3.page-title {
 }
 
 
+.limit-width {
+	max-width: 1800px;
+}
+
+
+
 @media screen and (max-width: 720px) {
    .page-header {
 	   h2 {
@@ -61,6 +67,9 @@ h3.page-title {
 	   padding-left: 8px;
 	   padding-right: 8px;
 	   padding-top: 8px;
+   }
+   .limit-width {
+	   max-width: unset;
    }
 }
 
@@ -88,6 +97,9 @@ h3.page-title {
 	.small-only {
 		display: block;
 	}
+	.limit-width {
+		max-width: unset;
+	}
 }
 
 @media screen and (min-width: (@size-md + 1)) {
@@ -97,4 +109,8 @@ h3.page-title {
 	.large-only {
 		display: block;
 	}
+	.limit-width {
+		max-width: 1200px;
+	}
 } 
+

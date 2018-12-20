@@ -18,7 +18,7 @@ Post.add({
 	},
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
-	publishedDate: { type: Types.Date, index: true, default: Date.now },
+	publishedDate: { type: Types.Date, index: true },
 	image: { type: Types.CloudinaryImage },
 	content: { 
 		english: {
@@ -42,6 +42,14 @@ Post.schema.virtual('content.chinese.gull').get(function () {
 	if (!this.content.chinese) return ''
 	return this.content.chinese.extended || this.content.chinese.brief;
 })
+
+Post.schema.pre('save', function (next) {
+	let event = this
+	if (event.isModified('published') && event.published) {
+		this.publishDate = Date.now();
+	}
+	return next()
+});
 
 Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|20%';
 Post.register();

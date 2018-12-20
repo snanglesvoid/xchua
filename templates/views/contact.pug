@@ -12,22 +12,39 @@ block content
 				form(method='post')
 					input(type='hidden', name='action', value='contact')
 					.form-group(class=validationErrors.name ? 'has-error' : null)
-						label Name
+						if validationErrors.name
+							label.danger= validationErrors.name.error
+						else
+							label Name
 						input(type='text', name='name.full', value=formData['name.full']).form-control
 					.form-group(class=validationErrors.email ? 'has-error' : null)
-						label Email
+						if validationErrors.email
+							label.danger= validationErrors.email.error
+						else
+							label Email
 						input(type='email', name='email', value=formData.email).form-control
 					.form-group
 						label Phone
 						input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
 					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
 						label What are you contacting us about?
+						if validationErrors.enquiryType
+							label.danger Please select one
 						select(name='enquiryType').form-control
 							option(value='') (select one)
-							each type in enquiryTypes
-								option(value=type.value, selected=formData.enquiryType == type.value)= type.label
+							each t in enquiryTypes
+								option(value=t.value, selected=formData.enquiryType == t.value)= t.label
 					.form-group(class=validationErrors.message ? 'has-error' : null)
-						label Message
+						if validationErrors.message
+							label.danger= validationErrors.message.error
+						else
+							label Message
 						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+					.form-group(class=validationErrors.agree ? 'has-error' : null)
+						input(type='checkbox', name='data-agree', value=false)
+						label(class=validationErrors.agree ? 'danger' : '')
+							| I have read and agree to our&nbsp;
+							a(href='/texts/data-protection-agreement' target='_blank') data protection policy
+							| .
 					.form-actions
 						button(type='submit').btn.btn-primary Send

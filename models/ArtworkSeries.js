@@ -13,10 +13,24 @@ ArtworkSeries.add({
     },
 
     artist: {
-        type: Types.Relationship, ref: 'Artist'
-    }
+        type: Types.Relationship, ref: 'Artist', initial: true, required: true, editable: false
+    },
+
+    artworks: {
+        type: Types.Relationship, ref: 'Artwork', many: true, filters: { artist: ':artist' }
+    },
+
+    selectedWork: {
+        type: Types.Relationship, ref: 'Artwork', filters: { artist: ':artist' }
+    },
+
+    // year: {
+    //     type: Number
+    // }
 })
 
-ArtworkSeries.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'series'})
+// ArtworkSeries.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'series'})
+
+ArtworkSeries.defaultColumns = 'title.english, artist, selectedWork'
 
 ArtworkSeries.register()

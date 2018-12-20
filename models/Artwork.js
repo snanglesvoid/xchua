@@ -3,7 +3,8 @@ const Types = keystone.Field.Types
 
 const Artwork = new keystone.List('Artwork', {
     map: { name: 'title.english' },
-    autokey: { path: 'slug', from: 'title.english', unique: true }
+    autokey: { path: 'slug', from: 'title.english', unique: true },
+    defaultSort: '-artist'
 })
 
 Artwork.add({
@@ -23,7 +24,7 @@ Artwork.add({
     availability: { type: Boolean },
     note:        { type: Types.Html, wysiwyg: true, height: 20 },
     artist:      { type: Types.Relationship, ref: 'Artist' },
-    series:      { type: Types.Relationship, ref: 'ArtworkSeries' }
+    // series:      { type: Types.Relationship, ref: 'ArtworkSeries' }
     // masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
 })
 
@@ -59,6 +60,8 @@ Artwork.schema.methods.caption = function(lang, artist) {
     return res
 }
 
-Artwork.defaultColumns = 'title.english, artist, series, image|10%, year|20%, description.english|20%'
+Artwork.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artworks'})
+
+Artwork.defaultColumns = 'title.english, artist, image|10%, year|20%, description.english|20%'
 
 Artwork.register()

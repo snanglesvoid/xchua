@@ -206,13 +206,26 @@ h2 {
 // 	box-shadow: inset 0 0 6px rgba(0,0,0,0);
 // }
 
+.limit-width {
+    max-width: 1800px;
+}
+
 @media screen and (max-width: @size-md) {
 	.large-only {
 		display: none !important;
 	}
 	.small-only {
 		display: block;
-	}
+    }
+    .limit-width {
+        max-width: unset;
+    }
+}
+
+@media screen and (max-width: @size-md) {
+    .limit-width {
+        max-width: unset;
+    }
 }
 
 @media screen and (min-width: (@size-md + 1)) {
@@ -221,8 +234,21 @@ h2 {
 	}
 	.large-only {
 		display: block;
-	}
+    }
+    .limit-width {
+        max-width: 1200px;
+    }
 } 
+@media screen and (min-width: 1600px) {
+    .limit-width {
+        max-width: 1500px;
+    }
+}
+@media screen and (min-width: 2000px) {
+    .limit-width {
+        max-width: 1800px;
+    }
+}
 
 .ks-editable-btn {
     right: 8px !important;
@@ -244,4 +270,8 @@ h2 {
     }
 }
 
+
+label.danger {
+    color: #a94442;
+}
 

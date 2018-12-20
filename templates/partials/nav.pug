@@ -16,6 +16,7 @@ h5#sidenav-section!= section
   //- a.closebtn(href="javascript:void(0)" onclick="closeNav()") &times;
   //- each link in navLinks
     li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
+  br
   a(keep-lang href="/" class= section=='home' ? 'active' : '') 
     | #{lang == 'chinese' ? '主页' : 'Home'}
   a(keep-lang href="/artists" class= section=='artists' ? 'active' : '')

@@ -19,7 +19,8 @@ FrontPageImage.add({
         chinese: { type: String } 
     },
     linkUrl:       { type: String, default: '#'},
-    textColor:     { type: Types.Select, options: ['bright', 'dark'], default: 'bright'},
+    textColor:     { type: Types.Select, options: ['bright', 'dark', 'custom'], default: 'bright'},
+    customColor:   { type: String, dependsOn: { textColor: 'custom'} },
     textPlacement: { type: Types.Select, options: ['left', 'right', 'center', 'top'], default: 'right'},
     image:         { type: Types.CloudinaryImage },
     active:        { type: Boolean, default: true },

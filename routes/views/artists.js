@@ -10,7 +10,7 @@ exports = module.exports = (req, res) => {
         state: 'published'
     })
     .populate('selectedWork')
-    .sort('sortOrder'))
+    .sort('-listPriority'))
 
     view.render('artists')
 }

@@ -1,0 +1,19 @@
+Artwork Series -- 
+    --slideshow vs opening Series
+
+About page maybe nicer
+    --adress spacing
+
+Fairs
+    --maybe single row or smaller images
+    --more spacing
+
+//Contact page
+
+
+//Publications Less empty display style
+
+
+//Custom Emails --
+//    - personalized names
+//    - mailing lists

@@ -21,18 +21,12 @@ block tabbar
 block content
   .page
     if artist
-      #works.tab.active.wide: .scrollpane: .scrollpane-content
-        +works-masonry(artist.works, null, artist)
-        //- +series-masonry(series, artist)
-        //- .grid
-          each work in artist.works
-            .grid-item
-              .gallery-image
-                img(src=work._.image.limit(640,640))
-      #biography.tab
+      #works.tab.active.wide.limit-width: .scrollpane: .scrollpane-content
+        +series-masonry(artist.series, artist.loneWorks, artist)
+      #biography.tab.limit-width
         .flexbox.responsive
           .golden-ratio-2
-            .scrollpane.top(style="max-width: 600px;"): .scrollpane-content
+            .scrollpane.top(style="max-width: 720px;"): .scrollpane-content
               div(
                 data-editable= inlineEditable(user, {
                   list: 'artists',
@@ -41,11 +35,11 @@ block content
                 })
               )!= artist.biography[lang] || artist.biography.english
           .golden-ratio-1.narrow
-            .scrollpane.large-only(style="max-width: 400px; float: right;"): .scrollpane-content
+            .scrollpane.large-only(style="max-width: 600px; float: right;"): .scrollpane-content
               +works-masonry(artist.works, null, artist)
             //- .flexbox(style="width: auto;")
               +slideshow
-      #exhibitions.tab
+      #exhibitions.tab.limit-width
         .scrollpane: .scrollpane-content
           if artist.exhibitions && artist.exhibitions.length
             ul.exhibitions-list
@@ -68,5 +62,5 @@ block content
 
 block js
   script(src='/js/tabs.js')
-  script(src='/js/artist.js')
   script(src='/js/masonry.js')
+  script(src='/js/artist.js')

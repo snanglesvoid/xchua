@@ -3,7 +3,8 @@ const Types = keystone.Field.Types
 
 const Artist = new keystone.List('Artist', {
     autokey: { path: 'slug', from: 'name.english', unique: true },
-    map: { name: 'name.english' }
+    map: { name: 'name.english' },
+    defaultSort: '-listPriority'
 })
 
 Artist.add({
@@ -18,12 +19,14 @@ Artist.add({
     },
     picture:       { type: Types.CloudinaryImage },
     thumbnail:     { type: Types.CloudinaryImage },
-    selectedWork:  { type: Types.Relationship, ref: 'Artwork' }
+    selectedWork:  { type: Types.Relationship, ref: 'Artwork' },
+    listPriority:  { type: Number, default: 0 }
     // artworks:      { type: Types.Relationship, ref: 'Artwork', many: true },
     // exhibitions:   { type: Types.Relationship, ref: 'Exhibition', many: true }
 })
 
 Artist.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'artist' })
+Artist.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artist'})
 Artist.relationship({ ref: 'Exhibition', path: 'exhibitions', refPath: 'artists'})
 Artist.relationship({ ref: 'Fair', path: 'fairs', refPath: 'artists'})
 

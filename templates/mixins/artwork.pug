@@ -26,12 +26,12 @@ mixin artwork(w, artist)
         data: JSON.stringify(w)
       })
     )
-      if w.image && w.image.url
+      if w.image && w.image.exists
         img.modal-image(
           src= w._.image.limit(2048, 2048)
           caption= w.caption(lang, artist)
         )
-      unless w.image && w.image.url 
+      unless w.image && w.image.exists
         if user
           h3(style="color:red; padding-top: 32px; padding-bottom: 32px;") Image missing!
       .middle 
@@ -41,17 +41,25 @@ mixin artwork(w, artist)
           - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
           | More about #{name.first + ' ' + name.last}
 
-mixin series(series, ws, artist)
-  -var x = console.log(series)
-  -var y = console.log(ws)
-  if series && ws
-    .artwork.artwork-series(
-      data-ks-editable=editable(user, {list: 'ArtworkSeries', id: series.id, path: '/'})
-    )
-      if ws[0] && ws[0].image && ws[0].image.secure_url
-        img.modal-image(
-          src= ws[0]._.image.limit(2048, 2048)
-          caption= series.title[lang] || series.title.english
-        )
-      .middle
-        p= series.title[lang] || series.title.english
+
+mixin series(series, artist)
+  if series
+    -var selectedWork = series.selectedWork || series.artworks[0]
+    .series
+      //- p= JSON.stringify(s)
+
+      div.works-detail
+        each w in series.artworks
+          if !w._id.equals(selectedWork._id)
+            .grid-item.hidden
+              +artwork(w, artist)
+      
+      .selected-work.grid-item.huge
+        +artwork(series.selectedWork, artist)
+      .selected-work.grid-item.series-title
+        button.btn-default.close-btn(style='display: none;') &times;
+        h3= series.title[lang] || series.title.english
+        p= series.year
+  else
+    h3(style='color: red;') Error: invalid arguments in mixin +series!
+  

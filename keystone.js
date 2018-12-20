@@ -31,6 +31,8 @@ keystone.init({
 	// }
 });
 
+keystone.set('cloudinary secure', true)
+
 // Load your project's Models
 keystone.import('models');
 

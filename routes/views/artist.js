@@ -36,9 +36,9 @@ exports = module.exports = (req, res) => {
                 }
                 ,
                 {
-                    q: keystone.list('ArtworkSeries').model.find({
-                        artist: artist._id
-                    }),
+                    q: keystone.list('ArtworkSeries').model.find({ artist: artist._id })
+                        .populate('artworks')
+                        .populate('selectedWork'),
                     n: 'series'
                 }
             ]
@@ -51,22 +51,11 @@ exports = module.exports = (req, res) => {
                     cb(err)
                 })
             }, err => {
-                // console.log(artist.exhibitions)
-                locals.series = {}
-                locals.artist.series.forEach(s => {
-                    locals.series['ser__' + s.slug] = {
-                        works: locals.artist.works.filter(x => {
-                            return s._id.equals(x.series)
-                        }),
-                        series: s
-                    }
-                })
-                locals.artist.works.forEach(x => {
-                    if (!x.series) {
-                        locals.series['wor__' + x.slug] = x
-                    }
-                })
-                console.log(locals.series)
+                locals.artist.loneWorks = locals.artist.works.filter(w => 
+                    locals.artist.series
+                        .map(s => !s.artworks.find(x => x._id.equals(w._id)))
+                        .reduce((a, b) => a && b, true)
+                )
                 next(err)
             })
         })
