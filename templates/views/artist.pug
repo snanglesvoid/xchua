@@ -3,6 +3,12 @@ extends ../layouts/layout
 include ../mixins/exhibition
 include ../mixins/masonry
 
+mixin sidemenu-link(id, snippetSlug)
+  -var ts = snippets[snippetSlug] || snippetSlug
+  a(onclick= "openTab(this)", select=id
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
+
 block intro
   if artist
     div(
@@ -14,9 +20,12 @@ block intro
     
 block tabbar
   ul.tabs
-    li.active: a(onclick='openTab(this)' select='#works')= lang=='chinese' ? 'Works' : 'Works'
-    li: a(onclick='openTab(this)' select='#biography')= lang == 'chinese' ? 'Biography' : 'Biography'
-    li: a(onclick='openTab(this)' select='#exhibitions')= lang == 'chinese' ? 'Exhibitions' : 'Exhibitions'
+    li.active
+      +sidemenu-link('#works', 'artist-works')
+    li
+      +sidemenu-link('#biography', 'artist-biography')
+    li
+      +sidemenu-link('#exhibitions', 'artist-exhibitions')
 
 block content
   .page

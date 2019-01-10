@@ -24,6 +24,7 @@ FrontPageImage.add({
     textPlacement: { type: Types.Select, options: ['left', 'right', 'center', 'top'], default: 'right'},
     image:         { type: Types.CloudinaryImage },
     active:        { type: Boolean, default: true },
+    createdAt:     { type: Types.Date, default: Date.now }, 
 })
 
 FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%'

@@ -1,18 +1,18 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
 
-const Textblock = new keystone.List('Textblock', {
+const Textsnippet = new keystone.List('Textsnippet', {
     map: { name: 'title' },
     autokey: { path: 'slug', from: 'title', index: true }
 })
 
-Textblock.add({
+Textsnippet.add({
     title: { type: String, required: true, noedit: true, initial: true },
     content: {
-        english: { type: Types.Html, wysiwyg: true, height: 150 },
-        chinese: { type: Types.Html, wysiwyg: true, height: 150 },
+        english: { type: String },
+        chinese: { type: String },
     }
 })
 
-Textblock.defaultColumns = 'title'
-Textblock.register()
+Textsnippet.defaultColumns = 'title'
+Textsnippet.register()

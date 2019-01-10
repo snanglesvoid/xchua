@@ -1,10 +1,11 @@
 extends ../layouts/layout
 
 include ../mixins/artwork
+include ../mixins/snippet
 
 block intro
-  div
-    //- h2 Artists
+  h3
+    +snippet('artists-title')
 
 
 block content

@@ -1,77 +1,87 @@
 extends ../layouts/layout
 
-include ../mixins/exhibition.pug
+include ../mixins/exhibition
+include ../mixins/snippet
+
+mixin sidemenu-link(id, snippetSlug)
+  -var ts = snippets[snippetSlug] || snippetSlug
+  a(onclick= "scrollToSection(this)", select=id
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
 
 block intro
-  style.
-    #page-title {
-      text-align: center;
-      left: 50% !important;
-      transform: translateX(-50%);
-      text-transform: capitalize;
-    }
-    #page-title a {
-      cursor: pointer;
-    }
-    #page-title a:hover {
-      text-decoration: none;
-      color: #bbb;
-    }
+  h3
+    +snippet('exhibitions-title')
+  //- style.
+  //-   #page-title {
+  //-     text-align: center;
+  //-     left: 50% !important;
+  //-     transform: translateX(-50%);
+  //-     text-transform: capitalize;
+  //-   }
+  //-   #page-title a {
+  //-     cursor: pointer;
+  //-   }
+  //-   #page-title a:hover {
+  //-     text-decoration: none;
+  //-     color: #bbb;
+  //-   }
     
-  h2#page-title.large-only
-    a(onclick="filter('Berlin')") Berlin
-    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    a(onclick="filter('Beijing')") Beijing
+  //- h2#page-title.large-only
+  //-   a(onclick="filter('Berlin')") Berlin
+  //-   span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  //-   a(onclick="filter('Beijing')") Beijing
 
 block tabbar
   ul.tabs
-    li.active: a(onclick= "scrollToSection(this)" select="#upcoming") Upcoming
-    li: a(onclick= "scrollToSection(this)" select="#current") Current
-    li: a(onclick= "scrollToSection(this)" select="#past") Past
+    if exhibitions.upcoming.indices.length > 0
+      li
+        +sidemenu-link('#upcoming', 'exhibitions-upcoming')
+    if exhibitions.current.indices.length > 0
+      li
+        +sidemenu-link('#current', 'exhibitions-current')
+    if exhibitions.past.indices.length > 0
+      li
+        +sidemenu-link('#past', 'exhibitions-past')
 
 block content
   .page: .scrollpane#mainScrollpane: .scrollpane-content
     #upcoming
-      //- h2 Future (#{exhibitions.upcoming.berlin.length + exhibitions.upcoming.beijing.length})
-      //- hr
-      ul.exhibitions-list
-        each i in exhibitions.upcoming.indices
-          .row
-            .col-sm-12.col-md-6.col-lg-6.left
-              if i < exhibitions.upcoming.berlin.length
-                +exhibition(exhibitions.upcoming.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6.right
-              if i < exhibitions.upcoming.beijing.length
-                +exhibition(exhibitions.upcoming.beijing[i])
-      br
+      if exhibitions.upcoming.indices.length > 0
+        ul.exhibitions-list
+          each i in exhibitions.upcoming.indices
+            .row
+              .col-sm-12.col-md-6.col-lg-6.left
+                if i < exhibitions.upcoming.berlin.length
+                  +exhibition(exhibitions.upcoming.berlin[i])
+              .col-sm-12.col-md-6.col-lg-6.right
+                if i < exhibitions.upcoming.beijing.length
+                  +exhibition(exhibitions.upcoming.beijing[i])
+        br
     #current
-      //- h2 Current (#{exhibitions.current.berlin.length + exhibitions.current.beijing.length})
-      //- hr
-      ul.exhibitions-list
-        each i in exhibitions.current.indices
-          .row
-            .col-sm-12.col-md-6.col-lg-6.left
-              if i < exhibitions.current.berlin.length
-                +exhibition(exhibitions.current.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6.right
-              if i < exhibitions.current.beijing.length
-                +exhibition(exhibitions.current.beijing[i])
-      br
+      if exhibitions.current.indices.length > 0
+        ul.exhibitions-list
+          each i in exhibitions.current.indices
+            .row
+              .col-sm-12.col-md-6.col-lg-6.left
+                if i < exhibitions.current.berlin.length
+                  +exhibition(exhibitions.current.berlin[i])
+              .col-sm-12.col-md-6.col-lg-6.right
+                if i < exhibitions.current.beijing.length
+                  +exhibition(exhibitions.current.beijing[i])
+        br
     #past
-      //- h2 Past (#{exhibitions.past.berlin.length + exhibitions.past.beijing.length})
-      //- hr
-      ul.exhibitions-list
-        each i in exhibitions.past.indices
-          .row
-            .col-sm-12.col-md-6.col-lg-6.left
-              if i < exhibitions.past.berlin.length
-                +exhibition(exhibitions.past.berlin[i])
-            .col-sm-12.col-md-6.col-lg-6.right
-              if i < exhibitions.past.beijing.length
-                +exhibition(exhibitions.past.beijing[i])
-      br
-
+      if exhibitions.past.indices.length > 0
+        ul.exhibitions-list
+          each i in exhibitions.past.indices
+            .row
+              .col-sm-12.col-md-6.col-lg-6.left
+                if i < exhibitions.past.berlin.length
+                  +exhibition(exhibitions.past.berlin[i])
+              .col-sm-12.col-md-6.col-lg-6.right
+                if i < exhibitions.past.beijing.length
+                  +exhibition(exhibitions.past.beijing[i])
+        br
     
 block js
-  script(src="/js/tabs.js")
   script(src="/js/exhibitions.js")

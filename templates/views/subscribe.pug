@@ -1,34 +1,67 @@
 extends ../layouts/layout
 
+mixin snippet(slug)
+  -var ts = snippets[slug] || slug
+  span(
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
+
 block intro
-  h2 Subscribe to our newsletter
+  h3
+    +snippet('subscribe-title')
+    //- Subscribe to our newsletter
 
 block content
   .page: .scrollpane: .scrollpane-content
-    .row: .col-sm-8.col-md-8
+    .row: .col-sm-12.col-md-10.col-lg-8
       if subscribed
-        h3 Thank you for subscribing!
+        h3
+          +snippet('subscribe-thanks')
+          //- Thank you for subscribing!
         //- p= response
       else
         form(method='post')
           input(type='hidden', name='action', value='subscribe')
           .form-group(class=validationErrors.firstname ? 'has-error' : null)
-            label First Name
+            label 
+              +snippet('subscribe-firstname')
+              //- First Name
             input.form-control(type='text', name='firstname', value=formData['firstname'])
           .form-group(class=validationErrors.lastname ? 'has-error' : null)
-            label Last Name
+            label
+              +snippet('subscribe-lastname')
+              //- Last Name
             input.form-control(type='text', name='lastname', value=formData['lastname'])
           .form-group(class=validationErrors.email ? 'has-error' : null)
-            label Email
+            label
+              +snippet('subscribe-email')
+              //- Email
             input.form-control(type='email', name='email', value=formData.email)
+          .form-group.check(class=validationErrors.agree ? 'has-error' : null)
+            span(class=validationErrors.agree ? 'danger' : '')
+              +snippet('data-policy-agree')
+              | &nbsp;
+              a(href='/texts/data-protection-agreement' target='_blank')
+                +snippet('data-policy-name')
+              | .
+            .checkmark-container
+              input(type='checkbox', name='data-agree', value=false)
+              span.checkmark
+          .form-group
+            hr
           .form-actions
-            button(type='submit').btn.btn-primary Subscribe
-        br
-        hr
-        p(style="text-align: center; font-size: 1.5rem;")
-          | By clicking subscribe you confirm that you have read and agree to our&nbsp;
-          a(href="/texts/data-protection-agreement") Data Protection Policy
-          |.
+            button(type='submit').btn.btn-primary
+              +snippet('subscribe-button')
+              //- Subscribe
+        //- br
+        //- hr
+        //- p(style="text-align: center; font-size: 1.5rem;")
+        //-   +snippet('subscribe-agree')
+        //-   | &nbsp;
+        //-   a(href="/texts/data-protection-agreement") 
+        //-     +snippet('data-policy-name')
+        //-     //- Data Protection Policy
+        //-   |.
 
 block js
   script(src="/js/mailchimp.js")

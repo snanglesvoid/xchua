@@ -8,11 +8,6 @@ function openTab(event) {
     let $tab = $(select)
     $tab.addClass('active')
 
-    // if(history.pushState) {
-    //     history.pushState(null, null, '#' + $tab.attr('id'));
-    // }
-    // else {
-    // }
     location.hash = $tab.attr('id');
 
     if (window.pack) {

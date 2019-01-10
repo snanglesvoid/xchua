@@ -1,5 +1,10 @@
 //- a#logo(href="/")
 //-   include ./logo.svg
+mixin menu-link(href, section, slug)
+  -var ts = snippets[slug] || slug
+  a(keep-lang, href= href, class= section==section ? 'active' : '',
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
 
 #sidenav-toggle
   button(
@@ -17,27 +22,23 @@ h5#sidenav-section!= section
   //- each link in navLinks
     li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
   br
-  a(keep-lang href="/" class= section=='home' ? 'active' : '') 
-    | #{lang == 'chinese' ? '主页' : 'Home'}
-  a(keep-lang href="/artists" class= section=='artists' ? 'active' : '')
-    | #{lang == 'chinese' ? '艺术家' : 'Artists'}
-  a(keep-lang href="/exhibitions" class= section=='exhibitions' ? 'active' : '')
-    | #{lang == 'chinese' ? '展览' : 'Exhibitions'}
-  a(keep-lang href="/fairs" class= section=='fairs' ? 'active' : '') 
-    | #{lang == 'chinese' ? '艺博会' : 'Fairs'}
-  a(keep-lang href="/publications" class= section=='more' ? 'active' : '') 
-    | #{lang == 'chinese' ? '出版物' : 'Publications'}
-  each pc in postCategories
-    -var x = console.log(pc, lang)
-    a(keep-lang
-      href="/blog/"+(pc.name.english).toLowerCase(),
-      class= section=='about' ? 'active' : '',
-    )= pc.name[lang] || pc.name.english
-      //- | #{lang == 'chinese' ? '新闻' : 'News'}
-  a(keep-lang href="/about" class= section=='more' ? 'active' : '') 
-    | #{lang == 'chinese' ? '关于' : 'About'}
-  a(keep-lang href="/contact" class= section=='more' ? 'active' : '') 
-    | #{lang == 'chinese' ? '联系' : 'Contact'}
+
+  +menu-link('/', 'home', 'menu-home')
+  +menu-link('/artists', 'artists', 'menu-artists')
+  +menu-link('/exhibitions', 'exhibitions', 'menu-exhibitions')
+  +menu-link('/fairs', 'fairs', 'menu-fairs')
+  +menu-link('/publications', 'publications', 'menu-publications')
+  +menu-link('/blog/news', 'more', 'menu-news')
+  +menu-link('/about', 'more', 'menu-about')
+  +menu-link('/contact', 'more', 'menu-contact')
+  //- each pc in postCategories
+  //-   //- -var x = console.log(pc, lang)
+  //-   a(keep-lang
+  //-     href="/blog/"+(pc.name.english).toLowerCase(),
+  //-     class= section=='about' ? 'active' : '',
+  //-     data-ks-editable=editable(user, {list: 'PostCategory', id: pc.id, path: '/'})
+  //-   )= pc.name[lang] || pc.name.english
+  //-     //- | #{lang == 'chinese' ? '新闻' : 'News'}
   .language-select
     a(switch-lang="english" href="#")
       | English

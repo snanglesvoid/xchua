@@ -83,6 +83,7 @@ keystone.set('nav', {
 	],
 	more: [
 		'textblocks',
+		'textsnippets',
 		'galleries',
 		'enquiries',
 		'social-links'

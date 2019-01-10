@@ -1,25 +1,22 @@
 ul.publications-list {
     margin: 0;
     padding: 0;
-    display: flex;
+    display: block;
 }
 
 .publication-card-wrapper {
-    width: 50%;
-    text-align: center;
+    width: 100%;
+    // text-align: center;
     margin-bottom: 40px;
+    display: flex;
 }
 
 .publication-card {
     width: 240px;
     text-align: center;
     margin: 0;
-    margin-left: 50%;
-    transform: translateX(-50%);width: 240px;
     text-align: center;
     margin: 0;
-    margin-left: 50%;
-    transform: translateX(-50%);
     -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
     box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
@@ -30,22 +27,33 @@ ul.publications-list {
         filter: saturate(100%);
         transition: all .7s ease;
     }
-    .middle {
-        opacity: 0;
-        transition: all .7s ease;
+    
+}
+
+.middle {
+    opacity: 1;
+    transition: all .7s ease;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    text-align: right;
+    width: 33%;
+    position: relative;
+    .content {
+        padding-right: 20px;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+        bottom: 0;
+        right: 0;
         h3 {
             text-transform: uppercase;
         }
         p {
-            text-align: center;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
-        cursor: pointer;
     }
+    cursor: pointer;
 }
 
 .publication-card:hover {
@@ -79,11 +87,11 @@ ul.publications-list {
     }
 }
 
-@media screen and (max-width: @size-md) {
-    ul.publications-list {
-        display: block;
-    }
-    .publication-card-wrapper {
-        width: 100%;
-    }
-}
+// @media screen and (max-width: @size-md) {
+//     ul.publications-list {
+//         display: block;
+//     }
+//     .publication-card-wrapper {
+//         width: 100%;
+//     }
+// }

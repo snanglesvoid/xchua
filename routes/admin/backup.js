@@ -16,7 +16,8 @@ const lists = [
     'Publication',
     'SocialLink',
     'Textblock',
-    'User'
+    'Textsnippet',
+    // 'User'
 ]
 
 exports = module.exports = (req, res) => {

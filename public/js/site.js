@@ -76,6 +76,10 @@ $(() => {
         }, 50)
     })
     
+
+    $('.textblock').each(function() {
+        
+    })
 })
 
 function setLogoColor(color) {

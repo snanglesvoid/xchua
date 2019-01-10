@@ -24,6 +24,14 @@ mixin post(post)
     .row: .col-sm-12.col-md-12.col-lg-10(style="border-bottom: 1px solid #bbb; padding-top: 48px;")
 
 block intro
+  if user && user.isAdmin
+    div(
+      style='position: absolute; top: 0; bottom: 0; width: 100%;'
+    )
+      div(
+        style='width: 100%; height: 100%;'
+        data-ks-editable= editable(user, {list: 'PostCategory', id: data.category.id, path: '/'})
+      )
   h2= data.category ? (data.category.name[lang] || data.category.name.english)  : 'Blog'
 
 block content

@@ -36,35 +36,46 @@ $(function() {
     $current = $('#current')
     $past = $('#past')
     $scrollpane = $('#mainScrollpane')
-    // let hash = window.location.hash
-    // if (hash) {
-    //     let $a = $('a[select="' + hash + '"]')
-    //     scrollToSection($a)
-    // }
+    
+    let pauseInterval = true
+    let pauseIntervalTimeout
 
-    // $scrollpane.on('ps-scroll-y')
+    $scrollpane.on('ps-scroll-y', () => {
+        if (pauseIntervalTimeout) clearTimeout(pauseIntervalTimeout)
+        pauseInterval = false;
+        pauseIntervalTimeout = setTimeout(() => { 
+            pauseInterval = true 
+            pauseIntervalTimeout = null
+        }, 2000)
+    })
+
+    $($('.tabs').children().get(0)).addClass('active')
+
+    let $ta = $('.tabs a').parent()
+    let $au = $('.tabs a[select="#upcoming"]').parent()
+    let $ac = $('.tabs a[select="#current"]').parent()
+    let $ap = $('.tabs a[select="#past"]').parent()
 
     setInterval(function() {
+        if (pauseInterval) return
         let top = $scrollpane.scrollTop()
-        // console.log(top)
-        // console.log(top)
         if (top == 0) {
             $scrollpane.siblings('.scrollpane-box-shadow-top').css('opacity', 0)
         }
         if (top < $upcoming.height() - 20) {
-            $('a[select="#upcoming"]').parent().addClass('active')
-            $('a[select!="#upcoming"]').parent().removeClass('active')
+            $ta.removeClass('active')
+            $au.addClass('active')
             // window.location.hash = '#upcoming'
         }
         else if (top < $upcoming.height() + $current.height() - 20) {
-            $('a[select="#current"]').parent().addClass('active')
-            $('a[select!="#current"]').parent().removeClass('active')
+            $ta.removeClass('active')
+            $ac.addClass('active')
             // window.location.hash = '#current'
         }
         else {
-            $('a[select="#past"]').parent().addClass('active')
-            $('a[select!="#past"]').parent().removeClass('active')
+            $ta.removeClass('active')
+            $ap.addClass('active')
             // window.location.hash = '#past'
         }
-    }, 100)
+    }, 200)
 })

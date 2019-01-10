@@ -14,7 +14,6 @@ exports = module.exports = (req, res) => {
     .populate('location')
     .sort('-date.start')
 
-    // view.query('exhibitions', query)
 
     view.on('init', next => {
         query.exec((err, exs) => {

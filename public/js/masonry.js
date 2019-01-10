@@ -32,7 +32,7 @@ $(() => {
 
     $('.series').each(function() {
         let $series = $(this)
-        console.log($series)
+        // console.log($series)
         let $selectedWork = $series.find('.selected-work')
         let $worksDetail = $series.find('.works-detail')
         let $closeBtn = $series.find('.close-btn')

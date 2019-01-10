@@ -9,7 +9,8 @@ block intro
   )
     h2
       | #{publication.title[lang] || publication.title.english}
-      | &nbsp;|&nbsp;
+      if publication.author.english
+        | &nbsp;by&nbsp;
       | #{publication.author[lang] || publication.author.english}
 
 block content

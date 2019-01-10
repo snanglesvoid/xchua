@@ -9,9 +9,11 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = '';
 
-	view.query('images', keystone.list('FrontPageImage').model.find({
-		active: true
-	}))
+	view.query('images', 
+		keystone.list('FrontPageImage').model.find({
+			active: true
+		}).sort('-createdAt')
+	)
 
 	// Render the view
 	view.render('index');

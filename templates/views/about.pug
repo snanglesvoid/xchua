@@ -1,33 +1,24 @@
 extends ../layouts/layout
 
 include ../mixins/gallery-space
+include ../mixins/snippet
+
+mixin sidemenu-link(id, snippetSlug)
+  -var ts = snippets[snippetSlug] || snippetSlug
+  a(onclick= "scrollToSection(this)", select=id
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
 
 block intro
-  style.
-    #page-title {
-      text-align: center;
-      left: 50% !important;
-      transform: translateX(-50%);
-      text-transform: capitalize;
-    }
-    #page-title a {
-      cursor: pointer;
-    }
-    #page-title a:hover {
-      text-decoration: none;
-      color: #bbb;
-    }
-  //- h2#page-title 
-    a(onclick="filter('Berlin')") Berlin
-    span &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    a(onclick="filter('Beijing')") Beijing
-
+  h3
+    +snippet('about-title')
+  
 block tabbar
   ul.tabs
-    li.active: a(select='#about' onclick='scrollToSection(this)')
-      | #{lang == 'chinese' ? 'Gallery Statements' : 'Gallery Statements'}
-    li: a(select='#spaces' onclick='scrollToSection(this)')
-      | #{lang == 'chinese' ? 'Gallery Spaces' : 'Gallery Spaces'}
+    li.active
+      +sidemenu-link('#about', 'about-statements')
+    li
+      +sidemenu-link('#spaces', 'about-spaces')
 
 block content
   .page#aboutPage: .scrollpane#mainScrollpane: .scrollpane-content

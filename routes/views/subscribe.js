@@ -33,6 +33,10 @@ exports = module.exports = (req, res) => {
           locals.validationErrors.lastname = true
           return next()
         }
+        if (!req.body['data-agree']) {
+          locals.validationErrors.agree = true
+          return next()
+        }
 
         let data = {
             "email_address": req.body.email,
@@ -43,10 +47,10 @@ exports = module.exports = (req, res) => {
             }
         }
         request
-        .post('https://us17.api.mailchimp.com/3.0/lists/' + list_id + '/members/')
-        .set('Content-Type', 'application/json;charset=utf-8')
-        .set('Authorization', 'Basic ' + new Buffer('any:' + api_key ).toString('base64'))
-        .send(data)
+          .post('https://us17.api.mailchimp.com/3.0/lists/' + list_id + '/members/')
+          .set('Content-Type', 'application/json;charset=utf-8')
+          .set('Authorization', 'Basic ' + new Buffer('any:' + api_key ).toString('base64'))
+          .send(data)
           .end(function(err, response) {
               if (response.status < 300 || (response.status === 400 && response.body.title === "Member Exists")) {
                 locals.subscribed = true
@@ -56,7 +60,7 @@ exports = module.exports = (req, res) => {
                 console.error(err)
                 next(err)
               }
-          });
+          })
     })
 
     view.render('subscribe')

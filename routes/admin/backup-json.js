@@ -17,6 +17,7 @@ const lists = [
     'Publication',
     'SocialLink',
     'Textblock',
+    'Textsnippet'
     // 'User'
 ]
 

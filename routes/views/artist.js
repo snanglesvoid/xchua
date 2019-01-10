@@ -56,6 +56,10 @@ exports = module.exports = (req, res) => {
                         .map(s => !s.artworks.find(x => x._id.equals(w._id)))
                         .reduce((a, b) => a && b, true)
                 )
+                locals.artist.series = locals.artist.series.filter(s => {
+                    console.log(s.artworks.length)
+                    return s.artworks.length > 0
+                })
                 next(err)
             })
         })

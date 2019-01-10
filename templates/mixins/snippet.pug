@@ -1,0 +1,5 @@
+mixin snippet(slug)
+  -var ts = snippets[slug] || slug
+  span(
+      snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts

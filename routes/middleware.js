@@ -9,6 +9,7 @@
  */
 const _ = require('lodash');
 const keystone = require('keystone')
+const async = require('async')
 /**
 	Initialises the standard view locals
 
@@ -22,33 +23,67 @@ function inlineEditable(user, data) {
 	else return JSON.stringify(data)
 }
 
+function snippetEditable(user, data, lang) {
+	if (!user) return ''
+	return JSON.stringify ({
+		list: 'textsmippets',
+		path: 'content.' + (lang || 'english'),
+		data: JSON.stringify(data)
+	})
+}
+
 function inlineImageUpload(user, data) {
 	if (!user) return ''
 	else return JSON.stringify(data)
 }
 
-let pcs = []
-keystone.list('PostCategory').model.find().exec((err, ps) => {
-	pcs = ps
-})
-
 exports.initLocals = function (req, res, next) {
-	res.locals.navLinks = [
-		{ label: 'Home', key: 'home', href: '/' },
-		{ label: 'Blog', key: 'blog', href: '/blog' },
-		{ label: 'Gallery', key: 'gallery', href: '/gallery' },
-		{ label: 'Contact', key: 'contact', href: '/contact' },
-	];
+	// res.locals.navLinks = [
+	// 	{ label: 'Home', key: 'home', href: '/' },
+	// 	{ label: 'Blog', key: 'blog', href: '/blog' },
+	// 	{ label: 'Gallery', key: 'gallery', href: '/gallery' },
+	// 	{ label: 'Contact', key: 'contact', href: '/contact' },
+	// ];
 	res.locals.user = req.user;
 	res.locals.lang = req.query['lang'] || 'english'
 	res.locals.inlineEditable = inlineEditable
 	res.locals.inlineImageUpload = inlineImageUpload
-	res.locals.postCategories = pcs
-	keystone.list('SocialLink').model.find()
-		.exec((err, links) => {
-			res.locals.socialLinks = links
-			next(err)
-		})
+	res.locals.snippetEditable = snippetEditable
+	async.each([
+		//init post categories
+		(cb) => {
+			keystone.list('PostCategory').model.find().exec((err, ps) => {
+				res.locals.postCategories = ps
+				cb(err)
+			})
+		},
+		//init menu item textblocks
+		(cb) => {
+			keystone.list('Textsnippet').model.find({
+					// slug: /menu/i
+				})
+				.exec((err, tbs) => {
+					res.locals.snippets = {}
+					tbs.forEach(tb => {
+						res.locals.snippets[tb.slug] = tb
+					})
+					cb(err)
+				})
+
+		},
+		//init social links
+		(cb) => {
+			keystone.list('SocialLink').model.find()
+				.exec((err, links) => {
+					res.locals.socialLinks = links
+					cb(err)
+				})
+		}
+	], 
+	(fn, cb) => fn(cb),
+	err => {
+		next(err)
+	})
 };
 
 
