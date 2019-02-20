@@ -14,5 +14,5 @@ Textsnippet.add({
     }
 })
 
-Textsnippet.defaultColumns = 'title'
+Textsnippet.defaultColumns = 'title, content.english'
 Textsnippet.register()
