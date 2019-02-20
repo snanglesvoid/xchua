@@ -2,7 +2,7 @@ mixin publication(publication)
   if publication
     .publication-card-wrapper
       if publication.cover
-        div(style='flex: 1;'): .publication-card(
+        div(style='flex: 1; max-width: 33%; overflow:hidden;'): .publication-card(
           data-ks-editable=editable(user, {list: 'Publication', id: publication.id}),
           onclick= "window.location.href='/publication/" + publication.slug + "'"
         )
