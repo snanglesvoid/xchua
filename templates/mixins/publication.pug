@@ -2,19 +2,31 @@ mixin publication(publication)
   if publication
     .publication-card-wrapper
       if publication.cover
+        div(style='flex: 1;'): .publication-card(
+          data-ks-editable=editable(user, {list: 'Publication', id: publication.id}),
+          onclick= "window.location.href='/publication/" + publication.slug + "'"
+        )
+          img(
+            src= publication._.cover.limit(640, 640),
+            caption= publication.caption(lang)
+          )
         .middle(onclick= "window.location.href='/publication/" + publication.slug + "'"): .content
           h3= publication.title[lang] || publication.title.english
           p
             | #{publication.author[lang] || publication.author.english}
             br
             | #{publication.year}
-        .publication-card(
-          data-ks-editable=editable(user, {list: 'Publication', id: publication.id})
-        )
-          img(
-            src= publication._.cover.limit(640, 640),
-            style="width:100%",
-            caption= publication.caption(lang)
-          )
       
 
+//- mixin publication(publication)
+//-   if publication
+//-     .series
+//-       .selected-work.grid-item.huge
+//-         .artwork(
+//-         )
+//-           if publication.cover.exists
+//-             img.modal-image(
+//-               src= publication._.cover.limit(2048, 2048),
+//-               caption= publication.caption(lang)
+//-             )
+//-           .middle: p!= publication.caption(lang)

@@ -43,7 +43,7 @@ block content
             span(class=validationErrors.agree ? 'danger' : '')
               +snippet('data-policy-agree')
               | &nbsp;
-              a(href='/texts/data-protection-agreement' target='_blank')
+              a(href='/texts/data-protection-agreement' target='_blank'): em
                 +snippet('data-policy-name')
               | .
             .checkmark-container

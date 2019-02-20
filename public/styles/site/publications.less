@@ -12,39 +12,44 @@ ul.publications-list {
 }
 
 .publication-card {
-    width: 240px;
+    // width: 240px;
+    height: 340px;
     text-align: center;
     margin: 0;
     text-align: center;
     margin: 0;
-    -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
-    box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
     position: relative;
+    cursor: pointer;
     transition: all .7s ease;
 
     img {
         filter: saturate(100%);
         transition: all .7s ease;
+        width: auto;
+        height: 100%;
+        -webkit-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
+        box-shadow: 5px 5px 12px 0px rgba(0,0,0,0.5);
     }
     
 }
 
 .middle {
     opacity: 1;
+    flex: 2;
     transition: all .7s ease;
     // position: absolute;
     // top: 50%;
     // left: 50%;
     // transform: translate(-50%, -50%);
-    text-align: right;
+    text-align: left;
     width: 33%;
     position: relative;
     .content {
-        padding-right: 20px;
+        padding-left: 20px;
         position: absolute;
         bottom: 0;
-        right: 0;
+        left: 0;
         h3 {
             text-transform: uppercase;
         }
@@ -58,13 +63,14 @@ ul.publications-list {
 
 .publication-card:hover {
     // width: 252px;
-    -webkit-box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
-    box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
+    
 
     img {
         filter: saturate(20%);
         opacity: 0.3;
+        -webkit-box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
+        box-shadow: 5px 5px 16px 0px rgba(0,0,0,0.5);
     }
     .middle {
         opacity: 1;
@@ -87,6 +93,11 @@ ul.publications-list {
     }
 }
 
+@media screen and (min-width: @size-lg) {
+    .publication-card {
+        height: 480px;
+    }
+}
 // @media screen and (max-width: @size-md) {
 //     ul.publications-list {
 //         display: block;

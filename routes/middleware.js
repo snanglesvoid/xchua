@@ -26,7 +26,7 @@ function inlineEditable(user, data) {
 function snippetEditable(user, data, lang) {
 	if (!user) return ''
 	return JSON.stringify ({
-		list: 'textsmippets',
+		list: 'textsnippets',
 		path: 'content.' + (lang || 'english'),
 		data: JSON.stringify(data)
 	})

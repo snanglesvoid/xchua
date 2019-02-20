@@ -3,11 +3,17 @@ extends ../layouts/layout
 include ../mixins/publication.pug
 
 block intro
-  //- .page-header.container
-    //- h2 Publications
+  h2 Publications
 
 block content
-  .page: .scrollpane: .scrollpane-content.limit-width
+  .page: .scrollpane: .scrollpane-content.limit-width.modal-images
+    br
+    br
+    each publication in publications
+      +publication(publication)
+      .divider(style="width: 100%; height:32px; border-top: 1px solid #eee; max-width: 1200px;")
+
+  //- .page: .scrollpane: .scrollpane-content.limit-width
     br
     br
     br
@@ -17,3 +23,6 @@ block content
           +publication(publication)
     else
       h5 No publications found...
+
+block js
+  script(src='/js/masonry.js')

@@ -1,0 +1,736 @@
+@import url('http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic');
+
+html{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    font-family: Ubuntu, Arial, sans;
+    font-size: 12px;
+    color: #333;
+    z-index: 0;
+   background:  #FFF;
+}
+
+#topBar{
+    background: url('http://onlinephpfunctions.com/media/images/site/topbar.png') repeat-x;
+    height: 15px;
+}
+
+
+
+img{ border: 0px;}
+
+h1{
+    
+}
+form{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+h2 small{
+    font-size: 12px;
+}
+
+th{
+    text-align: left;
+}
+
+.hr{
+  border-bottom: 1px dashed #CCC;   
+  margin: 0px; padding: 0px;
+}
+
+
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+td{
+    vertical-align: top;
+}
+
+ref{
+    display:none;
+}
+
+h3{
+    margin: 5px 0px 10px 0px;
+    padding: 0px;
+}
+
+.clear{
+    clear: both;
+}
+
+.center{
+    text-align: center;
+}
+
+#wrapper_opf{
+    width: 1158px;;
+    margin: 0px auto 0px auto;
+    position: relative;
+}
+
+#menuTop{
+    width: 100%;
+    background: #3C3C5A;
+    height: 25px;
+    font-family: Ubuntu, Arial, sans;
+     line-height: 25px;
+}
+#menuTop ul{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+#menuTop li{
+  margin: 0px;
+  padding: 0px 15px 0px 15px;
+  list-style: none;
+  float: left;
+  font-size: 14px;
+  color: #FFF;
+  line-height: 25px;
+  font-weight: bold;
+  border-right: 1px solid #A1A1C0;
+}
+#menuTop li img{
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    border: 0px;
+    vertical-align: middle;
+    
+}
+#menuTop li a{
+    text-decoration: none;
+    color:#FFF;
+    
+}
+#menuTop li ul{
+  display:none;
+  background: #A1A1C0;
+  min-width: 200px;
+  padding: 0px 10px 10px 0px;;
+  font-size: 12px;
+}
+
+#menuTop li:hover, #menuTop  .selected {
+  background: #A1A1C0;
+}
+
+#menuTop li:hover ul{
+  display: block;
+  position: absolute;
+  margin: 0px 0px 0px -15px;
+  z-index: 10;
+}
+
+#menuTopBottom{
+    height: 4px;
+    background: #A1A1C0;
+    border-radius: 0px 0px 2px 2px;
+}
+
+#headerTop{
+    height: 95px;
+    width: 1158px;
+    margin: 0px; padding: 0px;
+}
+
+
+
+#contentWrapperTop{
+   
+    width: 1158px;
+    margin: 0px; padding: 0px 0px 0px 0px;
+   
+}
+#contentWrapperMiddle{
+    
+    width: 1158px;
+   
+    margin: 0px; padding: 0px 15px 0px 0px;
+    
+}
+#slogan{
+    position: absolute;
+    top: 25px;
+}
+#contentWrapperBottom{
+    height: 31px;
+    width: 1158px;
+    margin: 0px; padding: 0px 15px 0px 15px;
+    
+}
+#content{
+    width: 800px;
+    padding: 10px;
+    overflow: hidden;
+ background: #FFF;
+/* border-radius: 5px;
+ border: 1px solid #E3E3E3;
+ box-shadow: 3px 3px 1px #EFEFEF;*/
+}
+.info a{
+    color: #3D81EE;
+}
+
+#mainImage{
+    border: 1px solid #777;
+    border-radius: 4px;
+    float: right;
+    background: url('http://onlinephpfunctions.com/media/images/layout/bg70p.png');
+    width: 250px;
+    padding: 5px;
+    margin: 10px;
+}
+#mainImage img{
+    border-radius: 4px;
+    width: 250px;
+}
+#mainImage p{
+   padding: 0px; margin: 0px;
+    width: 230px;
+}
+
+.photoVideoH2{
+    margin-top: 0px;
+}
+
+#menu{
+    position: absolute;
+    right: 8px;
+    top: 160px;
+    width: 290px;
+    padding: 15px;
+ 
+}
+.menu{
+    padding: 5px;
+}
+
+
+
+#searchInput
+{
+    position: absolute;
+    padding: 3px;
+    right: 5px;
+}
+#searchRight{
+   background: #3C3C5A url('http://onlinephpfunctions.com/media/images/site/search.png') no-repeat right ;
+   border: 0px;
+    width: 125px;
+    border-radius: 1px;
+    height: 15px;
+    padding: 2px 20px 2px 2px;
+    color: #FFF;
+    text-align: right
+}
+#searchRight:focus, #searchRight:hover{
+    background: #A1A1C0 url('http://onlinephpfunctions.com/media/images/site/search.png') no-repeat right ;
+    color: #3C3C5A;
+}
+#searchResults {
+    position: absolute;
+    margin: 0px 0px 0px -150px;
+    width: 280px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px 5px 30px 5px;
+    display: none;
+    background:  #FFF;
+    max-height: 350px;
+    overflow: auto;
+    line-height: 15px;
+    z-index: 9999;
+}
+
+#searchResults a{
+    margin: 2px;
+    padding: 0px;
+    
+}
+.birdName{
+    margin: 15px 0px 3px 0px;
+    padding: 0px;
+}
+.spTitle{
+    margin: 8px 0px 2px 0px;
+    padding: 0px 0px 5px 0px;
+    font-size: 14px;
+    text-align: left;
+}
+
+
+.navMenu{
+    background: url('http://onlinephpfunctions.com/media/images/layout/bg70p.png') #CCC;
+    border: #CCC solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
+}
+.navMenu ul{
+  margin: 0px; padding: 0px;
+  list-style: none;
+}
+.navMenu li{
+  height: 18px;
+  line-height: 18px;
+  border-top: 1px solid #CCC;
+  padding: 3px;
+}
+.navMenu li:hover{
+  background: #FFF;
+  cursor:pointer;
+}
+.navMenu .selected{
+    background: #FFF;
+  cursor:pointer;
+  font-weight: bold;
+}
+
+#shareButtons{
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    height: 25px;
+    padding: 5px;
+    margin: 0px 0px 5px 0px;
+    line-height: 25px;
+    vertical-align: middle;
+}
+#shareButtons ul{
+    list-style: none;
+    padding: 0px; margin: 0px;
+}
+#shareButtons li{
+   
+    width: 95px;
+    height: 25px;
+     text-align: right;
+}
+#shareButtons li:first-child{
+    width: 100px;
+     text-align: left;
+}
+#shareButtons li:last-child{
+    width: 80px;
+    text-align: right;
+}
+
+
+#navMenu h2{
+    margin: 5px 0px 3px 0px; padding: 0px;
+    font-size: 16px;
+}
+
+#sponsorWrap{
+    background: url('http://onlinephpfunctions.com/media/images/layout/bg70p.png') #CCC;
+    border: #CCC solid 1px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+#sponsorWrap{
+    
+}
+#twitterUsers{
+    max-height: 300px;
+    min-height: 30px;
+    overflow: auto;
+    width: 250px;
+    
+    
+}
+#twitterUsers img{
+    width: 48px;
+    height: 48px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+    border-radius: 3px;
+}
+#hashTags
+{
+    color: #777;
+}
+
+.date{
+    font-size: 10px;
+    color: #999;
+}
+.f45p{
+    float: left;
+    width: 380px;
+    margin-left: 20px;
+}
+.families{
+    height: 530px;
+
+    width: 350px;
+   /* background: url(http://onlinephpfunctions.com/media/images/layout/bg70p.png);
+    border: white solid 1px;*/
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.whiteBgWide{
+    
+    width: 790px;
+   /*  background: url(http://onlinephpfunctions.com/media/images/layout/bg70p.png);
+    border: white solid 1px;*/
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.noListStyle{
+    list-style: none;
+}
+.right{
+    margin: 10px 0px 10px 10px;
+    float: right;
+}
+.left{
+    float: left;
+    margin: 0px 5px 5px 0px;
+}
+
+#latestTweetsBig{
+    width: 270px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+#latestTweetsBig img{
+  width: 36px; height: 36px;
+  border-radius: 4px;
+}
+
+#latestTweetsSmall{
+    width: 290px;
+    
+    max-height: 300px;
+    overflow: auto;
+}
+
+#latestTweetsSmall img{
+  width: 36px; height: 36px;
+  border-radius: 4px;
+}
+
+#randomFunctions{
+    width: 270px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+.linkTitle{
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+.linkbottom{
+    color: #3D81EE;
+}
+.link{
+     color: #3D81EE;
+}
+
+.alignRight{
+    text-align: right;
+}
+table, td, tr,th{
+    margin: 0px;
+    padding:0px;
+}
+td,th{
+    margin: 0px 5px 0px 0px;
+}
+
+
+.result{
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    padding: 10px;
+    background: #EFEFEF;
+   margin: 15px 0px 0px 0px;
+}
+.result h2, .result h3 , #ajaxResult h2,  #ajaxResult h3{
+    margin: 0px;
+    padding: 0px;
+}
+.result #result, .result #phpCall,  #ajaxResult #result,  #ajaxResult #phpCall{
+    border: 1px solid #EFEFEF;
+    width: 100%;
+    background: #EFEFEF;
+}
+#ajaxResult{
+    display:none;
+}
+
+#moreInfo{
+    display:none;
+}
+
+#expand{
+    border: 1px solid #999;
+    border-radius: 4px;
+    background:  url(http://onlinephpfunctions.com/media/images/icons/downButton.png) right center no-repeat #FFF ;
+   width: 194px;
+    text-align: center;
+    padding: 3px;
+    cursor:pointer;
+}
+
+#hideInfo{
+    border: 1px solid #999;
+    border-radius: 4px;
+    background: url(http://onlinephpfunctions.com/media/images/icons/upButton.png) right center no-repeat #FFF ;
+    width: 194px;
+    text-align: center;
+    padding: 3px;
+    cursor:pointer;
+    display:none;
+}
+.hide{
+    display:none;
+}
+
+
+#functions fieldset{
+    width: 400px;
+    border: 1px solid #3C3C5A;
+    background: white;
+    margin: 0px 0px 20px 0px;
+    border-radius: 3px;
+}
+#functions fieldset legend{
+
+    border: 1px solid #3C3C5A;
+    background: #A1A1C0;
+    color: white;
+  border-radius: 3px;
+}
+#functions fieldset legend a{
+
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 13px;
+    padding:  8px;
+}
+#functions fieldset legend a:hover{
+
+  text-decoration: underline;
+}
+
+.error{
+    border:1px solid red;
+    background: #FFE6E6;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.ok{
+    border:1px solid green;
+    background: #E3FFDA;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#comments input[type=text], #comments input[type=submit]{
+    border: 1px solid #888;
+    background: #F8F8F8;
+    border-radius: 4px;
+    width: 200px;
+}
+#comments textarea{
+    border: 1px solid #888;
+    background: #F8F8F8;
+    border-radius: 4px;
+    width: 400px;
+    height: 150px;
+}
+
+#expandComments{
+    border: 1px solid #999;
+    border-radius: 4px;
+    background: url(http://onlinephpfunctions.com/media/images/icons/downButton.png) right center no-repeat #FFF ;
+    width: 194px;
+    text-align: center;
+    padding: 3px;
+    cursor:pointer;
+}
+
+#onlineFunction textarea{
+    border: #999 1px solid;
+    border-radius: 4px;
+    background: #F8F8F8;
+}
+#onlineFunction input[type=text], #onlineFunction select , #onlineFunction input[type=button], .result input[type=button]{
+    border: #999 1px solid;
+    border-radius: 4px;
+    background: #F8F8F8;
+}
+#onlineFunction input[type=submit]{
+    width: 200px;
+    border: #999 1px solid;
+    border-radius: 4px;
+    background: #F8F8F8;
+    cursor:pointer;
+}
+
+.comment{
+    border: 1px solid #3C3C5A;
+    width: 500px;
+    padding: 8px;
+    margin: 10px 0px 10px 5px;
+    border-radius: 0px;
+}
+.comment .userName{
+    background: #A1A1C0;
+    color: white;
+    width: 516px;
+    padding: 3px;
+    border-radius: 0px;
+    border: 1px solid #3C3C5A;
+    margin: -11px 0px 5px -11px;
+    
+}
+.comment .userName a{
+
+    color: white;
+   }
+   .comment .userName a:hover{
+
+    color: #EFEFEF;
+   }
+   
+   .bottomW{
+       border: 1px solid #888;
+       border-radius: 5px;
+       background: #fff;
+       padding: 10px 10px 30px 10px;
+   }
+   .phpCallCode{
+       width: 750px;
+      
+       
+   }
+   code{
+       width: 750px;
+       white-space: normal;
+   }
+   
+   .shareSaveResult{
+       padding: 2px 5px 2px 5px;
+       border: 1px solid #CECECE;
+       background: #F4F4F4;
+       border-radius: 4px;
+   
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+.linedwrap {
+	border: 1px solid #c0c0c0;
+	padding: 3px;
+}
+
+.linedtextarea {
+	padding: 0px;
+	margin: 0px;
+}
+
+.linedtextarea textarea, .linedwrap .codelines .lineno {
+	font-size: 12px;
+	font-family: monospace;
+	line-height: normal !important;
+        color: #000;
+}
+
+.linedtextarea textarea {
+	padding-right:0.3em;
+	padding-top:0.3em;
+	border: 0;
+}
+
+.linedwrap .lines {
+	margin-top: 0px;
+	width: 50px;
+	float: left;
+	overflow: hidden;
+	border-right: 1px solid #c0c0c0;
+	margin-right: 10px;
+}
+
+.linedwrap .codelines {
+	padding-top: 5px;
+}
+
+.linedwrap .codelines .lineno {
+	color:#AAAAAA;
+	padding-right: 0.5em;
+	padding-top: 0.0em;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.linedwrap .codelines .lineselect {
+	color: red;
+}
+
+.phpCode{
+    max-height: 300px;
+    border: 1px solid #CCC;
+    overflow:auto;
+    padding: 5px;
+    margin: 5px 0px 5px 0px;
+}
+
+.terminalCode{
+    max-height: 300px;
+    border: 1px solid #CCC;
+    overflow:auto;
+    padding: 5px;
+    color: #09FF00;
+    background: #333;
+    margin: 5px 0px 5px 0px;
+}
+
+.changelog ul{
+    margin: 0px;
+    padding: 0px 0px 20px 30px;
+}
