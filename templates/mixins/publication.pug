@@ -13,9 +13,11 @@ mixin publication(publication)
         .middle(onclick= "window.location.href='/publication/" + publication.slug + "'"): .content
           h3= publication.title[lang] || publication.title.english
           p
-            | #{publication.author[lang] || publication.author.english}
-            br
-            | #{publication.year}
+            if (publication.author && publication.author.english)
+              span #{publication.author[lang] || publication.author.english}
+              br
+            if (publication.year)
+              span #{publication.year}
       
 
 //- mixin publication(publication)
