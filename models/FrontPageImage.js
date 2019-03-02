@@ -10,6 +10,9 @@ FrontPageImage.add({
         english: { type: String, required: true },
         chinese: { type: String}
     },
+    updatedAt: {
+        type: Types.Datetime, noedit: true, default: Date.now
+    },
     subtitle: {
         english: { type: String },
         chinese: { type: String }
@@ -33,5 +36,10 @@ FrontPageImage.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english
     this.caption = this.caption[lang] || this.caption.english
 }
+
+FrontPageImage.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
 
 FrontPageImage.register() 

@@ -12,6 +12,7 @@ Artwork.add({
         english : { type: String, required: true },
         chinese : { type: String },
     },
+    updatedAt:   { type: Types.Datetime, noedit: true, default: Date.now },
     image:       { type: Types.CloudinaryImage },
     pictures:    { type: Types.CloudinaryImage },
     year:        { type: String },
@@ -62,6 +63,11 @@ Artwork.schema.methods.caption = function(lang, artist) {
 
 Artwork.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artworks'})
 
-Artwork.defaultColumns = 'title.english, artist, image|10%, year|20%, description.english|20%'
+Artwork.defaultColumns = 'title.english, artist, image|10%, year|10%, description.english|20%, updatedAt|10%'
+
+Artwork.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
 
 Artwork.register()

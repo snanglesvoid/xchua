@@ -12,6 +12,10 @@ ArtworkSeries.add({
         chinese : { type: String }
     },
 
+    updatedAt: {
+        type: Types.Datetime, noedit: true, default: Date.now
+    },
+
     artist: {
         type: Types.Relationship, ref: 'Artist', initial: true, required: true, editable: false
     },
@@ -31,6 +35,11 @@ ArtworkSeries.add({
 
 // ArtworkSeries.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'series'})
 
-ArtworkSeries.defaultColumns = 'title.english, artist, selectedWork'
+ArtworkSeries.defaultColumns = 'title.english, artist, selectedWork, updatedAt'
+
+ArtworkSeries.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
 
 ArtworkSeries.register()

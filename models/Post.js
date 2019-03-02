@@ -16,6 +16,7 @@ Post.add({
 		english: { type: String, required: true },
 		chinese: { type: String },
 	},
+	updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true },
@@ -51,5 +52,11 @@ Post.schema.pre('save', function (next) {
 	return next()
 });
 
-Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|20%';
+Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|10%, updatedAt|10%';
+
+Post.schema.pre('save', next => {
+	this.updatedAt = new Date()
+	next()
+})
+
 Post.register();

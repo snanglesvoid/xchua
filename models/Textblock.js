@@ -8,11 +8,18 @@ const Textblock = new keystone.List('Textblock', {
 
 Textblock.add({
     title: { type: String, required: true, noedit: true, initial: true },
+    updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
     content: {
         english: { type: Types.Html, wysiwyg: true, height: 150 },
         chinese: { type: Types.Html, wysiwyg: true, height: 150 },
     }
 })
 
-Textblock.defaultColumns = 'title'
+Textblock.defaultColumns = 'title, updatedAt'
+
+Textblock.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
+
 Textblock.register()

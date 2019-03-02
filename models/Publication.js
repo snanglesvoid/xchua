@@ -11,6 +11,9 @@ Publication.add({
         english: { type: String, required: true },
         chinese: { type: String }
     },
+    updatedAt: {
+        type: Types.Datetime, noedit: true, default: Date.now
+    },
     author: {
         english: { type: String },
         chinese: { type: String },
@@ -39,7 +42,12 @@ Publication.schema.methods.caption = function(lang) {
     `
 }
 
-Publication.defaultColumns = 'title.english, cover, state|20%'
+Publication.defaultColumns = 'title.english, cover, state|10%, updatedAt|10%'
+
+Publication.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
 
 
 Publication.register()

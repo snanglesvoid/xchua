@@ -11,6 +11,7 @@ Fair.add({
         english: { type: String, required: true },
         chinese: { type: String }
     },
+    updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
     state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     thumbnail: { type: Types.CloudinaryImage },
     date: {
@@ -20,9 +21,15 @@ Fair.add({
     artists: { type: Types.Relationship, ref: 'Artist', many: true }
 })
 
-Fair.defaultColumns = 'title.english, thumbnail|20%, state|20%'
+Fair.defaultColumns = 'title.english, thumbnail|20%, state|10%, updatedAt|10%'
 
 Fair.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english
 }
+
+Fair.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
+
 Fair.register()

@@ -10,6 +10,9 @@ GallerySpace.add({
         english: { type: String, required: true },
         chinese: { type: String }
     },
+    updatedAt: {
+        type: Types.Datetime, noedit: true, default: Date.now
+    },
     published: { type: Boolean },
     address: {
         english: { type: Types.Html, wysiwyg: true, height: 50 },
@@ -27,6 +30,11 @@ GallerySpace.add({
     }
 })
 
-GallerySpace.defaultColumns = 'location.english'
+GallerySpace.defaultColumns = 'location.english, updatedAt'
+
+GallerySpace.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next()
+})
 
 GallerySpace.register()

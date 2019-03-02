@@ -13,6 +13,7 @@ Artist.add({
         chinese: { type: Types.Name }
     },
     state:         { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+    updatedAt:     { type: Types.Datetime, noedit: true, default: Date.now },
     biography:     { 
         english: { type: Types.Html, wysiwyg: true, height: 400 },
         chinese: { type: Types.Html, wysiwyg: true, height: 400 },
@@ -30,6 +31,11 @@ Artist.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artist'})
 Artist.relationship({ ref: 'Exhibition', path: 'exhibitions', refPath: 'artists'})
 Artist.relationship({ ref: 'Fair', path: 'fairs', refPath: 'artists'})
 
-Artist.defaultColumns = 'name.english, thumbnail|20%, state|20%'
+Artist.defaultColumns = 'name.english, thumbnail|20%, state|10%, updatedAt|10%'
+
+Artist.schema.pre('save', next => {
+    this.updatedAt = new Date()
+    next(null)
+})
 
 Artist.register()
