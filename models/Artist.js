@@ -13,6 +13,7 @@ Artist.add({
         chinese: { type: Types.Name }
     },
     state:         { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+    artistType:    { type: Types.Select, options: 'resident, guest', default: 'resident', index: true },
     updatedAt:     { type: Types.Datetime, noedit: true, default: Date.now },
     biography:     { 
         english: { type: Types.Html, wysiwyg: true, height: 400 },
@@ -22,8 +23,6 @@ Artist.add({
     thumbnail:     { type: Types.CloudinaryImage },
     selectedWork:  { type: Types.Relationship, ref: 'Artwork' },
     listPriority:  { type: Number, default: 0 }
-    // artworks:      { type: Types.Relationship, ref: 'Artwork', many: true },
-    // exhibitions:   { type: Types.Relationship, ref: 'Exhibition', many: true }
 })
 
 Artist.relationship({ ref: 'Artwork', path: 'artworks', refPath: 'artist' })
@@ -35,7 +34,7 @@ Artist.defaultColumns = 'name.english, thumbnail|20%, state|10%, updatedAt|10%'
 
 Artist.schema.pre('save', next => {
     this.updatedAt = new Date()
-    next(null)
+    next()
 })
 
 Artist.register()
