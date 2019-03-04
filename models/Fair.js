@@ -21,7 +21,7 @@ Fair.add({
     artists: { type: Types.Relationship, ref: 'Artist', many: true }
 })
 
-Fair.defaultColumns = 'title.english, thumbnail|20%, state|10%, updatedAt|10%'
+Fair.defaultColumns = 'title.english, thumbnail|20%, state|10%, updatedAt|20%'
 
 Fair.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english

@@ -30,7 +30,7 @@ Artist.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artist'})
 Artist.relationship({ ref: 'Exhibition', path: 'exhibitions', refPath: 'artists'})
 Artist.relationship({ ref: 'Fair', path: 'fairs', refPath: 'artists'})
 
-Artist.defaultColumns = 'name.english, thumbnail|20%, state|10%, updatedAt|10%'
+Artist.defaultColumns = 'name.english, thumbnail|20%, artistType|10%, state|10%, updatedAt|20%'
 
 Artist.schema.pre('save', next => {
     this.updatedAt = new Date()

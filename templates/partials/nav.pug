@@ -1,5 +1,3 @@
-//- a#logo(href="/")
-//-   include ./logo.svg
 mixin menu-link(href, section, slug)
   -var ts = snippets[slug] || slug
   a(keep-lang, href= href, class= section==section ? 'active' : '',
@@ -16,7 +14,6 @@ mixin menu-link(href, section, slug)
 
 h5#sidenav-section!= section
     
-
 #sidenav.sidenav
   //- a.closebtn(href="javascript:void(0)" onclick="closeNav()") &times;
   //- each link in navLinks
@@ -40,7 +37,7 @@ h5#sidenav-section!= section
   //-   )= pc.name[lang] || pc.name.english
   //-     //- | #{lang == 'chinese' ? '新闻' : 'News'}
   .language-select
-    a(switch-lang="english" href="#")
-      | English
-    a(switch-lang="chinese" href="#")
+    a(switch-lang="english" href="#" style= (lang == 'english' ? 'text-decoration: underline;' : '') )
+      | En
+    a(switch-lang="chinese" href="#" style= (lang == 'chinese' ? 'text-decoration: underline;' : ''))
       | 中文

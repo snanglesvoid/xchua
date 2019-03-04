@@ -42,7 +42,7 @@ Publication.schema.methods.caption = function(lang) {
     `
 }
 
-Publication.defaultColumns = 'title.english, cover, state|10%, updatedAt|10%'
+Publication.defaultColumns = 'title.english, cover, state|10%, updatedAt|20%'
 
 Publication.schema.pre('save', next => {
     this.updatedAt = new Date()

@@ -16,12 +16,25 @@ block intro
 block tabbar
   ul.tabs
     li.active
-      +sidemenu-link('#about', 'about-statements')
-    li
       +sidemenu-link('#spaces', 'about-spaces')
+    li
+      +sidemenu-link('#about', 'about-statements')
 
 block content
   .page#aboutPage: .scrollpane#mainScrollpane: .scrollpane-content
+    #spaces
+      .spaces
+        each space, index in spaces
+          if index % 2 == 0
+            .row
+              .col-sm-12.col-md-6.col-lg-5.left
+                +gallery-space(space)
+              .col-sm-12.col-md-6.col-lg-5.right
+                +gallery-space(spaces[index+1])
+      hr
+    br
+    br
+    br
     #about
       .row: .col-sm-12.col-md-12.col-lg-10
         if aboutText
@@ -35,20 +48,12 @@ block content
           )!= aboutText.content[lang] || aboutText.content.english
         else
           div About Text not found!
-        br
-        hr
-        br
-        br
-        br
-    #spaces
-      .spaces
-        each space, index in spaces
-          if index % 2 == 0
-            .row
-              .col-sm-12.col-md-6.col-lg-5.left
-                +gallery-space(space)
-              .col-sm-12.col-md-6.col-lg-5.right
-                +gallery-space(spaces[index+1])
+      br
+      br
+      br
+      br
+      br
+      br
 
 block js
   script(src='/js/tabs.js')

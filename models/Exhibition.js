@@ -44,7 +44,7 @@ Exhibition.schema.methods.locationName = function(lang) {
     }
 }
 
-Exhibition.defaultColumns = 'title.english, coverPicture|20%, state|10%, updatedAt|10%'
+Exhibition.defaultColumns = 'title.english, coverPicture|20%, state|10%, updatedAt|20%'
 
 Exhibition.schema.pre('save', next => {
     this.updatedAt = new Date()

@@ -3,30 +3,61 @@ extends ../layouts/layout
 include ../mixins/artwork
 include ../mixins/snippet
 
+mixin artistLink(artist)
+  li.artist-link(
+    data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
+    style="width: 100%;",
+    onmouseenter="artistLinkMouseover(this)",
+    onmouseleave="artistLinkMouseout(this)",
+    artist= artist.slug
+  )
+    a(keep-lang,
+      href='/artist/' + artist.slug,
+    )
+      - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+      | #{name.first + ' ' + name.last}
+
+mixin sidemenu-link(id, snippetSlug)
+  -var ts = snippets[snippetSlug] || snippetSlug
+  a(onclick= "scrollToSection(this)", select=id
+    snippet-editable= snippetEditable(user, ts, lang)
+  )!= ts.content ? ts.content[lang] || ts.content.english : ts
+
+
+
 block intro
   h3
     +snippet('artists-title')
 
+block tabbar
+  -var residents = artists.filter(x => x.artistType == 'resident')
+  -var guests = artists.filter(x => x.artistType == 'guest')
+  ul.tabs
+    if residents.length > 0 && guests.length > 0
+      li.active
+        +sidemenu-link("#resident", 'artists-resident')
+      li
+        +sidemenu-link("#guest", 'artists-guest')
+
 
 block content
+  -var residents = artists.filter(x => x.artistType == 'resident')
+  -var guests = artists.filter(x => x.artistType == 'guest')
   .page
     .flexbox
       if artists.length
         .list-container: .scrollpane.top: .scrollpane-content
           ul.artists-list
-            each artist in artists
-              li.artist-link(
-                data-ks-editable=editable(user, {list: 'Artist', id: artist.id}),
-                style="width: 100%;",
-                onmouseenter="artistLinkMouseover(this)",
-                onmouseleave="artistLinkMouseout(this)",
-                artist= artist.slug
-              )
-                a(keep-lang,
-                  href='/artist/' + artist.slug,
-                )
-                  - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-                  | #{name.first + ' ' + name.last}
+            li#resident
+              h4
+                +snippet('artists-resident')
+            each artist in residents
+              +artistLink(artist)
+            li#guest
+              h4
+                +snippet('artists-guest')
+            each artist in guests
+              +artistLink(artist)
         .picture-container
           //- img.artist-preview
           each artist in artists

@@ -27,10 +27,9 @@ FrontPageImage.add({
     textPlacement: { type: Types.Select, options: ['left', 'right', 'center', 'top'], default: 'right'},
     image:         { type: Types.CloudinaryImage },
     active:        { type: Boolean, default: true },
-    createdAt:     { type: Types.Date, default: Date.now }, 
 })
 
-FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%'
+FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%, updatedAt: 20%'
 
 FrontPageImage.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english

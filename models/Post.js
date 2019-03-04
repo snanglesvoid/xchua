@@ -52,7 +52,7 @@ Post.schema.pre('save', function (next) {
 	return next()
 });
 
-Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|10%, updatedAt|10%';
+Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|10%, updatedAt|20%';
 
 Post.schema.pre('save', next => {
 	this.updatedAt = new Date()
