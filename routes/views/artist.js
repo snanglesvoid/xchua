@@ -16,6 +16,7 @@ exports = module.exports = (req, res) => {
                 return next(err || 'artist not found')
             }
             if (!artist) {
+                next('not found')
                 return view.render('errors/404')
             }
 

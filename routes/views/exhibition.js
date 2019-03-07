@@ -20,6 +20,7 @@ exports = module.exports = (req, res) => {
                 return next(err)
             }
             if (!doc) {
+                next('not found')
                 return view.render('errors/404')
             }
             async.each(doc.artworks, (w, cb) => {
