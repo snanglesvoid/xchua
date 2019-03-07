@@ -57,11 +57,12 @@ block content
           +masonry(exhibition.pictures)
           br
           hr
-      #artworks
-        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
-          +works-masonry(exhibition.artworks, false, null)
-          br
-          hr
+      if (exhibition.artworks && exhibition.artworks.length > 0)
+        #artworks
+          .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
+            +works-masonry(exhibition.artworks, false, null)
+            br
+            hr
   else
     h3 This exhibition could not be found.
 
