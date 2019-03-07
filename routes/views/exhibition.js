@@ -20,8 +20,7 @@ exports = module.exports = (req, res) => {
                 return next(err)
             }
             if (!doc) {
-                view.render('errors/404')
-                next('not found')
+                return next('not found')
             }
             async.each(doc.artworks, (w, cb) => {
                 w.populate('artist', cb)
