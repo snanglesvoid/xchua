@@ -54,7 +54,7 @@ Post.schema.pre('save', function (next) {
 
 Post.defaultColumns = 'title.english, state|20%, category|20%, publishedDate|10%, updatedAt|20%';
 
-Post.schema.pre('save', next => {
+Post.schema.pre('save', function(next) {
 	this.updatedAt = new Date()
 	next()
 })

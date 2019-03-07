@@ -32,7 +32,7 @@ GallerySpace.add({
 
 GallerySpace.defaultColumns = 'location.english, updatedAt'
 
-GallerySpace.schema.pre('save', next => {
+GallerySpace.schema.pre('save', function(next) {
     this.updatedAt = new Date()
     next()
 })

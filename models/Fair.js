@@ -31,7 +31,7 @@ Fair.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english
 }
 
-Fair.schema.pre('save', next => {
+Fair.schema.pre('save', function(next) {
     this.updatedAt = new Date()
     next()
 })

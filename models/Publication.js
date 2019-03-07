@@ -44,7 +44,7 @@ Publication.schema.methods.caption = function(lang) {
 
 Publication.defaultColumns = 'title.english, cover, state|10%, updatedAt|20%'
 
-Publication.schema.pre('save', next => {
+Publication.schema.pre('save', function(next) {
     this.updatedAt = new Date()
     next()
 })

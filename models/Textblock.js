@@ -17,7 +17,7 @@ Textblock.add({
 
 Textblock.defaultColumns = 'title, updatedAt'
 
-Textblock.schema.pre('save', next => {
+Textblock.schema.pre('save', function(next) {
     this.updatedAt = new Date()
     next()
 })

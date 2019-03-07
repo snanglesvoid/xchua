@@ -36,7 +36,7 @@ FrontPageImage.schema.methods.translate = function(lang) {
     this.caption = this.caption[lang] || this.caption.english
 }
 
-FrontPageImage.schema.pre('save', next => {
+FrontPageImage.schema.pre('save', function(next) {
     this.updatedAt = new Date()
     next()
 })

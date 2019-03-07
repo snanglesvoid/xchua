@@ -37,7 +37,8 @@ ArtworkSeries.add({
 
 ArtworkSeries.defaultColumns = 'title.english, artist, selectedWork, updatedAt'
 
-ArtworkSeries.schema.pre('save', next => {
+ArtworkSeries.schema.pre('save', function(next) {
+    console.log('series pre save')
     this.updatedAt = new Date()
     next()
 })
