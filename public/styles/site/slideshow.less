@@ -54,6 +54,17 @@
         h2, h2 a, h3 {
             text-align: left;
         }
+        h2, h3 {
+            animation-duration: 2s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: backwards;
+        }
+        h2 {
+            animation-name: bounceInRight;
+        }
+        h3 {
+            animation-name: bounceInLeft;
+        }
     }
     .slideshow-title.right {
         bottom: 25%;
@@ -61,12 +72,34 @@
         h2, h2 a, h3 {
             text-align: right;
         }
+        h2, h3 {
+            animation-duration: 2s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: backwards;
+        }
+        h2 {
+            animation-name: bounceInLeft;
+        }
+        h3 {
+            animation-name: bounceInRight;
+        }
     }
     .slideshow-title.top {
         top: 12.5%;
         right: 12.5%;
         h2, h2 a, h3 {
             text-align: right;
+        }
+        h2, h3 {
+            animation-duration: 2s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: backwards;
+        }
+        h2 {
+            animation-name: bounceInLeft;
+        }
+        h3 {
+            animation-name: bounceInRight;
         }
     }
     .slideshow-title.center {

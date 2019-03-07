@@ -1,3 +1,5 @@
+include ./snippet
+
 mixin exhibition(exhibition)
   if exhibition
     .exhibition-card(
@@ -12,11 +14,15 @@ mixin exhibition(exhibition)
         ul.artist-links
           if exhibition.artists && exhibition.artists.length == 1
             each artist in exhibition.artists
-              li: a(keep-lang href= '/artist/' + artist.slug)
-                - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
-                | #{name.first + ' ' + name.last}
+              li
+                a(keep-lang href= '/artist/' + artist.slug)
+                  - var name= artist.name[lang] && artist.name[lang].first ? artist.name[lang] : artist.name.english
+                  | #{name.first + ' ' + name.last}
           else
-            li: a(keep-lang href= '#') Group Exhibition
+            li
+              a(keep-lang href= '#')
+                +snippet('exhibitions-group-exhibition')
+                //- Group Exhibition
         if exhibition.date
           p
             | #{exhibition._.date.start.format('MMM Do YYYY')} #{lang == 'chinese' ? '' : 'to'}&nbsp;

@@ -31,7 +31,7 @@ function scrollToSection(event) {
 }
 
 $(function() {
-    $scrollpane = $('.scrollpane')
+    $scrollpane = $('#artists-sp')
 
     let $rlink = $('a[select="#resident"]').parent()
     let $glink = $('a[select="#guest"]').parent()
@@ -39,6 +39,7 @@ $(function() {
     let $gtitle = $('#guest')
     $scrollpane.on('ps-scroll-y', function(event) {
         let top = $scrollpane.scrollTop()
+        // console.log(top, $gtitle.position().top)
         
         if (top > $gtitle.position().top - 200) {
             $glink.addClass('active')

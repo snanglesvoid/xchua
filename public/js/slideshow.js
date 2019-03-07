@@ -49,4 +49,10 @@ $(() => {
     }
     
     setInterval(nextSlide, timePerSlide)
+
+    $('#logo').css({
+        'animation-name' : 'bloat',
+        'animation-duration' : '2.5s',
+        'animation-timing-function' : 'ease-out'
+    })
 })

@@ -29,19 +29,18 @@ $(function() {
 
 
     let $aboutlink = $('a[select="#about"]').parent()
-    let $naboutlink = $('a[select!="#about"]').parent()
     let $spaceslink =  $('a[select="#spaces"]').parent()
-    let $nspaceslink = $('a[select!="#spaces"]').parent()
     
     $scrollpane.on('ps-scroll-y', function(event) {
         let top = $scrollpane.scrollTop()
+        console.log(top, $spaces.height() - 200)
         if (top > $spaces.height() - 200) {
             $aboutlink.addClass('active')
-            $naboutlink.removeClass('active')
+            $spaceslink.removeClass('active')
         }
         else {
             $spaceslink.addClass('active')
-            $nspaceslink.removeClass('active')
+            $aboutlink.removeClass('active')
         }
 
         if (top == 0) {

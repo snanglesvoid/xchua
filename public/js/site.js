@@ -85,9 +85,29 @@ $(() => {
 function setLogoColor(color) {
     $('#logo svg .letterPath').css('fill', color)
 }
+function animateLogoColor(b0, b1, duration, callback) {
+    let t = 0;
+    let interval = 30;
+    let i = setInterval(() => {
+        let b = b0 + (t / duration) * (b1 - b0)
+        t += interval
+        let x = Math.round(b * 255)
+        setLogoColor(`rgb(${b}, ${b}, ${b})`)
+
+        if (t > duration) {
+            clearInterval(i)
+            let x = Math.round(b1 * 255)
+            setLogoColor(`rgb(${b}, ${b}, ${b})`)
+            if (callback) callback()
+        }
+    }, interval)
+}
 
 $(function() {
-    setLogoColor('grey')
+    setLogoColor('rgb(50,50,50)')
+    // animateLogoColor(50, 120, 1250, () => {
+    //     animateLogoColor(120, 50, 1250)
+    // })
 })
 
 let pss = []

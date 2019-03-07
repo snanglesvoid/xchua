@@ -2,7 +2,7 @@ const config = {
 }
 
 $(function() {
-    $('[snippet-editable').each(function() {
+    $('[snippet-editable]').each(function() {
         let $div = $(this)
 
         $div.css('position', 'relative')

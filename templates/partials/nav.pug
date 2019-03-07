@@ -19,15 +19,15 @@ h5#sidenav-section!= section
   //- each link in navLinks
     li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
   br
-
-  +menu-link('/', 'home', 'menu-home')
-  +menu-link('/artists', 'artists', 'menu-artists')
-  +menu-link('/exhibitions', 'exhibitions', 'menu-exhibitions')
-  +menu-link('/fairs', 'fairs', 'menu-fairs')
-  +menu-link('/publications', 'publications', 'menu-publications')
-  +menu-link('/blog/news', 'more', 'menu-news')
-  +menu-link('/about', 'more', 'menu-about')
-  +menu-link('/contact', 'more', 'menu-contact')
+  .scrollpane(style='max-height: calc(100vh - 160px)'): .scrollpane-content
+    +menu-link('/', 'home', 'menu-home')
+    +menu-link('/artists', 'artists', 'menu-artists')
+    +menu-link('/exhibitions', 'exhibitions', 'menu-exhibitions')
+    +menu-link('/fairs', 'fairs', 'menu-fairs')
+    +menu-link('/publications', 'publications', 'menu-publications')
+    +menu-link('/blog/news', 'more', 'menu-news')
+    +menu-link('/about', 'more', 'menu-about')
+    +menu-link('/contact', 'more', 'menu-contact')
   //- each pc in postCategories
   //-   //- -var x = console.log(pc, lang)
   //-   a(keep-lang
