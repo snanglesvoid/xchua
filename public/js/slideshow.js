@@ -49,7 +49,9 @@ $(() => {
         })
     }
     
-    setInterval(nextSlide, timePerSlide)
+    if ($('.front-slideshow').find('img:not(.placeholder)').size() > 1) {
+        setInterval(nextSlide, timePerSlide)
+    }
 
     $('#logo').css({
         'animation-name' : 'bloat',
