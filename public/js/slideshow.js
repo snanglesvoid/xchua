@@ -7,7 +7,7 @@ $(() => {
 
             let $slideshow = $(this)
             let $active = $slideshow.find('.active')
-            if (!$active.next()) { return }
+            if (!$active.next() || !$active.next().get(0)) { return }
             let $next = $active.next().get(0).tagName == 'IMG'
                 ? $active.next()
                 : $slideshow.find('img:first').next()
