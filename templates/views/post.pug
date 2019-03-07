@@ -10,12 +10,12 @@ block content
     .page: .scrollpane#mailScrollpane: .scrollpane-content
       if data.post.image.exists
         #cover-picture
-          .row: .col-sm-12.col-md-12.col-lg-10
+          .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
             img(src=data.post._.image.limit(2048,2048), style='width: 100%;')
             br
             hr
         #text
-          .row: .col-sm-12.col-md-12.col-lg-10
+          .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
             div(
               style="position: relative;",
             )
@@ -32,7 +32,7 @@ block content
 
   else
     h3 This Post could not be found.
-  //- .page: .scrollpane: .scrollpane-content: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
+  //- .page: .scrollpane: .scrollpane-content: .row.max-width-1200: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
     article
       //- p: a(href='/blog') &larr; back to the blog
       //- hr

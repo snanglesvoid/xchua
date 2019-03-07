@@ -22,7 +22,7 @@ block tabbar
 block content
   if exhibition
     .page: .scrollpane#mainScrollpane: .scrollpane-content
-      #heading: .row: .col-sm-12.col-md-12.col-lg-10
+      #heading: .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
         ul.artist-links
           each artist in exhibition.artists
             li: a(keep-lang href= '/artist/' + artist.slug)
@@ -35,7 +35,7 @@ block content
             br
             | #{exhibition.location.location[lang] || exhibition.location.location.english}
       #cover-picture
-        .row: .col-sm-12.col-md-12.col-lg-10
+        .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
           img(
             src= exhibition._.coverPicture.limit(2048, 2048),
             style="width: 100%;",
@@ -43,7 +43,7 @@ block content
           br
           hr
       #text
-        .row: .col-sm-12.col-md-12.col-lg-10
+        .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
           div(
             data-editable= inlineEditable(user, {
               list: 'exhibitions',
@@ -53,13 +53,13 @@ block content
           )!= exhibition.text[lang] || exhibition.text.english
           hr
       #gallery
-        .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
+        .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
           +masonry(exhibition.pictures)
           br
           hr
       if (exhibition.artworks && exhibition.artworks.length > 0)
         #artworks
-          .row: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
+          .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10.no-padding-sm
             +works-masonry(exhibition.artworks, false, null)
             br
             hr
