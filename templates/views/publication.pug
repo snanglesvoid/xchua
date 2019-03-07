@@ -20,7 +20,7 @@ block content
         if publication.cover
           #cover(style="text-align: center;")
             img(
-              src= publication._.cover.limit(640, 640),
+              src= publication._.cover.limit(2048, 2048),
               caption= publication.caption(lang)
             )
           br

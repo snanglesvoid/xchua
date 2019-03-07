@@ -4,7 +4,7 @@ mixin gallery-space(space)
       h2= space.location[lang] || space.location.english
       hr
       if space.image
-        img(src= space._.image.limit(640, 640))
+        img(src= space._.image.limit(2048, 2048))
       br
       div(style="position: relative;")
         .address(

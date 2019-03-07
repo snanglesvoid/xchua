@@ -18,6 +18,10 @@ Fair.add({
         start: { type: Types.Date, index: true },
         end:   { type: Types.Date, index: true }
     },
+    text:  { 
+        english: { type: Types.Html, wysiwyg: true, height: 400 },
+        chinese: { type: Types.Html, wysiwyg: true, height: 400 },
+    },
     artists: { type: Types.Relationship, ref: 'Artist', many: true }
 })
 

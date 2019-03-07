@@ -7,7 +7,7 @@ mixin publication(publication)
           onclick= "window.location.href='/publication/" + publication.slug + "'"
         )
           img(
-            src= publication._.cover.limit(640, 640),
+            src= publication._.cover.limit(2048, 2048),
             caption= publication.caption(lang)
           )
         .middle(onclick= "window.location.href='/publication/" + publication.slug + "'"): .content

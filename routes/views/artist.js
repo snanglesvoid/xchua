@@ -60,9 +60,10 @@ exports = module.exports = (req, res) => {
                         .reduce((a, b) => a && b, true)
                 )
                 locals.artist.series = locals.artist.series.filter(s => {
-                    console.log(s.artworks.length)
                     return s.artworks.length > 0
                 })
+
+                // console.log(locals.artist.series)
                 next(err)
             })
         })

@@ -33,11 +33,11 @@ mixin series-masonry(series, works, artist)
     if series.length > 0
       if works && works.length > 0
         -var x = series.push({title: {english: 'Uncategorized'},artworks: works,selectedWork: works[0], artist: artist})
-        .modal-images
-          each s in series
-            .grid.masonry.masonry-works
-              +series(s, artist)
-              .grid-item.divider(style="width: 100%; height:16px; border-top: 1px solid lightgrey;")
+      .modal-images
+        each s in series
+          .grid.masonry.masonry-works
+            +series(s, artist)
+            .grid-item.divider(style="width: 100%; height:16px; border-top: 1px solid lightgrey;")
           //- .grid-item(style="width: 100%; height:16px; border-top: 1px solid lightgrey;")
     else
       .grid.masonry.masonry-works.modal-images

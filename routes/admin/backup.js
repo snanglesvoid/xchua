@@ -5,6 +5,7 @@ const fs = require('fs')
 const lists = [
     'Artist',
     'Artwork',
+    'ArtworkSeries',
     'Enquiry',
     'Exhibition',
     'Fair',
