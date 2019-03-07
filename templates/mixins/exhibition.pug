@@ -1,7 +1,7 @@
 include ./snippet
 
 mixin exhibition(exhibition)
-  if exhibition !== undefined
+  if exhibition
     .exhibition-card(
       onclick= "window.location='/exhibition/" + exhibition.slug + "'",
       data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id}),

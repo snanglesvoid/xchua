@@ -3,11 +3,12 @@ extends ../layouts/layout
 include ../mixins/masonry
 
 block intro
-  div(
-    data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id}),
-    style= "width: 100%; height: 100%;"
-  )
-    h2(style="font-style:italic; font-weight: 100; padding-left: 15px;")= exhibition.title[lang] || exhibition.title.english
+  if exhibition
+    div(
+      data-ks-editable=editable(user, {list: 'Exhibition', id: exhibition.id}),
+      style= "width: 100%; height: 100%;"
+    )
+      h2(style="font-style:italic; font-weight: 100; padding-left: 15px;")= exhibition.title[lang] || exhibition.title.english
 
 block tabbar
   //- ul.tabs
