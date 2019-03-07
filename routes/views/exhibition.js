@@ -16,6 +16,12 @@ exports = module.exports = (req, res) => {
 
     view.on('init', next => {
         query.exec((err, doc) => {
+            if (err) {
+                return next(err)
+            }
+            if (!doc) {
+                return View.render('errors/404')
+            }
             async.each(doc.artworks, (w, cb) => {
                 w.populate('artist', cb)
             }, err => {

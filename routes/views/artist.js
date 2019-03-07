@@ -12,8 +12,11 @@ exports = module.exports = (req, res) => {
             slug: req.params.slug
         })
         .exec((err, artist) => {
-            if (err || !artist) {
+            if (err) {
                 return next(err || 'artist not found')
+            }
+            if (!artist) {
+                return view.render('errors/404')
             }
 
             locals.artist = artist
