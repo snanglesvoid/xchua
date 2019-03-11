@@ -8,8 +8,6 @@ function openTab(event) {
     let $tab = $(select)
     $tab.addClass('active')
 
-    location.hash = $tab.attr('id');
-
     if (window.pack) {
         setTimeout(pack, 50)
     }
@@ -17,9 +15,5 @@ function openTab(event) {
 
 
 $(function() {
-    let hash = window.location.hash
-    if (hash) {
-        let $a = $('a[select="' + hash + '"]')
-        openTab($a)
-    }
+   
 })
