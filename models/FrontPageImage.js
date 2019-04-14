@@ -31,7 +31,7 @@ FrontPageImage.add({
     listPriority:  { type: Number, default: 0 },
 })
 
-FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%, updatedAt: 20%'
+FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%, listPriority|8%, updatedAt: 20%'
 
 FrontPageImage.schema.methods.translate = function(lang) {
     this.title = this.title[lang] || this.title.english
