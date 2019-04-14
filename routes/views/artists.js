@@ -6,11 +6,13 @@ exports = module.exports = (req, res) => {
 
     locals.section = 'artists'
 
-    view.query('artists', keystone.list('Artist').model.find({
-        state: 'published'
-    })
-    .populate('selectedWork')
-    .sort('-listPriority'))
+    view.query('artists', 
+        keystone.list('Artist').model.find({
+            state: 'published'
+        })
+        .populate('selectedWork')
+        .sort('-listPriority')
+    )
 
     view.render('artists')
 }

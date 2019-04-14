@@ -12,7 +12,7 @@ exports = module.exports = function (req, res) {
 	view.query('images', 
 		keystone.list('FrontPageImage').model.find({
 			active: true
-		}).sort('-createdAt')
+		}).sort('-listPriority')
 	)
 
 	// Render the view

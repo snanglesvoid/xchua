@@ -3,6 +3,7 @@ const Types = keystone.Field.Types
 
 const FrontPageImage = new keystone.List('FrontPageImage', {
     map: { name: 'title.english' },
+    defaultSort: '-listPriority'
 })
 
 FrontPageImage.add({
@@ -27,6 +28,7 @@ FrontPageImage.add({
     textPlacement: { type: Types.Select, options: ['left', 'right', 'center', 'top'], default: 'right'},
     image:         { type: Types.CloudinaryImage },
     active:        { type: Boolean, default: true },
+    listPriority:  { type: Number, default: 0 },
 })
 
 FrontPageImage.defaultColumns = 'title.english, caption.english, textPlacement, image|20%, updatedAt: 20%'
