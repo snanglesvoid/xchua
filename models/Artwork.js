@@ -19,10 +19,11 @@ Artwork.add({
     description: { 
         english: { type: String },
         chinese: { type: String }, 
+        german:  { type: String },
     },
     dimensions:  { type: String },
     price:       { type: String },
-    availability: { type: Boolean },
+    availability: { type: Boolean, default: false },
     note:        { type: Types.Html, wysiwyg: true, height: 20 },
     artist:      { type: Types.Relationship, ref: 'Artist' },
     // series:      { type: Types.Relationship, ref: 'ArtworkSeries' }

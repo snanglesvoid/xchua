@@ -12,6 +12,7 @@ Textsnippet.add({
     content: {
         english: { type: String },
         chinese: { type: String },
+        german: { type: String },
     }
 })
 

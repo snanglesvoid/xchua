@@ -12,6 +12,7 @@ Textblock.add({
     content: {
         english: { type: Types.Html, wysiwyg: true, height: 150 },
         chinese: { type: Types.Html, wysiwyg: true, height: 150 },
+        german: { type: Types.Html, wysiwyg: true, height: 150 },
     }
 })
 

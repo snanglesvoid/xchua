@@ -15,6 +15,7 @@ Post.add({
 	title: { 
 		english: { type: String, required: true },
 		chinese: { type: String },
+		german: { type: String },
 	},
 	updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
@@ -27,6 +28,10 @@ Post.add({
 			extended: { type: Types.Html, wysiwyg: true, height: 400 },
 		}, 
 		chinese : {
+			brief: { type: Types.Html, wysiwyg: true, height: 150 },
+			extended: { type: Types.Html, wysiwyg: true, height: 400 },
+		}, 
+		german : {
 			brief: { type: Types.Html, wysiwyg: true, height: 150 },
 			extended: { type: Types.Html, wysiwyg: true, height: 400 },
 		}

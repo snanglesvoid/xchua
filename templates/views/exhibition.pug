@@ -37,7 +37,7 @@ block content
       #cover-picture
         .row.max-width-1200: .col-sm-12.col-md-12.col-lg-10
           img(
-            src= exhibition._.coverPicture.limit(2048, 2048),
+            src= exhibition.coverPicture.secure_url,
             style="width: 100%;",
           )
           br

@@ -5,7 +5,7 @@ mixin masonry(images)
     .grid.masonry.modal-images
       each image in images
         .grid-item
-          img.masonry-image.modal-image(src=image.limit(1500, 1500))
+          img.masonry-image.modal-image(src=image.secure_url)
   else
     p cannot display masonry - images not defined
 

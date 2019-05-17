@@ -13,7 +13,8 @@ var PostCategory = new keystone.List('PostCategory', {
 PostCategory.add({
 	name: { 
 		english: { type: String, required: true, initial: true },
-		chinese: { type: String } 
+		chinese: { type: String },
+		german: { type: String },
 	}
 });
 

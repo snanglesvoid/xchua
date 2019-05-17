@@ -21,6 +21,7 @@ Fair.add({
     text:  { 
         english: { type: Types.Html, wysiwyg: true, height: 400 },
         chinese: { type: Types.Html, wysiwyg: true, height: 400 },
+        german: { type: Types.Html, wysiwyg: true, height: 400 },
     },
     artists: { type: Types.Relationship, ref: 'Artist', many: true }
 })

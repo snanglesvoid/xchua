@@ -67,7 +67,7 @@ block content
               unless artist.selectedWork
                 if (artist.thumbnail)
                   .artwork
-                    img.modal-image(src= artist._.thumbnail.limit(2048, 2048))
+                    img.modal-image(src= artist.thumbnail.secure_url)
           
 
 block js

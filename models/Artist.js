@@ -10,7 +10,7 @@ const Artist = new keystone.List('Artist', {
 Artist.add({
     name:          { 
         english: { type: Types.Name, required: true, index: true },
-        chinese: { type: Types.Name }
+        chinese: { type: Types.Name },
     },
     state:         { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
     artistType:    { type: Types.Select, options: 'resident, guest', default: 'resident', index: true },
@@ -18,6 +18,7 @@ Artist.add({
     biography:     { 
         english: { type: Types.Html, wysiwyg: true, height: 400 },
         chinese: { type: Types.Html, wysiwyg: true, height: 400 },
+        german:  { type: Types.Html, wysiwyg: true, height: 400 },
     },
     picture:       { type: Types.CloudinaryImage },
     thumbnail:     { type: Types.CloudinaryImage },

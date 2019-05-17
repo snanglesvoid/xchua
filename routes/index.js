@@ -66,11 +66,19 @@ exports = module.exports = function (app) {
 	// app.post('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.post)
 	// app.delete('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.delete)
 
-	// app.get('/api/artists', [keystone.middleware.api, keystone.middleware.cors], routes.api.artists.get)
-	// app.get('/api/artist/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.get)
+	app.get('/api/artists', [keystone.middleware.api, keystone.middleware.cors], routes.api.artists.get)
+	app.get('/api/artist/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.get)
+	app.get('/api/exhibitions', [keystone.middleware.api, keystone.middleware.cors], routes.api.exhibitions)
+	app.get('/api/exhibition/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.exhibition)
+	app.get('/api/fairs', [keystone.middleware.api, keystone.middleware.cors], routes.api.fairs )
+	app.get('/api/sociallinks', [keystone.middleware.api, keystone.middleware.cors], routes.api.sociallinks)
+	app.get('/api/snippets', [keystone.middleware.api, keystone.middleware.cors], routes.api.snippets)
+	app.get('/api/front-page-images', [keystone.middleware.api, keystone.middleware.cors], routes.api.frontPageImages)
+	app.get('/api/blog/:category', [keystone.middleware.api, keystone.middleware.cors], routes.api.blog)
+	app.get('/api/gallery-spaces', [keystone.middleware.api, keystone.middleware.cors], routes.api.gallerySpaces)
+	app.get('/api/text/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.text)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
-	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
-	// app.get('/protected', middleware.requireUser, routes.views.protected);
+
 
 };

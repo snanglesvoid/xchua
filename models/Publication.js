@@ -9,7 +9,8 @@ const Publication = new keystone.List('Publication', {
 Publication.add({
     title: {
         english: { type: String, required: true },
-        chinese: { type: String }
+        chinese: { type: String },
+        german: { type: String },
     },
     updatedAt: {
         type: Types.Datetime, noedit: true, default: Date.now
@@ -23,7 +24,8 @@ Publication.add({
     },
     description: {
         english: {type: Types.Html, wysiwyg: true, height: 400},
-        chinese: {type: Types.Html, wysiwyg: true, height: 400}
+        chinese: {type: Types.Html, wysiwyg: true, height: 400},
+        german: { type: Types.Html, wysiwyg: true, height: 400 },
     },
     cover: { type: Types.CloudinaryImage },
     pictures: { type: Types.CloudinaryImages },

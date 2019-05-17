@@ -9,18 +9,21 @@ const FrontPageImage = new keystone.List('FrontPageImage', {
 FrontPageImage.add({
     title:         { 
         english: { type: String, required: true },
-        chinese: { type: String}
+        chinese: { type: String },
+        german: { type: String },
     },
     updatedAt: {
         type: Types.Datetime, noedit: true, default: Date.now
     },
     subtitle: {
         english: { type: String },
-        chinese: { type: String }
+        chinese: { type: String },
+        german: { type: String },
     },
     caption:       { 
         english: { type: String },
-        chinese: { type: String } 
+        chinese: { type: String },
+        german: { type: String }, 
     },
     linkUrl:       { type: String, default: '#'},
     textColor:     { type: Types.Select, options: ['bright', 'dark', 'custom'], default: 'bright'},

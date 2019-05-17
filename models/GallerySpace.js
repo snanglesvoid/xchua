@@ -8,7 +8,8 @@ const GallerySpace = new keystone.List('GallerySpace', {
 GallerySpace.add({
     location: {
         english: { type: String, required: true },
-        chinese: { type: String }
+        chinese: { type: String },
+        german: { type: String }
     },
     updatedAt: {
         type: Types.Datetime, noedit: true, default: Date.now
@@ -17,13 +18,15 @@ GallerySpace.add({
     address: {
         english: { type: Types.Html, wysiwyg: true, height: 50 },
         chinese: { type: Types.Html, wysiwyg: true, height: 50 },
+        german: { type: Types.Html, wysiwyg: true, height: 50 },
     },
     phone: {
         type: String
     },
     openingHours: {
         english: { type: String },
-        chinese: { type: String }
+        chinese: { type: String },
+        german: { type: String },
     },
     image: {
         type: Types.CloudinaryImage

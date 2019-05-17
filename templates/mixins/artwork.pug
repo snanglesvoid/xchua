@@ -30,7 +30,7 @@ mixin artwork(w, artist)
     )
       if w.image && w.image.exists
         img.modal-image(
-          src= w._.image.limit(2048, 2048)
+          src= w.image.secure_url
           caption= w.caption(lang, artist)
         )
       unless w.image && w.image.exists
