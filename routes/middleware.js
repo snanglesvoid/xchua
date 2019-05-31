@@ -37,6 +37,12 @@ function inlineImageUpload(user, data) {
 	else return JSON.stringify(data)
 }
 
+exports.cors = function (req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+}
+
 exports.initLocals = function (req, res, next) {
 	// res.locals.navLinks = [
 	// 	{ label: 'Home', key: 'home', href: '/' },
