@@ -29,7 +29,7 @@ exports = module.exports = (req, res) => {
             res.status(400).send(validationErrors)
         }
         else {
-            res.status(200).send('ok')
+            res.status(200).json(validationErrors)
         }
     })
 }
