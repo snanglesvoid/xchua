@@ -3,7 +3,7 @@ const Artist = keystone.list('Artist').model
 
 exports = module.exports = {
     get: (req, res) => {
-        Artist.find()
+        Artist.find({ state: 'published' })
             .populate('selectedWork')
             .sort('-listPriority')
             .exec((err, docs) => {

@@ -25,7 +25,7 @@ exports = module.exports = function (req, res) {
 			errors = {
 				agree: {
 					type: 'required',
-					error:'Please agree to out data protection policy.',
+					error:'Please agree to our data protection policy.',
 					fieldName: 'data-agree'
 				}
 			}
