@@ -38,6 +38,7 @@ function inlineImageUpload(user, data) {
 }
 
 exports.cors = function (req, res, next) {
+	console.log('cors')
 	res.header('Access-Control-Allow-Origin', '*');
 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
 	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
