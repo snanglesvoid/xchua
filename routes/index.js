@@ -77,6 +77,9 @@ exports = module.exports = function (app) {
 	app.get('/api/blog/:category', [keystone.middleware.api, keystone.middleware.cors], routes.api.blog)
 	app.get('/api/gallery-spaces', [keystone.middleware.api, keystone.middleware.cors], routes.api.gallerySpaces)
 	app.get('/api/text/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.text)
+
+	app.post('/api/contact', [keystone.middleware.api, keystone.middleware.cors], routes.api.contact)
+	app.post('/api/subscibe', [keystone.middleware.api, keystone.middleware.cors], routes.api.subscribe)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
 
