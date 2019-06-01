@@ -15,19 +15,19 @@ exports = module.exports = (req, res) => {
     let list_id = process.env.MAILCHIMP_LIST_ID
 
     if (!validateEmail(req.body.email)) {
-        validationErrors.email = 'invalid email'
+        validationErrors.email = {type: 'invalid'}
         validationErrors.error = true
     }
     if (!req.body.firstname) {
-        validationErrors.firstname = true
+        validationErrors.firstname = {type: 'required'}
         validationErrors.error = true
     }
     if (!req.body.lastname) {
-        validationErrors.lastname = true
+        validationErrors.lastname = {type: 'required'}
         validationErrors.error = true
     }
     if (!req.body['data-agree']) {
-        validationErrors.agree = true
+        validationErrors.agree = {type: 'required'}
         validationErrors.error = true
     }
 
