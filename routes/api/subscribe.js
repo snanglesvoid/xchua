@@ -52,13 +52,13 @@ exports = module.exports = (req, res) => {
         .end((err, response) => {
             if (response.status === 400 && response.body.title === "Member Exists") {
                 res.json({
-                    status: 'already subscribed',
+                    status: 'subscribe-already-subscribed',
                     response: JSON.stringify(response.body)
                 })
             }
             else if (response.status < 300) {
                res.json({
-                   status: 'subscribed',
+                   status: 'subscribe-subscribed',
                    response: JSON.stringify(response.body)
                })
             } else {
