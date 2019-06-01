@@ -79,7 +79,7 @@ exports = module.exports = function (app) {
 	app.get('/api/text/:slug', [keystone.middleware.api, middleware.cors], routes.api.text)
 
 	app.post('/api/contact', [keystone.middleware.api, middleware.cors], routes.api.contact)
-	app.post('/api/subscibe', [keystone.middleware.api, middleware.cors], routes.api.subscribe)
+	app.post('/api/subscribe', [keystone.middleware.api, middleware.cors], routes.api.subscribe)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
 

@@ -16,7 +16,7 @@ Textsnippet.add({
     }
 })
 
-Textsnippet.defaultColumns = 'title, content.english, updatedAt'
+Textsnippet.defaultColumns = 'title, content.english, content.chinese, content.german'
 
 Textsnippet.schema.pre('save', function(next) {
     this.updatedAt = new Date()
