@@ -8,8 +8,7 @@ exports = module.exports = {
             query.where({ artist: req.params.artistId })
         }
        
-        query.populate('artist')
-            .exec((err, docs) => {
+        query.exec((err, docs) => {
                 if (err) {
                     return res.status(500).send(err)
                 }
