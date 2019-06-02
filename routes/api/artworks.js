@@ -2,8 +2,13 @@ const keystone = require('keystone')
 
 exports = module.exports = {
     get: (req, res) => {
-        keystone.list('Artwork').model.find()
-            .populate('artist')
+        const query = keystone.list('Artwork').model.find()
+
+        if (req.params.artistId) {
+            query.where({ artist: req.params.artistId })
+        }
+       
+        query.populate('artist')
             .exec((err, docs) => {
                 if (err) {
                     return res.status(500).send(err)

@@ -78,6 +78,9 @@ exports = module.exports = function (app) {
 	app.get('/api/gallery-spaces', [keystone.middleware.api, middleware.cors], routes.api.gallerySpaces)
 	app.get('/api/text/:slug', [keystone.middleware.api, middleware.cors], routes.api.text)
 
+	app.get('/api/artworks/:artistId', [keystone.middleware.api, middleware.cors], routes.api.artworks.get)
+	app.get('/api/artworks', [keystone.middleware.api, middleware.cors], routes.api.artworks.get)
+
 	app.post('/api/contact', [keystone.middleware.api, middleware.cors], routes.api.contact)
 	app.post('/api/subscribe', [keystone.middleware.api, middleware.cors], routes.api.subscribe)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
