@@ -23,6 +23,7 @@ exports = module.exports = async (req, res) => {
         log.error = error
     }
     finally {
+        log.number = Object.keys(log.data).length
         res.json(log)
     }
 }
