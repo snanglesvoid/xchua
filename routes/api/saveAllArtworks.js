@@ -11,13 +11,15 @@ exports = module.exports = async (req, res) => {
 
     let log = {
         data: {},
-        found: artworks.length
+        found: artworks.length,
+        processed: 0
     }
     try {
         await asyncForEach(artworks, async (artwork) => {
             console.log(artwork)
             await artwork.save()
             log.data[artwork.slug] = artwork
+            log.processed++
         })
     }
     catch(error) {
