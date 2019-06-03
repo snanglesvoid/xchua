@@ -76,6 +76,10 @@ Artwork.schema.pre('save', async function(next) {
     if (this.artist) {
         try {
             let artist = await keystone.list('Artist').model.findById(this.artist)
+            // if (!artist) {
+            //     this.artist = null
+            //     return next()
+            // }
             if (artist.name.english) {
                 this.artistName.english = artist.name.english.first + ' ' + artist.name.english.last
             }
