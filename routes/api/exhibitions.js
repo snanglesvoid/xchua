@@ -3,7 +3,7 @@ const keystone = require('keystone')
 exports = module.exports = async (req, res) => {
     try {
         let docs = await keystone.list('Exhibition').model.find({ state: 'published' })
-            .populate('artists')
+            .populate('artists', '-biography')
             .populate('artworks')
             .populate('location')
             .sort('-date.start')
