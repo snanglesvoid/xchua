@@ -83,6 +83,8 @@ exports = module.exports = function (app) {
 
 	app.post('/api/contact', [keystone.middleware.api, middleware.cors], routes.api.contact)
 	app.post('/api/subscribe', [keystone.middleware.api, middleware.cors], routes.api.subscribe)
+
+	app.get('/api/save-all-artworks', [keystone.middleware.api, middleware.cors], routes.api.saveAllArtworks)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
 

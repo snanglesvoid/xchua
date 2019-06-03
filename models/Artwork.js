@@ -26,6 +26,11 @@ Artwork.add({
     availability: { type: Boolean, default: false },
     note:        { type: Types.Html, wysiwyg: true, height: 20 },
     artist:      { type: Types.Relationship, ref: 'Artist' },
+    artistName: { 
+        english: { type: String, noedit: true },
+        chinese: { type: String, noedit: true }, 
+        german:  { type: String, noedit: true },
+    }
     // series:      { type: Types.Relationship, ref: 'ArtworkSeries' }
     // masonrySize: { type: Types.Select, options: ['small', 'big'], default: 'small'}
 })
@@ -66,8 +71,25 @@ Artwork.relationship({ ref: 'ArtworkSeries', path: 'series', refPath: 'artworks'
 
 Artwork.defaultColumns = 'title.english, artist, image|10%, year|10%, description.english|20%, updatedAt|20%'
 
-Artwork.schema.pre('save', function(next) {
+Artwork.schema.pre('save', async function(next) {
     this.updatedAt = new Date()
+    if (this.artist) {
+        try {
+            let artist = await keystone.list('Artist').model.findById(this.artist)
+            if (artist.name.english) {
+                this.artistName.english = artist.name.english.first + ' ' + artist.name.english.last
+            }
+            if (artist.name.chinese) {
+                this.artistName.chinese = artist.name.chinese.first + ' ' + artist.name.chinese.last
+            }
+            if (artist.name.german) {
+                this.artistName.german = artist.name.german.first + ' ' + artist.name.german.last
+            }
+        }
+        catch (error) {
+            return next(error)
+        }
+    }
     next()
 })
 
