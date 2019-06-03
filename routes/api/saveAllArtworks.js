@@ -10,7 +10,8 @@ exports = module.exports = async (req, res) => {
     let artworks = await keystone.list('Artwork').model.find()
 
     let log = {
-        data: {}
+        data: {},
+        found: artworks.length
     }
     try {
         await asyncForEach(artworks, async (artwork) => {
@@ -23,7 +24,7 @@ exports = module.exports = async (req, res) => {
         log.error = error
     }
     finally {
-        log.number = Object.keys(log.data).length
+        log.saved = Object.keys(log.data).length
         res.json(log)
     }
 }
