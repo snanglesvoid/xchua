@@ -24,6 +24,7 @@ exports = module.exports = async (req, res) => {
         })
     }
     catch(error) {
+        console.error(error)
         log.error = error
     }
     finally {
