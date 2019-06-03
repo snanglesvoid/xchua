@@ -17,7 +17,6 @@ exports = module.exports = async (req, res) => {
     try {
         await asyncForEach(artworks, async (artwork) => {
             console.log(artwork)
-            artwork.artistName = 'wtf'
             await artwork.save()
             log.data[artwork.slug] = artwork
             log.processed++
