@@ -10,6 +10,7 @@ exports = module.exports = async (req, res) => {
             .populate('artworks')
             .populate('location')
 
+        console.log('params', req.params)
         if (req.params.artistId) {
             console.log('query where ', req.params.artistId)
             query.where({
