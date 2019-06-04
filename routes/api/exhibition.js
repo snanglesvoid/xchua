@@ -11,6 +11,7 @@ exports = module.exports = async (req, res) => {
             .populate('location')
 
         if (req.params.artistId) {
+            console.log('query where ', req.params.artistId)
             query.where({
                 artists: req.params.artistId
             })
