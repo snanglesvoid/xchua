@@ -69,6 +69,7 @@ exports = module.exports = function (app) {
 	app.get('/api/artists', [keystone.middleware.api, middleware.cors], routes.api.artists.get)
 	app.get('/api/artist/:slug', [keystone.middleware.api, middleware.cors], routes.api.artist.get)
 	app.get('/api/exhibitions', [keystone.middleware.api, middleware.cors], routes.api.exhibitions)
+	app.get('/api/exhibitions/:artistId', [keystone.middleware.api, middleware.cors], routes.api.exhibitions)
 	app.get('/api/exhibition/:slug', [keystone.middleware.api, middleware.cors], routes.api.exhibition)
 	app.get('/api/fairs', [keystone.middleware.api, middleware.cors], routes.api.fairs )
 	app.get('/api/sociallinks', [keystone.middleware.api, middleware.cors], routes.api.sociallinks)
