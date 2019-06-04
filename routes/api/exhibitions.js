@@ -2,11 +2,19 @@ const keystone = require('keystone')
 
 exports = module.exports = async (req, res) => {
     try {
-        let docs = await keystone.list('Exhibition').model.find({ state: 'published' })
+        let query = keystone.list('Exhibition').model.find({ state: 'published' })
             .populate('artists', '-biography')
             .populate('artworks')
             .populate('location')
             .sort('-date.start')
+        
+        if (req.params.artistId) {
+            query.where({
+                artists: req.params.artistId
+            })
+        }
+
+        let docs = await query.exec()
 
         res.json(docs)
     }
