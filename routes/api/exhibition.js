@@ -2,13 +2,22 @@ const keystone = require('keystone')
 
 exports = module.exports = async (req, res) => {
     try {
-        let doc = await keystone.list('Exhibition').model.findOne({
+        let query = keystone.list('Exhibition').model.findOne({
             state: 'published',
             slug: req.params.slug
         })
             .populate('artists')
             .populate('artworks')
             .populate('location')
+
+        if (req.params.artistId) {
+            query.where({
+                artists: req.params.artistId
+            })
+        }
+
+
+        let doc = await query.exec()
 
         if (!doc) {
             res.status(404).send('not found')
