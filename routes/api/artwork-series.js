@@ -3,6 +3,9 @@ const keystone = require('keystone')
 exports = module.exports = async (req, res) => {
     try {
         let query = keystone.list('ArtworkSeries').model.find()
+            .populate('artworks')
+            .populate('selectedWork')
+
         if (req.params.artistId) {
             query.where({ artist: req.params.artistId })
         }
