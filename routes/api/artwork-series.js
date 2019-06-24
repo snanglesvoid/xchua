@@ -26,7 +26,9 @@ exports = module.exports = async (req, res) => {
 				series = [
 					...series,
 					{
-						title: { english: 'more-series' },
+						title: {
+							english: series.length == 0 ? 'artist-works' : 'more-series',
+						},
 						artist: req.params.artistId,
 						artworks: artworks,
 						selectedWork: artworks[0],
