@@ -2,6 +2,7 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const FrontPageImage = new keystone.List('FrontPageImage', {
+	autokey: { path: 'slug', from: 'title.english', unique: true },
 	map: { name: 'title.english' },
 	defaultSort: '-listPriority',
 })
