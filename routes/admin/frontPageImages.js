@@ -77,6 +77,7 @@ exports = module.exports = {
 			)
 		)
 			.then(docs => {
+				console.log('docs', docs)
 				docs.forEach((doc, i) => (doc.listPriority = items[i].listPriority))
 				return Promise.resolve(docs)
 			})
