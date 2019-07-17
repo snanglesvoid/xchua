@@ -35,7 +35,7 @@ exports = module.exports = {
 		let id = req.params.id
 		keystone
 			.list('FrontPageImage')
-			.model.deleteOne({ _id: id })
+			.model.findByIdAndRemove(id)
 			.exec((err, _) => {
 				if (err) return res.status(500).send(err)
 				res.json(_)
