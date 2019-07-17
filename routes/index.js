@@ -63,8 +63,16 @@ exports = module.exports = function(app) {
 		routes.admin['backup-json']
 	)
 
-	app.get('/admin/api/frontPageImages', routes.admin.frontPageImages.get)
-	app.post('/admin/api/frontPageImage', routes.admin.frontPageImages.post)
+	app.get(
+		'/admin/api/frontPageImages',
+		[keystone.middleware.api, middleware.cors],
+		routes.admin.frontPageImages.get
+	)
+	app.post(
+		'/admin/api/frontPageImage',
+		[keystone.middleware.api, middleware.cors],
+		routes.admin.frontPageImages.post
+	)
 
 	app.get('/blog/:category?', routes.views.blog)
 	app.get('/blog/post/:post', routes.views.post)
