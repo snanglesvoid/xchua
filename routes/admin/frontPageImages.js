@@ -13,12 +13,18 @@ exports = module.exports = {
 	},
 	post: (req, res) => {
 		let newImage = new keystone.list('FrontPageImage').model()
-		delete req.body.slug
-		delete req.body._id
-		delete req.body.id
-		delete req.body.updatedAt
 		// delete req.body.image
-		newImage.set(req.body)
+		newImage.set({
+			title: req.body.title,
+			subtitle: req.body.subtitle,
+			caption: req.body.caption,
+			location: req.body.location,
+			linkUrl: req.body.linkUrl,
+			textColor: req.body.textColor,
+			customColor: req.body.customColor,
+			textPlacement: req.body.textPlacement,
+			active: false,
+		})
 		newImage.save((err, doc) => {
 			if (err) return res.status(500).send(err)
 			res.json(doc)
