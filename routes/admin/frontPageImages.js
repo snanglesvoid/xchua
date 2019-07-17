@@ -13,6 +13,11 @@ exports = module.exports = {
 	},
 	post: (req, res) => {
 		let newImage = new keystone.list('FrontPageImage').model()
+		delete req.body.slug
+		delete req.body._id
+		delete req.body.id
+		delete req.body.updatedAt
+		// delete req.body.image
 		newImage.set(req.body)
 		newImage.save((err, doc) => {
 			if (err) return res.status(500).send(err)
