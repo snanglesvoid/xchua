@@ -18,79 +18,164 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+var keystone = require('keystone')
+var middleware = require('./middleware')
+var importRoutes = keystone.importer(__dirname)
 
 // Common Middleware
-keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.flashMessages);
+keystone.pre('routes', middleware.initLocals)
+keystone.pre('render', middleware.flashMessages)
 
 // Import Route Controllers
 var routes = {
 	views: importRoutes('./views'),
 	admin: importRoutes('./admin'),
-	api: importRoutes('./api')
-};
+	api: importRoutes('./api'),
+}
 
 // Setup Route Bindings
-exports = module.exports = function (app) {
+exports = module.exports = function(app) {
 	// Views
-	app.get('/', routes.views.index);
+	app.get('/', routes.views.index)
 
-	app.get('/artists', routes.views.artists);
-	app.get('/artist/:slug', routes.views.artist);
-	app.get('/exhibitions', routes.views.exhibitions);
-	app.get('/exhibition/:slug', routes.views.exhibition);
-	app.get('/publications', routes.views.publications);
-	app.get('/publication/:slug', routes.views.publication);
-	app.get('/fairs', routes.views.fairs);
-	app.get('/fair/:slug', routes.views.fair);
-	app.get('/about', routes.views.about);
-	app.get('/layout', routes.views.layout);
-	app.get('/texts/:slug', routes.views.text);
-	app.get('/pages/wechat', routes.views.wechat);
-	
-	app.get('/admin/updateExhibitionSlugs', middleware.requireUser, routes.admin.updateExhibitionSlugs);
-	app.all('/admin/backup', middleware.requireUser, routes.admin.backup);
-	app.get('/admin/backup-json', middleware.requireUser, routes.admin['backup-json'])
+	app.get('/artists', routes.views.artists)
+	app.get('/artist/:slug', routes.views.artist)
+	app.get('/exhibitions', routes.views.exhibitions)
+	app.get('/exhibition/:slug', routes.views.exhibition)
+	app.get('/publications', routes.views.publications)
+	app.get('/publication/:slug', routes.views.publication)
+	app.get('/fairs', routes.views.fairs)
+	app.get('/fair/:slug', routes.views.fair)
+	app.get('/about', routes.views.about)
+	app.get('/layout', routes.views.layout)
+	app.get('/texts/:slug', routes.views.text)
+	app.get('/pages/wechat', routes.views.wechat)
 
-	app.get('/blog/:category?', routes.views.blog);
-	app.get('/blog/post/:post', routes.views.post);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
-	app.all('/subscribe', routes.views.subscribe);
+	app.get(
+		'/admin/updateExhibitionSlugs',
+		middleware.requireUser,
+		routes.admin.updateExhibitionSlugs
+	)
+	app.all('/admin/backup', middleware.requireUser, routes.admin.backup)
+	app.get(
+		'/admin/backup-json',
+		middleware.requireUser,
+		routes.admin['backup-json']
+	)
+
+	app.get('/admin/api/frontPageImages', routes.admin.frontPageImages.get)
+	app.post('/admin/api/frontPageImage', routes.admin.frontPageImages.post)
+
+	app.get('/blog/:category?', routes.views.blog)
+	app.get('/blog/post/:post', routes.views.post)
+	app.get('/gallery', routes.views.gallery)
+	app.all('/contact', routes.views.contact)
+	app.all('/subscribe', routes.views.subscribe)
 
 	// app.get('/api/artworks', [keystone.middleware.api, keystone.middleware.cors], routes.api.artworks.get)
 	// app.get('/api/artwork/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.get)
 	// app.post('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.post)
 	// app.delete('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.delete)
 
-	app.get('/api/artists', [keystone.middleware.api, middleware.cors], routes.api.artists.get)
-	app.get('/api/artist/:slug', [keystone.middleware.api, middleware.cors], routes.api.artist.get)
-	app.get('/api/exhibitions', [keystone.middleware.api, middleware.cors], routes.api.exhibitions)
-	app.get('/api/exhibitions/:artistId', [keystone.middleware.api, middleware.cors], routes.api.exhibitions)
-	app.get('/api/exhibition/:slug', [keystone.middleware.api, middleware.cors], routes.api.exhibition)
-	app.get('/api/fairs', [keystone.middleware.api, middleware.cors], routes.api.fairs )
-	app.get('/api/sociallinks', [keystone.middleware.api, middleware.cors], routes.api.sociallinks)
-	app.get('/api/snippets', [keystone.middleware.api, middleware.cors], routes.api.snippets)
-	app.get('/api/front-page-images', [keystone.middleware.api, middleware.cors], routes.api.frontPageImages)
-	app.get('/api/blog/:category', [keystone.middleware.api, middleware.cors], routes.api.blog)
-	app.get('/api/gallery-spaces', [keystone.middleware.api, middleware.cors], routes.api.gallerySpaces)
-	app.get('/api/text/:slug', [keystone.middleware.api, middleware.cors], routes.api.text)
+	app.get(
+		'/api/artists',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.artists.get
+	)
+	app.get(
+		'/api/artist/:slug',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.artist.get
+	)
+	app.get(
+		'/api/exhibitions',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.exhibitions
+	)
+	app.get(
+		'/api/exhibitions/:artistId',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.exhibitions
+	)
+	app.get(
+		'/api/exhibition/:slug',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.exhibition
+	)
+	app.get(
+		'/api/fairs',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.fairs
+	)
+	app.get(
+		'/api/sociallinks',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.sociallinks
+	)
+	app.get(
+		'/api/snippets',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.snippets
+	)
+	app.get(
+		'/api/front-page-images',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.frontPageImages
+	)
+	app.get(
+		'/api/blog/:category',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.blog
+	)
+	app.get(
+		'/api/gallery-spaces',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.gallerySpaces
+	)
+	app.get(
+		'/api/text/:slug',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.text
+	)
 
-	app.get('/api/artworks/:artistId', [keystone.middleware.api, middleware.cors], routes.api.artworks.get)
-	app.get('/api/artworks', [keystone.middleware.api, middleware.cors], routes.api.artworks.get)
+	app.get(
+		'/api/artworks/:artistId',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.artworks.get
+	)
+	app.get(
+		'/api/artworks',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.artworks.get
+	)
 
-	app.get('/api/artwork-series/:artistId', [ keystone.middleware.api, middleware.cors], routes.api['artwork-series'])
-	app.get('/api/artwork-series', [keystone.middleware.api, middleware.cors ], routes.api['artwork-series'])
+	app.get(
+		'/api/artwork-series/:artistId',
+		[keystone.middleware.api, middleware.cors],
+		routes.api['artwork-series']
+	)
+	app.get(
+		'/api/artwork-series',
+		[keystone.middleware.api, middleware.cors],
+		routes.api['artwork-series']
+	)
 
-	app.post('/api/contact', [keystone.middleware.api, middleware.cors], routes.api.contact)
-	app.post('/api/subscribe', [keystone.middleware.api, middleware.cors], routes.api.subscribe)
+	app.post(
+		'/api/contact',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.contact
+	)
+	app.post(
+		'/api/subscribe',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.subscribe
+	)
 
-	app.get('/api/save-all-artworks', [keystone.middleware.api, middleware.cors], routes.api.saveAllArtworks)
+	app.get(
+		'/api/save-all-artworks',
+		[keystone.middleware.api, middleware.cors],
+		routes.api.saveAllArtworks
+	)
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
-
-
-};
+}
