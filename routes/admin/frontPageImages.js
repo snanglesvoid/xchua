@@ -12,7 +12,8 @@ exports = module.exports = {
 			})
 	},
 	post: (req, res) => {
-		let newImage = new keystone.list('FrontPageImage').model()
+		let FrontPageImage = keystone.list('FrontPageImage').model
+		let newImage = new FrontPageImage()
 		// delete req.body.image
 		newImage.set({
 			title: req.body.title,
