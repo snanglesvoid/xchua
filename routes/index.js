@@ -73,6 +73,11 @@ exports = module.exports = function(app) {
 		[keystone.middleware.api, middleware.cors],
 		routes.admin.frontPageImages.post
 	)
+	app.delete(
+		'/admin/api/frontPageImage',
+		[keystone.middleware.api, keystone.middleware.cors],
+		routes.admin.frontPageImages.delete
+	)
 
 	app.get('/blog/:category?', routes.views.blog)
 	app.get('/blog/post/:post', routes.views.post)

@@ -31,4 +31,14 @@ exports = module.exports = {
 			res.json(doc)
 		})
 	},
+	delete: (req, res) => {
+		let id = req.body._id
+		keystone
+			.list('FrontPageImage')
+			.deleteOne({ _id: id })
+			.exec((err, _) => {
+				if (err) return res.status(500).send(err)
+				res.json(_)
+			})
+	},
 }
