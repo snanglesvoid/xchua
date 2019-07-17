@@ -18,27 +18,44 @@ exports = module.exports = {
 				.list('FrontPageImage')
 				.model.findById(req.body._id)
 			if (!image) return res.status(400).send('saving unknown item')
+			image.set({
+				title: req.body.title,
+				subtitle: req.body.subtitle,
+				caption: req.body.caption,
+				location: req.body.location,
+				linkUrl: req.body.linkUrl,
+				textColor: req.body.textColor,
+				customColor: req.body.customColor,
+				textPlacement: req.body.textPlacement,
+				image: req.body.image,
+				active: false,
+			})
+			image.save((err, doc) => {
+				if (err) return res.status(500).send(err)
+				res.json(doc)
+			})
 		} else {
 			let FrontPageImage = keystone.list('FrontPageImage').model
 			image = new FrontPageImage()
+			image.set({
+				title: req.body.title,
+				subtitle: req.body.subtitle,
+				caption: req.body.caption,
+				location: req.body.location,
+				linkUrl: req.body.linkUrl,
+				textColor: req.body.textColor,
+				customColor: req.body.customColor,
+				textPlacement: req.body.textPlacement,
+				image: req.body.image,
+				active: false,
+			})
+			image.save((err, doc) => {
+				if (err) return res.status(500).send(err)
+				res.json(doc)
+			})
 		}
-		image.set({
-			title: req.body.title,
-			subtitle: req.body.subtitle,
-			caption: req.body.caption,
-			location: req.body.location,
-			linkUrl: req.body.linkUrl,
-			textColor: req.body.textColor,
-			customColor: req.body.customColor,
-			textPlacement: req.body.textPlacement,
-			image: req.body.image,
-			active: false,
-		})
+
 		// delete req.body.image
-		newImage.save((err, doc) => {
-			if (err) return res.status(500).send(err)
-			res.json(doc)
-		})
 	},
 	delete: (req, res) => {
 		let id = req.params.id
