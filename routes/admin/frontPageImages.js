@@ -69,12 +69,18 @@ exports = module.exports = {
 	updateOrder: (req, res) => {
 		let items = req.body
 		Promise.all(
-			items.map(item =>
-				keystone
-					.list('FrontPageImage')
-					.model.findById(item.id)
-					.exec()
-			)
+			items.map(item => {
+				return new Promise((resolve, reject) => {
+					keystone
+						.list('FrontPageImage')
+						.model.findById(item.id)
+						.exec((err, doc) => {
+							if (err) return reject(err)
+							if (!doc) return reject('not found')
+							return resolve(doc)
+						})
+				})
+			})
 		)
 			.then(docs => {
 				console.log('docs', docs)
@@ -82,7 +88,17 @@ exports = module.exports = {
 				return Promise.resolve(docs)
 			})
 			.then(docs => {
-				return Promise.all(docs.map(doc => doc.save()))
+				return Promise.all(
+					docs.map(
+						doc =>
+							new Promise((resolve, reject) => {
+								doc.save((err, doc_) => {
+									if (err) return reject(err)
+									return resolve(doc_)
+								})
+							})
+					)
+				)
 			})
 			.then(docs => {
 				res.json(docs)
