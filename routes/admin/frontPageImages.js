@@ -69,7 +69,12 @@ exports = module.exports = {
 	updateOrder: (req, res) => {
 		let items = req.body
 		Promise.all(
-			items.map(item => keystone.list('FrontPageImage').model.findById(item.id))
+			items.map(item =>
+				keystone
+					.list('FrontPageImage')
+					.model.findById(item.id)
+					.exec()
+			)
 		)
 			.then(docs => {
 				docs.forEach((doc, i) => (doc.listPriority = items[i].listPriority))
