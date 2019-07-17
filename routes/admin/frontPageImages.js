@@ -11,11 +11,18 @@ exports = module.exports = {
 				res.json(docs)
 			})
 	},
-	post: (req, res) => {
-		let FrontPageImage = keystone.list('FrontPageImage').model
-		let newImage = new FrontPageImage()
-		// delete req.body.image
-		newImage.set({
+	post: async (req, res) => {
+		let image
+		if (req.body._id) {
+			let image = await keystone
+				.list('FrontPageImage')
+				.model.findById(req.body._id)
+			if (!image) return res.status(400).send('saving unknown item')
+		} else {
+			let FrontPageImage = keystone.list('FrontPageImage').model
+			image = new FrontPageImage()
+		}
+		image.set({
 			title: req.body.title,
 			subtitle: req.body.subtitle,
 			caption: req.body.caption,
@@ -24,8 +31,10 @@ exports = module.exports = {
 			textColor: req.body.textColor,
 			customColor: req.body.customColor,
 			textPlacement: req.body.textPlacement,
+			image: req.body.image,
 			active: false,
 		})
+		// delete req.body.image
 		newImage.save((err, doc) => {
 			if (err) return res.status(500).send(err)
 			res.json(doc)
