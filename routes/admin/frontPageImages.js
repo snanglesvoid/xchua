@@ -84,7 +84,10 @@ exports = module.exports = {
 		)
 			.then(docs => {
 				console.log('docs', docs)
-				docs.forEach((doc, i) => (doc.listPriority = items[i].listPriority))
+				docs.forEach((doc, i) => {
+					doc.listPriority = items[i].listPriority
+					doc.active = items[i].active
+				})
 				return Promise.resolve(docs)
 			})
 			.then(docs => {
