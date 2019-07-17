@@ -66,10 +66,21 @@ exports = module.exports = {
 				res.json(_)
 			})
 	},
-	updateOrder: async (req, res) => {
+	updateOrder: (req, res) => {
 		let items = req.body
 		Promise.all(
 			items.map(item => keystone.list('FrontPageImage').model.findById(item.id))
 		)
+			.then(docs => {
+				docs.forEach((doc, i) => (doc.listPriority = items[i].listPriority))
+				return Promise.resolve(docs)
+			})
+			.then(docs => {
+				return Promise.all(docs.map(doc => doc.save()))
+			})
+			.then(docs => {
+				res.json(docs)
+			})
+			.catch(error => res.status(500).send(error))
 	},
 }
