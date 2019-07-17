@@ -28,7 +28,6 @@ exports = module.exports = {
 				customColor: req.body.customColor,
 				textPlacement: req.body.textPlacement,
 				image: req.body.image,
-				active: false,
 			})
 			image.save((err, doc) => {
 				if (err) return res.status(500).send(err)
@@ -66,5 +65,11 @@ exports = module.exports = {
 				if (err) return res.status(500).send(err)
 				res.json(_)
 			})
+	},
+	updateOrder: async (req, res) => {
+		let items = req.body
+		Promise.all(
+			items.map(item => keystone.list('FrontPageImage').model.findById(item.id))
+		)
 	},
 }
