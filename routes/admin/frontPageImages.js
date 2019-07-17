@@ -12,7 +12,8 @@ exports = module.exports = {
 			})
 	},
 	post: async (req, res) => {
-		let image
+    let image
+    console.log('post ', req.body)
 		if (req.body._id) {
 			let image = await keystone
 				.list('FrontPageImage')
