@@ -32,7 +32,7 @@ exports = module.exports = {
 		})
 	},
 	delete: (req, res) => {
-		let id = req.body._id
+		let id = req.params.id
 		keystone
 			.list('FrontPageImage')
 			.deleteOne({ _id: id })

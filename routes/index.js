@@ -74,7 +74,7 @@ exports = module.exports = function(app) {
 		routes.admin.frontPageImages.post
 	)
 	app.delete(
-		'/admin/api/frontPageImage',
+		'/admin/api/frontPageImage/:id',
 		[keystone.middleware.api, keystone.middleware.cors],
 		routes.admin.frontPageImages.delete
 	)
