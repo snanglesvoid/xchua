@@ -84,6 +84,12 @@ exports = module.exports = function(app) {
 		routes.admin.frontPageImages.updateOrder
 	)
 
+	app.post(
+		'/admin/api/cloudinary/upload',
+		[keystone.middleware.api, keystone.middleware.cors],
+		routes.admin.cloudinary.upload
+	)
+
 	app.get('/blog/:category?', routes.views.blog)
 	app.get('/blog/post/:post', routes.views.post)
 	app.get('/gallery', routes.views.gallery)
