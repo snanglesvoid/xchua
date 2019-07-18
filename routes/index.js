@@ -102,6 +102,7 @@ exports = module.exports = function(app) {
 		let fullpath = path.resolve(
 			__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/' + filename
 		)
+		console.log('get: ', fullpath)
 		if (fs.existsSync(fullpath)) {
 			res.sendFile(fullpath)
 		} else {
