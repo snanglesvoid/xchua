@@ -1,36 +1,38 @@
 const cloudinary = require('cloudinary')
 const keystone = require('keystone')
 
+let uploadPromise = function(path, options) {
+	return new Promise((resolve, reject) => {
+		cloudinary.uploader.upload(
+			path,
+			result => {
+				if (result.error) return reject(error.message)
+				return resolve(result)
+			},
+			options
+		)
+	})
+}
+
 exports = module.exports = async (req, res) => {
 	let files = req.files['upload']
 	let list = req.body.list
 	let id = req.body.id
 	let path = req.body.path
 
-	if (files && files.path) {
-		let options = {}
+	console.log('upload, list = ', list, ', id = ', id, ', path = ', path)
 
-		cloudinary.uploader.upload(
-			files.path,
-			async function(result) {
-				console.log('cloudinary returned', result)
-				if (result.error) {
-					return res.status(500).send(result.error.message)
-				} else {
-					try {
-						let model = await keystone.list(list).model.findById(id)
-						if (!model) return res.status(404).send('error model not found')
-						doc[path] = result
-						await doc.save()
-						res.json(doc)
-					} catch (error) {
-						return res.status(500).send(error)
-					}
-				}
-			},
-			options
-		)
-	} else {
-		res.status(400).send('No File Sent!')
+	try {
+		let model = await keystone.list(list).model.findById(id)
+		if (!model) throw 'model not found'
+		if (!files) throw 'no files given'
+		if (!files.path) throw 'no files path'
+		let result = await uploadPromise(files.path, {})
+		console.log('cloudinary returned', result)
+		model[path] = result
+		await model.save()
+		res.json(model)
+	} catch (error) {
+		return res.status(500).send(error)
 	}
 }
