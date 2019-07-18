@@ -33,6 +33,6 @@ exports = module.exports = async (req, res) => {
 		await model.save()
 		res.json(model)
 	} catch (error) {
-		return res.status(500).send(error)
+		return res.status(500).json({ message: error })
 	}
 }

@@ -18,9 +18,11 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-var keystone = require('keystone')
-var middleware = require('./middleware')
-var importRoutes = keystone.importer(__dirname)
+const keystone = require('keystone')
+const middleware = require('./middleware')
+const importRoutes = keystone.importer(__dirname)
+const path = require('path')
+const fs = require('fs')
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals)
@@ -65,30 +67,51 @@ exports = module.exports = function(app) {
 
 	app.get(
 		'/admin/api/frontPageImages',
-		[keystone.middleware.api, middleware.cors],
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.get
 	)
 	app.post(
 		'/admin/api/frontPageImage',
-		[keystone.middleware.api, middleware.cors],
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.post
 	)
 	app.delete(
 		'/admin/api/frontPageImage/:id',
-		[keystone.middleware.api, keystone.middleware.cors],
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.delete
 	)
 	app.post(
 		'/admin/api/frontPageImagesOrder',
-		[keystone.middleware.api, keystone.middleware.cors],
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.updateOrder
 	)
-
 	app.post(
 		'/admin/api/cloudinary/upload',
-		[keystone.middleware.api, keystone.middleware.cors],
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.cloudinary.upload
 	)
+	app.get('/admin', [middleware.requireUser], (req, res) => {
+		res.sendFile(
+			path.resolve(
+				__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/index.html'
+			)
+		)
+	})
+	app.get('/admin/:filename', [middleware.requireUser], (req, res) => {
+		let filename = req.params.filename
+		let fullpath = path.resolve(
+			__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/' + filename
+		)
+		if (fs.existsSync(fullpath)) {
+			res.sendFile(fullpath)
+		} else {
+			res.sendFile(
+				path.resolve(
+					__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/index.html'
+				)
+			)
+		}
+	})
 
 	app.get('/blog/:category?', routes.views.blog)
 	app.get('/blog/post/:post', routes.views.post)
