@@ -30,7 +30,6 @@ Fair.add({
 		german: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
 	artists: { type: Types.Relationship, ref: 'Artist', many: true },
-	pictures: { type: Types.CloudinaryImages },
 })
 
 Fair.defaultColumns = 'title.english, thumbnail|20%, state|10%, updatedAt|20%'
