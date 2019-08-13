@@ -12,8 +12,8 @@ exports = module.exports = {
 			})
 	},
 	post: async (req, res) => {
-    let image
-    console.log('post ', req.body)
+		let image
+		console.log('post ', req.body)
 		if (req.body._id) {
 			let image = await keystone
 				.list('FrontPageImage')
@@ -86,7 +86,7 @@ exports = module.exports = {
 			.then(docs => {
 				console.log('docs', docs)
 				docs.forEach((doc, i) => {
-					doc.listPriority = items[i].listPriority
+					doc.listPriority = items[i].listPriority || 0
 					doc.active = items[i].active
 				})
 				return Promise.resolve(docs)
