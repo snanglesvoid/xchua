@@ -26,6 +26,10 @@ LibArticle.add({
 		chinese: { type: Types.Html, wysiwyg: true, height: 400 },
 		german: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
+	size: {
+		type: number,
+		default: 10,
+	},
 })
 
 LibArticle.defaultColumns =
