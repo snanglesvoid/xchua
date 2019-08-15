@@ -1,40 +1,40 @@
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
-require('dotenv').config();
+require('dotenv').config()
 
 // Require keystone
-var keystone = require('keystone');
+var keystone = require('keystone')
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/confipg for available options
 // and documentation.
 
 keystone.init({
-	'name': 'XC.HuA',
-	'brand': 'XC.HuA',
+	name: 'XC.HuA',
+	brand: 'XC.HuA',
 
-	'less': 'public',
-	'static': ['public'],
-	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
+	less: 'public',
+	static: ['public'],
+	favicon: 'public/favicon.ico',
+	views: 'templates/views',
 	'view engine': 'pug',
 
 	'auto update': true,
-	'session': true,
-	'auth': true,
+	session: true,
+	auth: true,
 	'user model': 'User',
 	// 'wysiwyg cloudinary images': true,
-	// 'wysiwyg additional options': { 
-	// 	'external_plugins': { 
-	// 		'uploadimage': '/js/uploadimage/plugin.min.js' 
+	// 'wysiwyg additional options': {
+	// 	'external_plugins': {
+	// 		'uploadimage': '/js/uploadimage/plugin.min.js'
 	// 	}
 	// }
-});
+})
 
 keystone.set('cloudinary secure', true)
 
 // Load your project's Models
-keystone.import('models');
+keystone.import('models')
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
@@ -44,15 +44,14 @@ keystone.set('locals', {
 	env: keystone.get('env'),
 	utils: keystone.utils,
 	editable: keystone.content.editable,
-});
+})
 
 // Load your project's Routes
-keystone.set('routes', require('./routes'));
+keystone.set('routes', require('./routes'))
 
-
-keystone.set('cors allow origin', true);
-keystone.set('cors allow methods', true);
-keystone.set('cors allow headers', true);
+keystone.set('cors allow origin', true)
+keystone.set('cors allow methods', true)
+keystone.set('cors allow headers', true)
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
@@ -63,6 +62,7 @@ keystone.set('nav', {
 		'fairs',
 		'artworks',
 		'artwork-series',
+		'lib-articles',
 	],
 	// artists: 'artists',
 	// exhibitions: 'exhibitions',
@@ -71,28 +71,19 @@ keystone.set('nav', {
 	// artworks: 'artworks',
 	// galleries: 'galleries',
 	// enquiries: 'enquiries',
-	frontPage: [
-		'front-page-images',
-	],
-	aboutPage: [
-		'gallery-spaces',
-	],
-	posts: [
-		'posts',
-		'post-categories'
-	],
+	frontPage: ['front-page-images'],
+	aboutPage: ['gallery-spaces'],
+	posts: ['posts', 'post-categories'],
 	more: [
 		'textblocks',
 		'textsnippets',
 		'galleries',
 		'enquiries',
-		'social-links'
+		'social-links',
 	],
 	users: 'users',
-});
+})
 
 // Start Keystone to connect to your database and initialise the web server
 
-
-
-keystone.start();
+keystone.start()
