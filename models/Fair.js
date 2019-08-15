@@ -19,6 +19,11 @@ Fair.add({
 		index: true,
 	},
 	thumbnail: { type: Types.CloudinaryImage },
+	thumbnailImageFit: {
+		type: Types.Select,
+		options: ['contain', 'cover'],
+		default: 'cover',
+	},
 	pictures: { type: Types.CloudinaryImages },
 	date: {
 		start: { type: Types.Date, index: true },
