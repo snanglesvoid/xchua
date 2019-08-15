@@ -208,6 +208,12 @@ exports = module.exports = function(app) {
 		routes.api['artwork-series']
 	)
 
+	app.get(
+		'/api/lib-articles',
+		[keystone.middleware.api, middleware.cors],
+		routes.api['lib-articles']
+	)
+
 	app.post(
 		'/api/contact',
 		[keystone.middleware.api, middleware.cors],
