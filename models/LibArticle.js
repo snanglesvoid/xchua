@@ -27,7 +27,7 @@ LibArticle.add({
 		german: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
 	size: {
-		type: number,
+		type: Types.Number,
 		default: 10,
 	},
 })
