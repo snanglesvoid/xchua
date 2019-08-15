@@ -26,9 +26,21 @@ LibArticle.add({
 		chinese: { type: Types.Html, wysiwyg: true, height: 400 },
 		german: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
+	row: {
+		type: Types.Relationship,
+		ref: 'ShelfRow',
+	},
 	size: {
 		type: Types.Number,
 		default: 10,
+	},
+	x: {
+		type: Types.Number,
+		default: 0,
+	},
+	z: {
+		type: Types.Number,
+		default: 0,
 	},
 })
 
