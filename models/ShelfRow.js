@@ -2,7 +2,7 @@ const keystone = require('keystone')
 const Types = keystone.Field.Types
 
 const ShelfRow = new keystone.List('ShefRow', {
-	map: { name: index },
+	map: { name: 'index' },
 })
 
 ShelfRow.add({
