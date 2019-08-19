@@ -26,10 +26,10 @@ LibArticle.add({
 		chinese: { type: Types.Html, wysiwyg: true, height: 400 },
 		german: { type: Types.Html, wysiwyg: true, height: 400 },
 	},
-	row: {
-		type: Types.Relationship,
-		ref: 'ShelfRow',
-	},
+	// row: {
+	// 	type: Types.Relationship,
+	// 	ref: 'ShelfRow',
+	// },
 	size: {
 		type: Types.Number,
 		default: 10,
