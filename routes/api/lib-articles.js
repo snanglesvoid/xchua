@@ -6,7 +6,12 @@ exports = module.exports = async (req, res) => {
 		let items = await keystone
 			.list('LibArticle')
 			.model.find({ state: 'published' })
-		let result = rows.map(x => items.filter(y => y.row == x))
+		let result = rows.map(x => {
+			return {
+				items: items.filter(y => y.row == x),
+				height: x.height,
+			}
+		})
 		res.json(result)
 	} catch (error) {
 		res.status(500).send(error)
