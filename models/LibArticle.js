@@ -34,6 +34,10 @@ LibArticle.add({
 		type: Types.Number,
 		default: 10,
 	},
+	width: {
+		type: Types.Number,
+		default: 10,
+	},
 	x: {
 		type: Types.Number,
 		default: 0,
