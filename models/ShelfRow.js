@@ -1,7 +1,7 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
 
-const ShelfRow = new keystone.List('ShefRow', {
+const ShelfRow = new keystone.List('ShelfRow', {
 	map: { name: 'index' },
 })
 
