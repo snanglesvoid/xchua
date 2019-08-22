@@ -8,7 +8,7 @@ exports = module.exports = async (req, res) => {
 			.model.find({ state: 'published' })
 		let result = rows.map(x => {
 			return {
-				items: items.filter(y => y.row == x),
+				items: items.filter(y => y.row.equals(x._id)),
 				height: x.height,
 			}
 		})
