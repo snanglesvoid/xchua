@@ -30,13 +30,17 @@ LibArticle.add({
 		type: Types.Relationship,
 		ref: 'ShelfRow',
 	},
-	size: {
-		type: Types.Number,
-		default: 10,
-	},
 	width: {
 		type: Types.Number,
 		default: 10,
+	},
+	height: {
+		type: Types.Number,
+		default: 10,
+	},
+	depth: {
+		type: Types.Number,
+		default: 1,
 	},
 	x: {
 		type: Types.Number,
