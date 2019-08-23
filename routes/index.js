@@ -90,6 +90,11 @@ exports = module.exports = function(app) {
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.cloudinary.upload
 	)
+	app.post(
+		'/admin/api/libArticle',
+		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
+		routes.admin.libArticles.post
+	)
 	app.get('/admin', [middleware.requireUser], (req, res) => {
 		res.sendFile(
 			path.resolve(
