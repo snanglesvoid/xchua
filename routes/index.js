@@ -92,7 +92,7 @@ exports = module.exports = function(app) {
 	)
 	app.post(
 		'/admin/api/libArticle',
-		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
+		[keystone.middleware.api, keystone.middleware.cors],
 		routes.admin.libArticles.post
 	)
 	app.get('/admin', [middleware.requireUser], (req, res) => {
