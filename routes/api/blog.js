@@ -11,7 +11,7 @@ exports = module.exports = async (req, res) => {
 				state: 'published',
 				category: category,
 			})
-			.sort('publishedDate')
+			.sort('-publishedDate')
 		res.json(posts)
 	} catch (err) {
 		return res.status(500).send(err)
