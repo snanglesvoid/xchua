@@ -48,7 +48,7 @@ exports = module.exports = (req, res) => {
 						q: keystone
 							.list("ArtworkSeries")
 							.model.find({ artist: artist._id })
-							.populate("artworks", { match: { state: "published" } })
+							.populate({ path: "artworks", match: { state: "published" } })
 							.populate("selectedWork"),
 						n: "series"
 					}

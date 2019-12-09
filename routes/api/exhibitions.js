@@ -6,7 +6,7 @@ exports = module.exports = async (req, res) => {
 			.list("Exhibition")
 			.model.find({ state: "published" })
 			.populate("artists", "-biography")
-			.populate("artworks", { match: { state: "published" } })
+			.populate({ path: "artworks", match: { state: "published" } })
 			.populate("location")
 			.sort("-date.start");
 

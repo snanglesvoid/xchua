@@ -9,7 +9,7 @@ exports = module.exports = async (req, res) => {
 				slug: req.params.slug
 			})
 			.populate("artists")
-			.populate("artworks", { match: { state: "published" } })
+			.populate({ path: "artworks", match: { state: "published" } })
 			.populate("location");
 
 		let doc = await query.exec();

@@ -6,7 +6,11 @@ exports = module.exports = async (req, res) => {
 		let query = keystone
 			.list("ArtworkSeries")
 			.model.find()
-			.populate({ path: "artworks", match: { state: "published" } })
+			.populate({
+				path: "artworks",
+				// select: "slug",
+				match: { state: "published" }
+			})
 			.populate("selectedWork");
 
 		if (req.params.artistId) {
@@ -18,6 +22,7 @@ exports = module.exports = async (req, res) => {
 		if (req.params.artistId) {
 			let artworksQuery = keystone.list("Artwork").model.find({
 				artist: req.params.artistId,
+				state: "published",
 				_id: { $nin: _.flatMap(series, s => s.artworks).map(x => x._id) }
 			});
 			let artworks = await artworksQuery.exec();
