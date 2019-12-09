@@ -6,7 +6,7 @@ exports = module.exports = async (req, res) => {
 		let query = keystone
 			.list("ArtworkSeries")
 			.model.find()
-			.populate("artworks", { match: { state: "published" } })
+			.populate({ path: "artworks", match: { state: "published" } })
 			.populate("selectedWork");
 
 		if (req.params.artistId) {
