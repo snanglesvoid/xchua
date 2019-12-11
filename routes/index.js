@@ -18,112 +18,112 @@
  * http://expressjs.com/api.html#app.VERB
  */
 
-const keystone = require('keystone')
-const middleware = require('./middleware')
-const importRoutes = keystone.importer(__dirname)
-const path = require('path')
-const fs = require('fs')
+const keystone = require("keystone");
+const middleware = require("./middleware");
+const importRoutes = keystone.importer(__dirname);
+const path = require("path");
+const fs = require("fs");
 
 // Common Middleware
-keystone.pre('routes', middleware.initLocals)
-keystone.pre('render', middleware.flashMessages)
+keystone.pre("routes", middleware.initLocals);
+keystone.pre("render", middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
-	admin: importRoutes('./admin'),
-	api: importRoutes('./api'),
-}
+	views: importRoutes("./views"),
+	admin: importRoutes("./admin"),
+	api: importRoutes("./api")
+};
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	// Views
-	app.get('/', routes.views.index)
+	app.get("/", routes.views.index);
 
-	app.get('/artists', routes.views.artists)
-	app.get('/artist/:slug', routes.views.artist)
-	app.get('/exhibitions', routes.views.exhibitions)
-	app.get('/exhibition/:slug', routes.views.exhibition)
-	app.get('/publications', routes.views.publications)
-	app.get('/publication/:slug', routes.views.publication)
-	app.get('/fairs', routes.views.fairs)
-	app.get('/fair/:slug', routes.views.fair)
-	app.get('/about', routes.views.about)
-	app.get('/layout', routes.views.layout)
-	app.get('/texts/:slug', routes.views.text)
-	app.get('/pages/wechat', routes.views.wechat)
+	app.get("/artists", routes.views.artists);
+	app.get("/artist/:slug", routes.views.artist);
+	app.get("/exhibitions", routes.views.exhibitions);
+	app.get("/exhibition/:slug", routes.views.exhibition);
+	app.get("/publications", routes.views.publications);
+	app.get("/publication/:slug", routes.views.publication);
+	app.get("/fairs", routes.views.fairs);
+	app.get("/fair/:slug", routes.views.fair);
+	app.get("/about", routes.views.about);
+	app.get("/layout", routes.views.layout);
+	app.get("/texts/:slug", routes.views.text);
+	app.get("/pages/wechat", routes.views.wechat);
 
 	app.get(
-		'/admin/updateExhibitionSlugs',
+		"/admin/updateExhibitionSlugs",
 		middleware.requireUser,
 		routes.admin.updateExhibitionSlugs
-	)
-	app.all('/admin/backup', middleware.requireUser, routes.admin.backup)
+	);
+	app.all("/admin/backup", middleware.requireUser, routes.admin.backup);
 	app.get(
-		'/admin/backup-json',
+		"/admin/backup-json",
 		middleware.requireUser,
-		routes.admin['backup-json']
-	)
+		routes.admin["backup-json"]
+	);
 
 	app.get(
-		'/admin/api/frontPageImages',
+		"/admin/api/frontPageImages",
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.get
-	)
+	);
 	app.post(
-		'/admin/api/frontPageImage',
+		"/admin/api/frontPageImage",
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.post
-	)
+	);
 	app.delete(
-		'/admin/api/frontPageImage/:id',
+		"/admin/api/frontPageImage/:id",
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.delete
-	)
+	);
 	app.post(
-		'/admin/api/frontPageImagesOrder',
+		"/admin/api/frontPageImagesOrder",
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.frontPageImages.updateOrder
-	)
+	);
 	app.post(
-		'/admin/api/cloudinary/upload',
+		"/admin/api/cloudinary/upload",
 		[keystone.middleware.api, keystone.middleware.cors, middleware.requireUser],
 		routes.admin.cloudinary.upload
-	)
+	);
 	app.post(
-		'/admin/api/libArticle',
+		"/admin/api/libArticle",
 		[keystone.middleware.api, keystone.middleware.cors],
 		routes.admin.libArticles.post
-	)
-	app.get('/admin', [middleware.requireUser], (req, res) => {
+	);
+	app.get("/admin", [middleware.requireUser], (req, res) => {
 		res.sendFile(
 			path.resolve(
-				__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/index.html'
+				__dirname + "/../../xc-hua-admin/dist/xc-hua-admin/index.html"
 			)
-		)
-	})
-	app.get('/admin/:filename', [middleware.requireUser], (req, res) => {
-		let filename = req.params.filename
+		);
+	});
+	app.get("/admin/:filename", [middleware.requireUser], (req, res) => {
+		let filename = req.params.filename;
 		let fullpath = path.resolve(
-			__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/' + filename
-		)
-		console.log('get: ', fullpath)
+			__dirname + "/../../xc-hua-admin/dist/xc-hua-admin/" + filename
+		);
+		console.log("get: ", fullpath);
 		if (fs.existsSync(fullpath)) {
-			res.sendFile(fullpath)
+			res.sendFile(fullpath);
 		} else {
 			res.sendFile(
 				path.resolve(
-					__dirname + '/../../xc-hua-admin/dist/xc-hua-admin/index.html'
+					__dirname + "/../../xc-hua-admin/dist/xc-hua-admin/index.html"
 				)
-			)
+			);
 		}
-	})
+	});
 
-	app.get('/blog/:category?', routes.views.blog)
-	app.get('/blog/post/:post', routes.views.post)
-	app.get('/gallery', routes.views.gallery)
-	app.all('/contact', routes.views.contact)
-	app.all('/subscribe', routes.views.subscribe)
+	app.get("/blog/:category?", routes.views.blog);
+	app.get("/blog/post/:post", routes.views.post);
+	app.get("/gallery", routes.views.gallery);
+	app.all("/contact", routes.views.contact);
+	app.all("/subscribe", routes.views.subscribe);
 
 	// app.get('/api/artworks', [keystone.middleware.api, keystone.middleware.cors], routes.api.artworks.get)
 	// app.get('/api/artwork/:slug', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.get)
@@ -131,110 +131,116 @@ exports = module.exports = function(app) {
 	// app.delete('/api/artwork', [keystone.middleware.api, keystone.middleware.cors], routes.api.artwork.delete)
 
 	app.get(
-		'/api/artists',
+		"/api/artists",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.artists.get
-	)
+	);
 	app.get(
-		'/api/artist/:slug',
+		"/api/artist/:slug",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.artist.get
-	)
+	);
 	app.get(
-		'/api/exhibitions',
+		"/api/exhibitions",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.exhibitions
-	)
+	);
 	app.get(
-		'/api/exhibitions/:artistId',
+		"/api/exhibitions/:artistId",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.exhibitions
-	)
+	);
 	app.get(
-		'/api/exhibition/:slug',
+		"/api/exhibition/:slug",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.exhibition
-	)
+	);
 	app.get(
-		'/api/fairs',
+		"/api/fairs",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.fairs
-	)
+	);
 	app.get(
-		'/api/sociallinks',
+		"/api/sociallinks",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.sociallinks
-	)
+	);
 	app.get(
-		'/api/snippets',
+		"/api/snippets",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.snippets
-	)
+	);
 	app.get(
-		'/api/front-page-images',
+		"/api/front-page-images",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.frontPageImages
-	)
+	);
 	app.get(
-		'/api/blog/:category',
+		"/api/blog/:category",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.blog
-	)
+	);
 	app.get(
-		'/api/gallery-spaces',
+		"/api/gallery-spaces",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.gallerySpaces
-	)
+	);
 	app.get(
-		'/api/text/:slug',
+		"/api/text/:slug",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.text
-	)
+	);
 
 	app.get(
-		'/api/artworks/:artistId',
+		"/api/artworks/:artistId",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.artworks.get
-	)
+	);
 	app.get(
-		'/api/artworks',
+		"/api/artworks",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.artworks.get
-	)
+	);
 
 	app.get(
-		'/api/artwork-series/:artistId',
+		"/api/artwork-series/:artistId",
 		[keystone.middleware.api, middleware.cors],
-		routes.api['artwork-series']
-	)
+		routes.api["artwork-series"]
+	);
 	app.get(
-		'/api/artwork-series',
+		"/api/artwork-series",
 		[keystone.middleware.api, middleware.cors],
-		routes.api['artwork-series']
-	)
+		routes.api["artwork-series"]
+	);
 
 	app.get(
-		'/api/lib-articles',
+		"/api/lib-articles",
 		[keystone.middleware.api, middleware.cors],
-		routes.api['lib-articles']
-	)
+		routes.api["lib-articles"]
+	);
 
 	app.post(
-		'/api/contact',
+		"/api/contact",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.contact
-	)
+	);
 	app.post(
-		'/api/subscribe',
+		"/api/subscribe",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.subscribe
-	)
+	);
 
 	app.get(
-		'/api/save-all-artworks',
+		"/api/save-all-artworks",
 		[keystone.middleware.api, middleware.cors],
 		routes.api.saveAllArtworks
-	)
+	);
+
+	app.get(
+		"/api/upload/:filename",
+		[keystone.middleware.api, middleware.cors],
+		routes.api.upload
+	);
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
-}
+};
