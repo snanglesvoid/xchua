@@ -19,7 +19,7 @@ ContentBlock.add({
 		type: Types.CloudinaryImage,
 		dependsOn: { type: ["Title Image", "Quote"] },
 	},
-	healine: {
+	headline: {
 		english: {
 			type: Types.Text,
 			dependsOn: { type: "Title Image" },

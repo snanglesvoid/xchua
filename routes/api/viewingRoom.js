@@ -16,7 +16,7 @@ exports = module.exports = {
 			if (!doc) {
 				res.status(404).send("not found");
 			} else {
-				res.json(doc);
+				res.json([doc]);
 			}
 		} catch (error) {
 			res.status(500).send(error);
