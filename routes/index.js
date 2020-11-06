@@ -1,23 +1,3 @@
-/**
- * This file is where you define your application routes and controllers.
- *
- * Start by including the middleware you want to run for every request;
- * you can attach middleware to the pre('routes') and pre('render') events.
- *
- * For simplicity, the default setup for route controllers is for each to be
- * in its own file, and we import all the files in the /routes/views directory.
- *
- * Each of these files is a route controller, and is responsible for all the
- * processing that needs to happen for the route (e.g. loading data, handling
- * form submissions, rendering the view template, etc).
- *
- * Bind each route pattern your application should respond to in the function
- * that is exported from this module, following the examples below.
- *
- * See the Express application routing documentation for more information:
- * http://expressjs.com/api.html#app.VERB
- */
-
 const keystone = require("keystone");
 const middleware = require("./middleware");
 const importRoutes = keystone.importer(__dirname);
@@ -32,11 +12,11 @@ keystone.pre("render", middleware.flashMessages);
 var routes = {
 	views: importRoutes("./views"),
 	admin: importRoutes("./admin"),
-	api: importRoutes("./api")
+	api: importRoutes("./api"),
 };
 
 // Setup Route Bindings
-exports = module.exports = function(app) {
+exports = module.exports = function (app) {
 	// Views
 	app.get("/", routes.views.index);
 
@@ -241,6 +221,24 @@ exports = module.exports = function(app) {
 		[keystone.middleware.api, middleware.cors],
 		routes.api.upload
 	);
+
+	app.get(
+		"/api/viewing-room/:slug",
+		[keystone.middleware.api, middleware.cors],
+		routes.api.viewingRoom
+	);
+	app.post(
+		"/api/email",
+		[keystone.middleware.api, middleware.cors],
+		routes.api.email.post
+	);
+
+	// app.get(
+	//   "/api/content-block/:slug",
+	//   [keystone.middleware.api, middleware.cors],
+	//   routes.api.contentBlock
+	// )
+
 	// app.post('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.post)
 	// app.delete('/api/artist', [keystone.middleware.api, keystone.middleware.cors], routes.api.artist.delete)
 };

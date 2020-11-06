@@ -6,7 +6,7 @@ exports = module.exports = async (req, res) => {
 			.list("Exhibition")
 			.model.findOne({
 				state: "published",
-				slug: req.params.slug
+				slug: req.params.slug,
 			})
 			.populate("artists")
 			.populate({ path: "artworks", match: { state: "published" } })
@@ -20,6 +20,6 @@ exports = module.exports = async (req, res) => {
 			res.json(doc);
 		}
 	} catch (error) {
-		res.status(500).send(err);
+		res.status(500).send(error);
 	}
 };
