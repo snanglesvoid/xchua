@@ -225,7 +225,12 @@ exports = module.exports = function (app) {
 	app.get(
 		"/api/viewing-room/:slug",
 		[keystone.middleware.api, middleware.cors],
-		routes.api.viewingRoom
+		routes.api.viewingRoom.get
+	);
+	app.get(
+		"/api/viewing-rooms",
+		[keystone.middleware.api, middleware.cors],
+		routes.api.viewingRoom.getAll
 	);
 	app.post(
 		"/api/email",
