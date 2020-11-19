@@ -8,7 +8,7 @@ const EmailAddress = new keystone.List("EmailAddress", {
 
 EmailAddress.add({
 	name: { type: Types.Name, required: true },
-	email: { type: Types.Email, required: true, index: true },
+	email: { type: Types.Email, required: true, unique: true, index: true },
 	createdAt: { type: Types.Datetime, default: Date.now },
 });
 

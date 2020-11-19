@@ -9,11 +9,24 @@ function validateEmail(email) {
 
 exports = module.exports = {
 	post: async (req, res) => {
+		let errors = {};
+
+		if (!req.body["data-agree"]) {
+			errors.agree = {
+				type: "required",
+				error: "Please agree to our data protection policy",
+				errorSnippet: "missing-data-agree",
+				fieldName: "data-agree",
+			};
+		}
+
 		try {
 			let existing = await EmailAddress.findOne({ email: req.body.email });
 			if (existing) {
 				console.log("exists", existing);
-				return res.status(200).json({});
+				return res.status(200).json({
+					agree: errors.agree,
+				});
 			}
 		} catch (error) {
 			return res.status(500).send(error);
