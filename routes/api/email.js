@@ -8,7 +8,16 @@ function validateEmail(email) {
 }
 
 exports = module.exports = {
-	post: (req, res) => {
+	post: async (req, res) => {
+		try {
+			let existing = await EmailAddress.find({ email: req.body.email });
+			if (existing) {
+				return res.status(200).json({});
+			}
+		} catch (error) {
+			return res.status(500).send(error);
+		}
+
 		let validationErrors = {};
 		let doc = new EmailAddress();
 		let updater = doc.getUpdateHandler(req);
