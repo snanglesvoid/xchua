@@ -46,6 +46,9 @@ keystone.set("locals", {
 	editable: keystone.content.editable,
 });
 
+// Wysiwyg options
+keystone.set("wysiwyg additional buttons", "blockquote, formatselect");
+
 // Load your project's Routes
 keystone.set("routes", require("./routes"));
 

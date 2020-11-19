@@ -12,12 +12,12 @@ ContentBlock.add({
 	updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
 	type: {
 		type: Types.Select,
-		options: "Title Image, Artwork Display, Text, Quote",
+		options: "Title Image, Artwork Display, Text, Video",
 		default: "Title Image",
 	},
 	image: {
 		type: Types.CloudinaryImage,
-		dependsOn: { type: ["Title Image", "Quote"] },
+		dependsOn: { type: ["Title Image"] },
 	},
 	headline: {
 		english: {
@@ -52,19 +52,19 @@ ContentBlock.add({
 			type: Types.Html,
 			wysiwyg: true,
 			height: 150,
-			dependsOn: { type: ["Text", "Quote", "Title Image"] },
+			dependsOn: { type: ["Text", "Title Image"] },
 		},
 		chinese: {
 			type: Types.Html,
 			wysiwyg: true,
 			height: 150,
-			dependsOn: { type: ["Text", "Quote"] },
+			dependsOn: { type: ["Text", "Title Image"] },
 		},
 		german: {
 			type: Types.Html,
 			wysiwyg: true,
 			height: 150,
-			dependsOn: { type: ["Text", "Quote"] },
+			dependsOn: { type: ["Text", "Title Image"] },
 		},
 	},
 	artworks: {
@@ -72,6 +72,20 @@ ContentBlock.add({
 		ref: "Artwork",
 		many: true,
 		dependsOn: { type: ["Artwork Display"] },
+	},
+	textColor: {
+		type: Types.Select,
+		options: ["bright", "dark", "custon"],
+		default: "dark",
+		dependsOn: { type: "Title Image" },
+	},
+	customColor: {
+		type: Types.Text,
+		dependsOn: { textColor: "custom" },
+	},
+	vimeoLink: {
+		type: Types.Url,
+		dependsOn: { type: "Video" },
 	},
 });
 

@@ -1,4 +1,4 @@
-var keystone = require('keystone');
+var keystone = require("keystone");
 var Types = keystone.Field.Types;
 
 /**
@@ -6,7 +6,7 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-var Enquiry = new keystone.List('Enquiry', {
+var Enquiry = new keystone.List("Enquiry", {
 	nocreate: true,
 	noedit: true,
 });
@@ -19,6 +19,6 @@ Enquiry.add({
 	createdAt: { type: Date, default: Date.now },
 });
 
-Enquiry.defaultSort = '-createdAt';
-Enquiry.defaultColumns = 'name, email, enquiryType, createdAt';
+Enquiry.defaultSort = "-createdAt";
+Enquiry.defaultColumns = "name, email, createdAt";
 Enquiry.register();

@@ -2,13 +2,16 @@ const keystone = require("keystone");
 const Types = keystone.Field.Types;
 
 const EmailAddress = new keystone.List("EmailAddress", {
-	email: { type: Types.Email, noedit: true },
-	updatedAt: { type: Types.Datetime, noedit: true, default: Date.now },
+	nocreate: true,
+	noedit: true,
 });
 
-EmailAddress.schema.pre("save", function (next) {
-	this.updatedAt = new Date();
-	next();
+EmailAddress.add({
+	name: { type: Types.Name, required: true },
+	email: { type: Types.Email },
+	createdAt: { type: Types.Datetime, default: Date.now },
 });
 
+EmailAddress.defaultSort = "-createdAt";
+EmailAddress.defaultColumns = "name, email, createdAt";
 EmailAddress.register();
