@@ -10,9 +10,9 @@ function validateEmail(email) {
 exports = module.exports = {
 	post: async (req, res) => {
 		try {
-			let existing = await EmailAddress.find({ email: req.body.email });
-			console.log("exists", existing);
+			let existing = await EmailAddress.findOne({ email: req.body.email });
 			if (existing) {
+				console.log("exists", existing);
 				return res.status(200).json({});
 			}
 		} catch (error) {
