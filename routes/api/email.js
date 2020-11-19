@@ -11,6 +11,7 @@ exports = module.exports = {
 	post: async (req, res) => {
 		try {
 			let existing = await EmailAddress.find({ email: req.body.email });
+			console.log("exists", existing);
 			if (existing) {
 				return res.status(200).json({});
 			}
