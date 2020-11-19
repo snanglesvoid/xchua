@@ -35,7 +35,6 @@ exports = module.exports = {
 		let validationErrors = {};
 		let doc = new EmailAddress();
 		let updater = doc.getUpdateHandler(req);
-		let errors = {};
 
 		if (!req.body["data-agree"]) {
 			errors.agree = {

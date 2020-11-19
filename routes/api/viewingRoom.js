@@ -9,7 +9,13 @@ exports = module.exports = {
 					state: "published",
 					slug: req.params.slug,
 				})
-				.populate("blocks");
+				.populate({
+					path: "blocks",
+					populate: {
+						path: "artworks",
+						model: "Artwork",
+					},
+				});
 
 			let doc = await query.exec();
 
