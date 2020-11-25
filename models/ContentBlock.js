@@ -33,20 +33,6 @@ ContentBlock.add({
 			dependsOn: { type: "Title Image" },
 		},
 	},
-	// subtitle: {
-	// 	english: {
-	// 		type: Types.Text,
-	// 		dependsOn: { type: "Title Image" },
-	// 	},
-	// 	chinese: {
-	// 		type: Types.Text,
-	// 		dependsOn: { type: "Title Image" },
-	// 	},
-	// 	german: {
-	// 		type: Types.Text,
-	// 		dependsOn: { type: "Title Image" },
-	// 	},
-	// },
 	text: {
 		english: {
 			type: Types.Html,
@@ -71,6 +57,12 @@ ContentBlock.add({
 		type: Types.Relationship,
 		ref: "Artwork",
 		many: true,
+		dependsOn: { type: ["Artwork Display"] },
+	},
+	layout: {
+		type: Types.Select,
+		options: "Image Left, Image Right, Columns",
+		default: "Image Left",
 		dependsOn: { type: ["Artwork Display"] },
 	},
 	textColor: {
