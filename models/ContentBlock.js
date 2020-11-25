@@ -61,7 +61,7 @@ ContentBlock.add({
 	},
 	layout: {
 		type: Types.Select,
-		options: "Image Left, Image Right, Columns",
+		options: "Image Left, Image Right, Columns, Carousel",
 		default: "Image Left",
 		dependsOn: { type: ["Artwork Display"] },
 	},
