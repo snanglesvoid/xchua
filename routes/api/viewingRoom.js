@@ -32,7 +32,10 @@ exports = module.exports = {
 		try {
 			let query = keystone
 				.list("ViewingRoom")
-				.model.find({ state: "published" });
+				.model.find({ state: "published" })
+				.populate({
+					path: "blocks",
+				});
 
 			let docs = await query.exec();
 
