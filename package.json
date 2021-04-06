@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-image": "^10.2.0",
+    "@ckeditor/ckeditor5-image": "^27.0.0",
     "async": "2.1.4",
     "blueimp-file-upload": "^9.22.0",
     "cloudinary": "^1.14.0",
