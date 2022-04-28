@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ckeditor/ckeditor5-image": "^10.2.0",
-    "async": "2.1.4",
+    "async": "2.6.4",
     "blueimp-file-upload": "^9.22.0",
     "cloudinary": "^1.14.0",
     "cloudinary-jquery-file-upload": "^2.5.0",
